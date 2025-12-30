@@ -12,11 +12,6 @@ const SKILLS_COMMON: SkillItem[] = [
 
 // --- PROJECT SECTIONS ---
 
-const TOKEN2049_SECTIONS = [
-  { title: 'TOKEN 2049: Global Presence', label: 'EVENT VISUALS', icon: 'Globe', images: ['https://img.heliar.top/file/1767074381181_6.png'] },
-  { title: 'Interactive Booth Design', label: 'SPACE DESIGN', icon: 'Layers', images: ['https://img.heliar.top/file/1767074376988_Brand.png'] }
-];
-
 const CRYDIT_SECTIONS = [
   { title: 'Core Visual Identity Standard', label: 'BRAND DNA', icon: 'Hexagon', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326722.3govkhorey.webp'] },
   { title: 'Strategic Positioning & Brand Manual', label: 'BRAND STRATEGY', icon: 'BookOpen', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/1.2vf7y6ub45.webp'] },
@@ -27,50 +22,147 @@ const CRYDIT_SECTIONS = [
 ];
 
 const LUXURY_SECTIONS = [
-  { title: 'Luxury Editorial: WeChat Narrative', label: 'EDITORIAL EXPERIENCE', icon: 'Camera', isSlider: true, images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame.9o09kpepxt.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp'] }
+  { 
+    title: 'Luxury Editorial: WeChat Narrative', 
+    label: 'EDITORIAL EXPERIENCE', 
+    icon: 'Camera', 
+    isSlider: true, 
+    images: [
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame.9o09kpepxt.webp', 
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp', 
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-3.2yytvyhl8q.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-4.1ziqiseu2w.webp'
+    ] 
+  }
 ];
 
-const INTU_SECTIONS = [
+const INTU_SECTIONS_CN = [
   { 
-    title: 'Visual Identity & Design Systems', 
-    label: 'PHASE 03: VISUAL LOGIC', 
+    title: '1. 市场挑战与机遇', 
+    label: 'MARKET ANALYSIS', 
+    icon: 'TrendingUp', 
+    description: '在消费文化剧烈变化的今天，回归“理性消费”的趋势与高端市场的增长并存。',
+    points: [
+      '挑战：疫情催生“新理性主义”，消费者信心受打击，回归理性消费；市场竞争激烈，品牌与产品高度同质化。',
+      '机遇：虽然整体消费放缓，但中国市场在高端市场和新能源汽车市场仍有强劲增长。',
+      '切入点：INTU 旨在填补传统豪华品牌与低端入门品牌之间的空白，定位在格局相对未明确的中高端市场。'
+    ],
+    images: [] 
+  },
+  { 
+    title: '2. INTU 品牌核心定义与视觉 CMF', 
+    label: 'CORE DNA & VISUALS', 
     icon: 'Hexagon', 
+    isSlider: true,
+    description: 'Name: INTU (INSPIRATION TO U) | Slogan: Inspiration To U / 都市灵感。本章节展示品牌视觉标准与 CMF (色彩、材料、表面工艺) 核心设计。',
+    points: [
+      '使命：增色生活科技，为用户提供最明智的城市出行选择。',
+      '目标人群：一二线城市 Z 世代都市自由青年；拒绝被定义，追求“质价比”。',
+      'CMF 设计策略：强调“感性科技”触感，融合可持续材料与未来感色系。',
+      '品牌视觉：以“都市灵感”为轴，构建极简且具有爆发力的视觉符号系统。'
+    ],
     images: [
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/61b75b229825189.686c03868bc97.39lnp5zjeb.webp'
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_08.7p42ui7p3b.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_09.58hufl0t6w.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_10.1hsoucbxzd.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_11.lw7ew29je.webp'
     ] 
   },
   { 
-    title: 'Brand Definition & Core Narrative', 
-    label: 'PHASE 02: CORE DNA', 
-    icon: 'Layers', 
-    isSlider: true, 
+    title: '3. 产品基石', 
+    label: 'FOUNDATION', 
+    icon: 'Cpu', 
+    description: 'INTU 定义自己为“生活科技品牌”，而非冰冷的科技堆砌。',
+    points: [
+      'Digital Premium (数字化高级感)：内在的数字化美观与整体氛围营造，如车机 UI 设计。',
+      'Emotional Connection (情感化连通)：强调社交价值与即时互动，如车机互联、路书分享。',
+      'Warm Tech (感性科技)：千人千面的 AI 应用，按需进化的生态 (OTA)，是有温度的人性化科技。'
+    ],
+    images: [] 
+  },
+  { 
+    title: '4. 品牌传播策略', 
+    label: 'COMMUNICATION ROADMAP', 
+    icon: 'Rocket', 
+    description: '传播核心逻辑：“锐角记忆 × 高频共振 × 细分部署”。',
+    points: [
+      '第一阶段：发布前 (Pre-Launch) - 主题 INSPIRED by FUN。联合阿里云设计团队 (Alibaba Cloud Design) 国际首发；Bilibili 最严苛 UP 主测试；联合“北辰青年”寻找品牌合伙人。',
+      '第二阶段：上市期 (Launch) - 主题 Ins to U。赞助腾讯视频《吐槽大会》真实槽点营销；跨界联名 LEGO、Nintendo Switch (车机世界杯游戏)、GQ Lab (ICON Project)。',
+      '第三阶段：持续期 (Sustain) - 主题 Ins to City。打造 Inspiration Hub 城市灵感门店 (类似 Blue Bottle)；推出双线试驾与“OT Free Shuttle”接送服务；“48小时够你玩”旅行计划。'
+    ],
+    images: [] 
+  }
+];
+
+const INTU_SECTIONS_EN = [
+  { 
+    title: '1. Market Challenges & Opportunities', 
+    label: 'MARKET ANALYSIS', 
+    icon: 'TrendingUp', 
+    description: 'Amid dramatic shifts in consumer culture, the trend of returning to "rational spending" coexists with high-end market growth.',
+    points: [
+      'Challenge: The rise of "New Rationalism" post-pandemic has shifted consumers toward value-based spending. High market homogeneity persists.',
+      'Opportunity: China continues to see strong growth in premium and New Energy Vehicle (NEV) segments despite the overall slowdown.',
+      'Positioning: INTU fills the gap between rigid luxury and entry-level brands, targeting the emerging mid-to-high-end urban market.'
+    ],
+    images: [] 
+  },
+  { 
+    title: '2. INTU Brand Definition & CMF Visuals', 
+    label: 'CORE DNA & VISUALS', 
+    icon: 'Hexagon', 
+    isSlider: true,
+    description: 'Name: INTU (INSPIRATION TO U) | Slogan: Inspiration To U / Urban Inspiration. This section showcases visual identity standards and CMF design philosophy.',
+    points: [
+      'Mission: Enhancing life with technology, providing the wisest mobility choices for the modern urban explorer.',
+      'Target Audience: Gen Z urban youth in Tier 1 & 2 cities; individuals who prioritize high quality over status tax.',
+      'CMF Strategy: Tactile "Warm Tech" philosophy, blending sustainable materials with futuristic palettes.',
+      'Visual Standard: A minimal yet explosive iconic system built around the concept of "Urban Inspiration".'
+    ],
     images: [
-      'https://images.unsplash.com/photo-1542282088-fe8426682b8f?q=80&w=1920',
-      'https://images.unsplash.com/photo-1617788130034-783305574c10?q=80&w=1920'
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_08.7p42ui7p3b.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_09.58hufl0t6w.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_10.1hsoucbxzd.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_11.lw7ew29je.webp'
     ] 
+  },
+  { 
+    title: '3. Product Pillars', 
+    label: 'FOUNDATION', 
+    icon: 'Cpu', 
+    description: 'INTU defines itself as a "Lifestyle Tech Brand," moving away from cold, utilitarian technology.',
+    points: [
+      'Digital Premium: Built-in digital aesthetics and holistic atmosphere creation, such as advanced HMI/UI design.',
+      'Emotional Connection: Social value and instant interaction through car connectivity and route sharing features.',
+      'Warm Tech: Personalized AI applications and evolving ecosystems (OTA) that offer human-centric technology.'
+    ],
+    images: [] 
+  },
+  { 
+    title: '4. Communication Strategy', 
+    label: 'COMMUNICATION ROADMAP', 
+    icon: 'Rocket', 
+    description: 'Core logic: "Sharp Angle Memory × High-Frequency Resonance × Segmented Deployment."',
+    points: [
+      'Pre-Launch: Theme "INSPIRED by FUN." Design endorsement with Alibaba Cloud Design at Intl Design Week; Hardcore reviews on Bilibili.',
+      'Launch: Theme "Ins to U." Sponsorship of "Roast Show" for authentic engagement; Crossovers with LEGO, Nintendo Switch, and GQ Lab.',
+      'Sustain: Theme "Ins to City." "Inspiration Hub" concept stores (like Blue Bottle); Day/Night test drive scenarios; "48 Hours is Enough" weekend plans.'
+    ],
+    images: [] 
   }
 ];
 
 const PROJECTS_CN: Project[] = [
   { 
     id: 'intu-brand-strategy', 
-    title: 'INTU: 品牌定义与传播策略全案', 
+    title: '汽车品牌与产品设计', 
     category: 'AUTOMOTIVE_DESIGN', 
     subCategory: 'STRATEGY', 
-    description: '深耕汽车行业叙事，从底层逻辑重构品牌生命力。定义未来出行的商业美学标准。', 
+    description: '为全新电动汽车品牌 INTU 构建从 market insight 到三阶段传播闭环的战略蓝图。定义“生活科技”与“都市灵感”的商业叙事。', 
     imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/61b75b229825189.686c03868bc97.39lnp5zjeb.webp', 
     tags: ['汽车品牌', '传播策略', 'CMF策略', 'INTU'], 
-    sections: INTU_SECTIONS as any 
-  },
-  { 
-    id: 'token-2049-visuals', 
-    title: 'TOKEN 2049 全球峰会视觉呈现', 
-    category: 'ACTIVITY_VISUALS', 
-    subCategory: 'CAMPAIGN', 
-    description: '主导大型国际峰会视觉体系，在5万+人次的流量中心建立品牌权威感。', 
-    imageUrl: 'https://img.heliar.top/file/1767074381181_6.png', 
-    tags: ['展会视觉', '空间交互', '大型活动'], 
-    sections: TOKEN2049_SECTIONS as any 
+    sections: INTU_SECTIONS_CN as any 
   },
   { id: 'crydit-brand-narrative', title: 'Crydit: 品牌全生态系统构建', category: 'BRAND_ECOSYSTEM', subCategory: 'STRATEGY', description: '从底层视觉标准到全球权威背书，构建链接高端金融科技与生活方式的完整品牌叙事。', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/LIifestyle3.8z700n5tjh.webp', tags: ['品牌全案', '金融科技', 'Web3'], sections: CRYDIT_SECTIONS as any },
   { id: 'luxury-design-paradigm', title: '奢侈品美学范式：视觉与内容设计', category: 'LUXURY_DESIGN', subCategory: 'IDENTITY', description: '深耕 LVMH 美学体系，专注于顶级奢侈品牌公众号视觉叙事，定义卓越的内容策略。', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', tags: ['奢侈品美学', '公众号策略', '高端叙事'], sections: LUXURY_SECTIONS as any },
@@ -81,26 +173,16 @@ const PROJECTS_CN: Project[] = [
 const PROJECTS_EN: Project[] = [
   { 
     id: 'intu-brand-strategy', 
-    title: 'INTU: Brand Definition & Communication', 
+    title: 'INTU: Brand Definition & Communication Strategy', 
     category: 'AUTOMOTIVE_DESIGN', 
     subCategory: 'STRATEGY', 
-    description: 'Strategic blueprint for automotive brand positioning and global narrative construction.', 
+    description: 'Building a strategic blueprint for the new EV brand INTU, from market insights to a three-phase communication loop. Defining the "Lifestyle Tech" and "Urban Inspiration" narrative.', 
     imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/61b75b229825189.686c03868bc97.39lnp5zjeb.webp', 
-    tags: ['Automotive', 'CMF Strategy', 'INTU'], 
-    sections: INTU_SECTIONS as any 
+    tags: ['Automotive', 'Communication', 'Brand Strategy', 'INTU'], 
+    sections: INTU_SECTIONS_EN as any 
   },
-  { 
-    id: 'token-2049-visuals', 
-    title: 'TOKEN 2049 Global Event Visuals', 
-    category: 'ACTIVITY_VISUALS', 
-    subCategory: 'CAMPAIGN', 
-    description: 'Leading visual systems for international summits, establishing brand authority in high-traffic environments.', 
-    imageUrl: 'https://img.heliar.top/file/1767074381181_6.png', 
-    tags: ['Event Visuals', 'Space Design', 'Global'], 
-    sections: TOKEN2049_SECTIONS as any 
-  },
-  { id: 'crydit-brand-narrative', title: 'Crydit: Brand Ecosystem', category: 'BRAND_ECOSYSTEM', subCategory: 'STRATEGY', description: 'Complete brand narrative construction for high-end Fintech and Web3 lifestyle.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/LIifestyle3.8z700n5tjh.webp', tags: ['Fintech', 'Strategy', 'Ecosystem'], sections: CRYDIT_SECTIONS as any },
-  { id: 'luxury-design-paradigm', title: 'Luxury Aesthetics: Visual & Content', category: 'LUXURY_DESIGN', subCategory: 'IDENTITY', description: 'Timeless visual languages and WeChat editorial strategies for premier luxury maisons.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', tags: ['Editorial', 'Aesthetics', 'Luxury'], sections: LUXURY_SECTIONS as any }
+  { id: 'crydit-brand-narrative', title: 'Crydit: Brand Ecosystem Construction', category: 'BRAND_ECOSYSTEM', subCategory: 'STRATEGY', description: 'From visual standards to global authority endorsements, constructing a complete narrative for premium Fintech and Web3 lifestyle.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/LIifestyle3.8z700n5tjh.webp', tags: ['Fintech', 'Strategy', 'Ecosystem'], sections: CRYDIT_SECTIONS as any },
+  { id: 'luxury-design-paradigm', title: 'Luxury Aesthetics: Visual & Content Design', category: 'LUXURY_DESIGN', subCategory: 'IDENTITY', description: 'Deep roots in the LVMH aesthetic system, focusing on high-end editorial narratives for premier luxury maisons.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', tags: ['Editorial', 'Aesthetics', 'Luxury'], sections: LUXURY_SECTIONS as any }
 ];
 
 // --- RESUME EXPERIENCE ---
@@ -117,7 +199,7 @@ const EXPERIENCE_CN: ExperienceItem[] = [
       '创意与设计管理：领导设计团队创建品牌视觉识别系统。'
     ],
     achievements: [
-      '主导 TOKEN 2049 视觉全案，吸引 5w+ 参与者。',
+      '主导大型国际活动视觉呈现，提升全球品牌权威感。',
       '品牌知名度在 6 个月内提升 80%。'
     ]
   },
@@ -153,7 +235,7 @@ const EXPERIENCE_EN: ExperienceItem[] = [
     period: '2023.12 - Present',
     companyIntro: 'Blockchain asset payment platform for crypto innovators.',
     achievements: [
-      'Led TOKEN 2049 Global Event visuals.',
+      'Led global brand visual identity and major summit presence.',
       'Achieved 80% brand awareness growth within 6 months.'
     ]
   }
@@ -167,7 +249,7 @@ export const STRATEGIC_EXPERTISE_CN = [
 ];
 
 export const STRATEGIC_EXPERTISE_EN = [
-  { title: "Cross-Industry Visual Strategy", desc: "9+ years across crypto, luxury, automotive, F&B, and AI creative domains." },
+  { title: "Cross-Industry Visual Strategy", desc: "9+ years across crypto, luxury, automotive, f&b, and AI creative domains." },
   { title: "Full-link Brand Management", desc: "Complete closure from strategic deduction to visual implementation." },
   { title: "Vertical Narrative Depth", desc: "Expertise in translating industry logic into high-premium visual languages." },
   { title: "AI-Powered Creativity", desc: "Redefining design workflows through human-machine collaborative efficiency." }

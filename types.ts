@@ -24,6 +24,8 @@ export interface ProjectSection {
   label: string;
   icon: string;
   images: string[];
+  description?: string; // New field for strategic text
+  points?: string[];    // New field for bulleted lists
   isGrid?: boolean;
   isSlider?: boolean;
 }
