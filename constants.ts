@@ -44,9 +44,8 @@ const INTU_SECTIONS_CN = [
     icon: 'TrendingUp', 
     description: '在消费文化剧烈变化的今天，回归“理性消费”的趋势与高端市场的增长并存。',
     points: [
-      '挑战：疫情催生“新理性主义”，消费者信心受打击，回归理性消费；市场竞争激烈，品牌与产品高度同质化。',
-      '机遇：虽然整体消费放缓，但中国市场在高端市场和新能源汽车市场仍有强劲增长。',
-      '切入点：INTU 旨在填补传统豪华品牌与低端入门品牌之间的空白，定位在格局相对未明确的中高端市场。'
+      '挑战与机遇：疫情催生“新理性主义”，消费者回归理性；但在高端市场和新能源汽车领域仍有强劲增长。',
+      '战略切入点：INTU 旨在填补传统豪华品牌与低端入门品牌之间的空白，定位在中高端市场。'
     ],
     images: [] 
   },
@@ -55,12 +54,10 @@ const INTU_SECTIONS_CN = [
     label: 'CORE DNA & VISUALS', 
     icon: 'Hexagon', 
     isSlider: true,
-    description: 'Name: INTU (INSPIRATION TO U) | Slogan: Inspiration To U / 都市灵感。本章节展示品牌视觉标准与 CMF (色彩、材料、表面工艺) 核心设计。',
+    description: 'Name: INTU (INSPIRATION TO U) | Slogan: Inspiration To U / 都市灵感。本章节展示品牌视觉标准与 CMF 核心设计。',
     points: [
-      '使命：增色生活科技，为用户提供最明智的城市出行选择。',
-      '目标人群：一二线城市 Z 世代都市自由青年；拒绝被定义，追求“质价比”。',
-      'CMF 设计策略：强调“感性科技”触感，融合可持续材料与未来感色系。',
-      '品牌视觉：以“都市灵感”为轴，构建极简且具有爆发力的视觉符号系统。'
+      '使命与人群：增色生活科技，为一二线城市 Z 世代都市自由青年提供最明智的出行选择。',
+      '视觉与 CMF：强调“感性科技”触感，融合可持续材料，构建极简且具有爆发力的视觉符号。'
     ],
     images: [
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_08.7p42ui7p3b.webp',
@@ -75,9 +72,9 @@ const INTU_SECTIONS_CN = [
     icon: 'Cpu', 
     description: 'INTU 定义自己为“生活科技品牌”，而非冰冷的科技堆砌。',
     points: [
-      'Digital Premium (数字化高级感)：内在的数字化美观与整体氛围营造，如车机 UI 设计。',
-      'Emotional Connection (情感化连通)：强调社交价值与即时互动，如车机互联、路书分享。',
-      'Warm Tech (感性科技)：千人千面的 AI 应用，按需进化的生态 (OTA)，是有温度的人性化科技。'
+      '数字化高级感 (Digital Premium)：内在的数字化美观与整体氛围营造，如高端 HMI 交互。',
+      '情感化连通 (Emotional Connection)：强调社交价值与即时互动。',
+      '感性科技 (Warm Tech)：千人千面的 AI 应用，是有温度的人性化科技。'
     ],
     images: [] 
   },
@@ -87,11 +84,14 @@ const INTU_SECTIONS_CN = [
     icon: 'Rocket', 
     description: '传播核心逻辑：“锐角记忆 × 高频共振 × 细分部署”。',
     points: [
-      '第一阶段：发布前 (Pre-Launch) - 主题 INSPIRED by FUN。联合阿里云设计团队 (Alibaba Cloud Design) 国际首发；Bilibili 最严苛 UP 主测试；联合“北辰青年”寻找品牌合伙人。',
-      '第二阶段：上市期 (Launch) - 主题 Ins to U。赞助腾讯视频《吐槽大会》真实槽点营销；跨界联名 LEGO、Nintendo Switch (车机世界杯游戏)、GQ Lab (ICON Project)。',
-      '第三阶段：持续期 (Sustain) - 主题 Ins to City。打造 Inspiration Hub 城市灵感门店 (类似 Blue Bottle)；推出双线试驾与“OT Free Shuttle”接送服务；“48小时够你玩”旅行计划。'
+      '第一阶段：发布前 (Pre-Launch) | 主题：INSPIRED by FUN (始于启发，为谁而生)。策略：借势流量平台与品牌背书，树立新形象。',
+      'Phase 1 关键动作 | 设计背书：联合阿里云设计团队国际首发；硬核测评：Bilibili “The No Show Room”测试；人才招募：联合“北辰青年”。',
+      '第二阶段：上市发布期 (Launch) | 主题：Ins to U (灵感注入生活)。策略：事件营销与跨界合作，丰富内涵并收集销售线索。',
+      'Phase 2 关键动作 | 综艺植入：赞助《吐槽大会》讨论真实槽点；跨界联名：LEGO 礼盒、Nintendo Switch 游戏、GQ Lab ICON Project。',
+      '第三阶段：持续期 (Sustain) | 主题：Ins to City (灵感注入城市)。策略：城市战略本地化，扩大体验场景。',
+      'Phase 3 关键动作 | Inspiration Hub：打造城市灵感门店；场景化试驾：白天/夜晚双线体验及深夜接送服务；周末旅行：推出“48小时够你玩”计划。'
     ],
-    images: [] 
+    images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Slide-16_9---1.6wr7csl4f3.webp'] 
   }
 ];
 
@@ -100,25 +100,22 @@ const INTU_SECTIONS_EN = [
     title: '1. Market Challenges & Opportunities', 
     label: 'MARKET ANALYSIS', 
     icon: 'TrendingUp', 
-    description: 'Amid dramatic shifts in consumer culture, the trend of returning to "rational spending" coexists with high-end market growth.',
+    description: 'Amid dramatic shifts in consumer culture, returning to "rational spending" coexists with high-end growth.',
     points: [
-      'Challenge: The rise of "New Rationalism" post-pandemic has shifted consumers toward value-based spending. High market homogeneity persists.',
-      'Opportunity: China continues to see strong growth in premium and New Energy Vehicle (NEV) segments despite the overall slowdown.',
+      'Challenges: The rise of "New Rationalism" post-pandemic has shifted consumers toward value. High market homogeneity persists.',
       'Positioning: INTU fills the gap between rigid luxury and entry-level brands, targeting the emerging mid-to-high-end urban market.'
     ],
     images: [] 
   },
   { 
-    title: '2. INTU Brand Definition & CMF Visuals', 
+    title: '2. INTU Brand Definition & Visual CMF', 
     label: 'CORE DNA & VISUALS', 
     icon: 'Hexagon', 
     isSlider: true,
-    description: 'Name: INTU (INSPIRATION TO U) | Slogan: Inspiration To U / Urban Inspiration. This section showcases visual identity standards and CMF design philosophy.',
+    description: 'Name: INTU (INSPIRATION TO U) | Slogan: Inspiration To U / Urban Inspiration.',
     points: [
-      'Mission: Enhancing life with technology, providing the wisest mobility choices for the modern urban explorer.',
-      'Target Audience: Gen Z urban youth in Tier 1 & 2 cities; individuals who prioritize high quality over status tax.',
-      'CMF Strategy: Tactile "Warm Tech" philosophy, blending sustainable materials with futuristic palettes.',
-      'Visual Standard: A minimal yet explosive iconic system built around the concept of "Urban Inspiration".'
+      'Mission: Enhancing life with technology, providing the wisest mobility choices for Tier 1 & 2 Gen Z youth.',
+      'Strategy: Tactile "Warm Tech" philosophy, blending sustainable materials with a minimal iconic system.'
     ],
     images: [
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_08.7p42ui7p3b.webp',
@@ -133,9 +130,9 @@ const INTU_SECTIONS_EN = [
     icon: 'Cpu', 
     description: 'INTU defines itself as a "Lifestyle Tech Brand," moving away from cold, utilitarian technology.',
     points: [
-      'Digital Premium: Built-in digital aesthetics and holistic atmosphere creation, such as advanced HMI/UI design.',
-      'Emotional Connection: Social value and instant interaction through car connectivity and route sharing features.',
-      'Warm Tech: Personalized AI applications and evolving ecosystems (OTA) that offer human-centric technology.'
+      'Digital Premium: Built-in digital aesthetics and holistic atmosphere creation.',
+      'Emotional Connection: Social value and instant interaction through connectivity.',
+      'Warm Tech: Personalized AI applications that offer human-centric technology.'
     ],
     images: [] 
   },
@@ -145,11 +142,14 @@ const INTU_SECTIONS_EN = [
     icon: 'Rocket', 
     description: 'Core logic: "Sharp Angle Memory × High-Frequency Resonance × Segmented Deployment."',
     points: [
-      'Pre-Launch: Theme "INSPIRED by FUN." Design endorsement with Alibaba Cloud Design at Intl Design Week; Hardcore reviews on Bilibili.',
-      'Launch: Theme "Ins to U." Sponsorship of "Roast Show" for authentic engagement; Crossovers with LEGO, Nintendo Switch, and GQ Lab.',
-      'Sustain: Theme "Ins to City." "Inspiration Hub" concept stores (like Blue Bottle); Day/Night test drive scenarios; "48 Hours is Enough" weekend plans.'
+      'Phase 1: Pre-Launch | Theme: INSPIRED by FUN. Strategy: Leveraging traffic platforms and design endorsements to establish a new image.',
+      'Key Actions: Alibaba Cloud Design endorsement; Bilibili "The No Show Room" hardcore testing; Talent hunt with Beichen Youth.',
+      'Phase 2: Launch | Theme: Ins to U. Strategy: Event marketing and crossovers to enrich brand depth and collect sales leads.',
+      'Key Actions: "Roast Show" sponsorship; Crossovers with LEGO, Nintendo Switch, and GQ Lab ICON Project.',
+      'Phase 3: Sustain | Theme: Ins to City. Strategy: Localizing urban strategies and expanding experience scenarios.',
+      'Key Actions: Inspiration Hub stores; Day/Night test drives & Midnight Shuttle; "48 Hours is Enough" weekend plans.'
     ],
-    images: [] 
+    images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Slide-16_9---1.6wr7csl4f3.webp'] 
   }
 ];
 

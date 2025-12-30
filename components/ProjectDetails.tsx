@@ -52,8 +52,8 @@ const ImageWithFallback: React.FC<{
 const StrategyCard: React.FC<{ point: string; index: number }> = ({ point, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   
-  // Extract bold labels if they exist (formatted as "Label: Content")
-  const parts = point.split(/[:：]/);
+  // Extract bold labels if they exist (formatted as "Label: Content" or "Label | Content")
+  const parts = point.split(/[:：|]/);
   const label = parts.length > 1 ? parts[0] : null;
   const content = parts.length > 1 ? parts.slice(1).join(':') : point;
 
@@ -87,18 +87,18 @@ const StrategyCard: React.FC<{ point: string; index: number }> = ({ point, index
   );
 };
 
-const SectionHeader: React.FC<{ section: any; Icon: any; isTextOnly: boolean }> = ({ section, Icon, isTextOnly }) => (
-  <div className={`flex items-center gap-10 mb-12 ${isTextOnly ? 'max-w-4xl' : ''}`}>
-    <div className="w-20 h-20 rounded-3xl bg-zinc-900/80 border border-white/10 flex items-center justify-center shadow-2xl relative overflow-hidden group flex-shrink-0">
+const SectionHeader: React.FC<{ section: any; Icon: any }> = ({ section, Icon }) => (
+  <div className="flex items-center gap-10 mb-8">
+    <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-zinc-900/80 border border-white/10 flex items-center justify-center shadow-2xl relative overflow-hidden group flex-shrink-0">
       <div className="absolute inset-0 bg-primary-gradient opacity-5 group-hover:opacity-10 transition-opacity" />
-      <Icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform duration-500" />
+      <Icon className="w-6 h-6 md:w-8 md:h-8 text-primary group-hover:scale-110 transition-transform duration-500" />
     </div>
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-1">
       <div className="flex items-center gap-3">
-        <div className="w-10 h-[1px] bg-primary/30" />
-        <span className="text-[9px] font-bold text-primary tracking-[0.5em] uppercase">{section.label}</span>
+        <div className="w-8 h-[1px] bg-primary/30" />
+        <span className="text-[8px] md:text-[9px] font-bold text-primary tracking-[0.5em] uppercase">{section.label}</span>
       </div>
-      <h4 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tighter leading-none">{section.title}</h4>
+      <h4 className="text-2xl md:text-5xl font-display font-bold text-white tracking-tighter leading-none">{section.title}</h4>
     </div>
   </div>
 );
@@ -159,9 +159,6 @@ const LuxuryCard: React.FC<{ src: string; index: number; total: number }> = ({ s
 };
 
 const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => {
-  const isLuxury = project.category === 'LUXURY_DESIGN';
-  const isAutomotive = project.category === 'AUTOMOTIVE_DESIGN';
-
   return (
     <motion.div 
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -196,7 +193,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
           <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-transparent z-10" />
           <div className="absolute bottom-24 left-8 md:left-24 max-w-5xl z-20">
              <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
-                <h3 className="text-3xl md:text-6xl font-display font-bold text-white tracking-tighter mb-10 leading-[1] max-w-4xl">
+                <h3 className="text-xl md:text-3xl font-display font-bold text-white tracking-tighter mb-10 leading-[1.2] max-w-4xl">
                   {project.description}
                 </h3>
                 <div className="flex flex-wrap gap-3">
@@ -210,62 +207,60 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
           </div>
         </div>
 
-        <div className="mt-20 space-y-40">
+        <div className="mt-12 space-y-24 md:space-y-32">
            {project.sections?.map((section, idx) => {
              const Icon = ICON_MAP[section.icon] || Layers;
              const hasImages = section.images && section.images.length > 0;
-             const isTextOnly = !hasImages;
+             const hasPoints = section.points && section.points.length > 0;
              
              return (
                <motion.div 
-                 key={idx} initial={{ opacity: 0, y: 60 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }}
+                 key={idx} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }}
                  className={`flex flex-col ${section.isSlider ? 'px-0' : 'px-8 md:px-24'} max-w-8xl mx-auto w-full`}
                >
                   <div className={`${section.isSlider ? 'px-8 md:px-24' : ''}`}>
-                    <SectionHeader section={section} Icon={Icon} isTextOnly={isTextOnly} />
+                    <SectionHeader section={section} Icon={Icon} />
                     
-                    {isTextOnly && (
-                      <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-                        <div className="lg:col-span-4 flex flex-col gap-6">
-                           <p className="text-xl md:text-2xl text-zinc-100 font-display font-medium leading-relaxed tracking-tight border-l-4 border-primary pl-10 py-2">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start mb-8 md:mb-12">
+                      <div className="lg:col-span-4 flex flex-col gap-4">
+                         {section.description && (
+                           <p className="text-xl md:text-2xl text-zinc-100 font-display font-medium leading-relaxed tracking-tight border-l-4 border-primary pl-6 md:pl-10 py-1">
                              {section.description}
                            </p>
-                           <div className="flex items-center gap-4 text-[9px] font-bold text-zinc-600 tracking-[0.4em] uppercase">
-                             <div className="w-8 h-[1px] bg-zinc-800" />
-                             Strategic Breakdown
-                           </div>
-                        </div>
+                         )}
+                         {hasPoints && (
+                            <div className="flex items-center gap-4 text-[9px] font-bold text-zinc-600 tracking-[0.4em] uppercase mt-2">
+                              <div className="w-6 md:w-8 h-[1px] bg-zinc-800" />
+                              Strategic Breakdown
+                            </div>
+                         )}
+                      </div>
 
+                      {hasPoints && (
                         <div className="lg:col-span-8">
-                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
                               {section.points?.map((pt, pIdx) => (
                                 <StrategyCard key={pIdx} point={pt} index={pIdx} />
                               ))}
                            </div>
                         </div>
-                      </div>
-                    )}
-
-                    {!isTextOnly && section.description && (
-                      <p className="text-xl md:text-3xl text-zinc-400 leading-snug font-light max-w-4xl mb-12">
-                        {section.description}
-                      </p>
-                    )}
+                      )}
+                    </div>
                   </div>
 
                   {hasImages && (
                     section.isSlider ? (
-                      <div className="relative group overflow-visible mt-16">
-                        <div className="flex items-center overflow-x-auto gap-12 px-8 md:px-24 pb-32 pt-8 snap-x snap-mandatory no-scrollbar scroll-smooth">
+                      <div className="relative group overflow-visible mt-6 md:mt-10">
+                        <div className="flex items-center overflow-x-auto gap-8 md:gap-12 px-8 md:px-24 pb-20 md:pb-32 pt-4 snap-x snap-mandatory no-scrollbar scroll-smooth">
                           {section.images.map((img: string, i: number) => (
                              <LuxuryCard key={i} src={img} index={i} total={section.images.length} />
                           ))}
                           <div className="flex-shrink-0 w-8 md:w-64" />
                         </div>
-                        <div className="absolute bottom-16 left-8 md:left-24 flex items-center gap-6">
+                        <div className="absolute bottom-10 md:bottom-16 left-8 md:left-24 flex items-center gap-6">
                            <div className="flex items-center gap-2">
                              <span className="text-[10px] font-bold text-primary">01</span>
-                             <div className="w-48 h-[1px] bg-white/5 relative">
+                             <div className="w-32 md:w-48 h-[1px] bg-white/5 relative">
                                 <motion.div className="absolute inset-y-0 left-0 bg-primary/40 w-1/3" />
                              </div>
                              <span className="text-[10px] font-bold text-zinc-600">{(section.images.length).toString().padStart(2, '0')}</span>
@@ -273,9 +268,9 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                         </div>
                       </div>
                     ) : (
-                      <div className="flex flex-col gap-24 mt-16">
+                      <div className="flex flex-col gap-12 md:gap-24 mt-6 md:mt-10 px-8 md:px-24">
                         {section.images.map((img: string, i: number) => (
-                          <div key={i} className="relative w-full rounded-[3rem] overflow-hidden border border-white/5 bg-zinc-950 shadow-[0_50px_100px_-30px_rgba(0,0,0,0.7)] group">
+                          <div key={i} className="relative w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/5 bg-zinc-950 shadow-[0_50px_100px_-30px_rgba(0,0,0,0.7)] group">
                              <ImageWithFallback src={img} alt={`${section.title}-${i}`} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[5s] ease-out" />
                              <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/5 pointer-events-none" />
                           </div>
@@ -288,7 +283,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
            })}
         </div>
 
-        <section className="px-8 md:px-24 py-64 border-t border-white/5 mt-64 bg-zinc-950/30">
+        <section className="px-8 md:px-24 py-32 md:py-64 border-t border-white/5 mt-32 md:mt-64 bg-zinc-950/30">
            <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
               <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-10">
                 <BarChart3 className="w-6 h-6 text-primary" />
@@ -300,7 +295,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={onClose}
-                className="group relative inline-flex items-center gap-6 px-20 py-8 rounded-full bg-white text-black font-display font-bold text-xl transition-all shadow-2xl hover:shadow-primary/20"
+                className="group relative inline-flex items-center gap-6 px-16 md:px-20 py-6 md:py-8 rounded-full bg-white text-black font-display font-bold text-lg md:text-xl transition-all shadow-2xl hover:shadow-primary/20"
               >
                 <ChevronLeft className="w-6 h-6 group-hover:-translate-x-2 transition-transform" />
                 Close Archive
