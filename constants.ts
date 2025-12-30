@@ -18,7 +18,25 @@ const CRYDIT_SECTIONS = [
   { title: 'Digital Portal & Official Hub', label: 'WEB ARCHITECTURE', icon: 'Globe', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/4.232cghnb0s.webp'] },
   { title: 'Fintech Core Product Interface', label: 'APP INTERFACE', icon: 'Smartphone', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/22.8ok67ird05.webp'] },
   { title: 'Authority PR & Global Recognition', label: 'MEDIA BACKING', icon: 'FileText', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/44.9ddfrjew0e.webp'] },
-  { title: 'Social Narrative & IP Character', label: 'SOCIAL VOICE', icon: 'Twitter', isSlider: true, images: ['https://img.heliar.top/file/1767074381181_6.png', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/卡戴珊-16.25.00.6f15o09i52.webp'] }
+  { 
+    title: 'Social Narrative & IP Character', 
+    label: 'SOCIAL VOICE', 
+    icon: 'Twitter', 
+    isSlider: true, 
+    images: [
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326827.wj17v1a1b.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Twitter--post-16.24.53.9rjvidq2h4.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326851.3govki18n9.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326865.6pnzh5oq9s.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326871.4qrsqtj7y3.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/平安夜-16.24.57.26lye6j9b1.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326879.96a7w2vm4f.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/You’ll-regret-selling-your-coins-now-in-the-future..4qrsqtj7w9.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/World-Football-Day-16.24.53.5q7w3zlz20.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Just-hold-on-a-bit-longer,-and-financial-freedom-is-yours.-16.24.57.4xv0m95db7.webp'
+    ] 
+  }
 ];
 
 const LUXURY_SECTIONS = [
@@ -85,11 +103,11 @@ const INTU_SECTIONS_CN = [
     description: '传播核心逻辑：“锐角记忆 × 高频共振 × 细分部署”。',
     points: [
       '第一阶段：发布前 (Pre-Launch) | 主题：INSPIRED by FUN (始于启发，为谁而生)。策略：借势流量平台与品牌背书，树立新形象。',
-      'Phase 1 关键动作 | 设计背书：联合阿里云设计团队国际首发；硬核测评：Bilibili “The No Show Room”测试；人才招募：联合“北辰青年”。',
-      '第二阶段：上市发布期 (Launch) | 主题：Ins to U (灵感注入生活)。策略：事件营销与跨界合作，丰富内涵并收集销售线索。',
-      'Phase 2 关键动作 | 综艺植入：赞助《吐槽大会》讨论真实槽点；跨界联名：LEGO 礼盒、Nintendo Switch 游戏、GQ Lab ICON Project。',
+      '第一阶段关键动作 | 设计背书：联合阿里云设计团队 (Alibaba Cloud Design) 国际首发；硬核测评：Bilibili UP主“The No Show Room”测试；人才招募：联合“北辰青年”寻找品牌合伙人。',
+      '第二阶段：上市发布期 (Launch) | 主题：Ins to U (灵感注入生活)。策略：事件营销与跨界合作，丰富品牌内涵，收集销售线索 (Leads)。',
+      '第二阶段关键动作 | 综艺植入：赞助腾讯视频《吐槽大会》讨论真实槽点；跨界联名：LEGO 车型礼盒、Nintendo Switch 游戏体验、GQ Lab ICON Project 定义先锋。',
       '第三阶段：持续期 (Sustain) | 主题：Ins to City (灵感注入城市)。策略：城市战略本地化，扩大体验场景。',
-      'Phase 3 关键动作 | Inspiration Hub：打造城市灵感门店；场景化试驾：白天/夜晚双线体验及深夜接送服务；周末旅行：推出“48小时够你玩”计划。'
+      '第三阶段关键动作 | Inspiration Hub：打造城市灵感门店 (类似 Blue Bottle)；场景化试驾：白天/夜晚双线体验及深夜接送服务；周末旅行：推出“48小时够你玩”旅行计划。'
     ],
     images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Slide-16_9---1.6wr7csl4f3.webp'] 
   }
