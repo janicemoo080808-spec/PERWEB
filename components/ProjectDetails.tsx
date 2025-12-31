@@ -1,7 +1,7 @@
 
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { X, Smartphone, ShieldCheck, ImageOff, Sparkles, Layers, Globe, FileText, Hexagon, Twitter, BookOpen, Zap, Award, Camera, Utensils, Heart, ArrowRight, ChevronLeft, TrendingUp, Target, Cpu, Rocket, BarChart3, Users, Fingerprint, Map } from 'lucide-react';
+import { X, Smartphone, ShieldCheck, ImageOff, Sparkles, Layers, Globe, FileText, Hexagon, Twitter, BookOpen, Zap, Award, Camera, Utensils, Heart, ArrowRight, ChevronLeft, TrendingUp, Target, Cpu, Rocket, BarChart3, Users, Fingerprint, Map, PlayCircle } from 'lucide-react';
 import { Project, ProjectSection } from '../types';
 
 const ICON_MAP: Record<string, any> = {
@@ -16,6 +16,44 @@ interface ProjectDetailsProps {
 const optimizeImageUrl = (url: string, width: number = 1920) => {
   if (url.includes('unsplash.com')) return url.split('?')[0] + `?q=80&fm=webp&w=${width}&fit=crop`;
   return url;
+};
+
+const VideoWithFallback: React.FC<{ 
+  src: string; poster?: string; className?: string;
+}> = ({ src, poster, className }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [error, setError] = useState(false);
+
+  return (
+    <div className={`relative overflow-hidden bg-zinc-950 ${className}`} style={{ transform: 'translateZ(0)' }}>
+      {!isLoaded && poster && (
+        <img src={poster} alt="Poster" className="absolute inset-0 w-full h-full object-cover blur-xl opacity-40 scale-110" />
+      )}
+      <video
+        src={src}
+        muted
+        autoPlay
+        loop
+        playsInline
+        onCanPlay={() => setIsLoaded(true)}
+        onError={() => setError(true)}
+        className={`w-full h-full object-cover transition-opacity duration-1000 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
+        style={{ pointerEvents: 'none' }}
+      />
+      {error && (
+        <div className="absolute inset-0 flex flex-col items-center justify-center text-zinc-800 bg-zinc-900">
+           <PlayCircle className="w-10 h-10 mb-4 opacity-20" />
+           <p className="text-[10px] font-bold uppercase tracking-[0.2em]">Video Stream Unavailable</p>
+        </div>
+      )}
+      <div className="absolute top-8 right-8 z-10">
+         <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/10">
+            <div className="w-1 h-1 rounded-full bg-primary animate-pulse" />
+            <span className="text-[8px] font-bold text-white/60 tracking-widest uppercase">Cinematic Stream</span>
+         </div>
+      </div>
+    </div>
+  );
 };
 
 const ImageWithFallback: React.FC<{ 
@@ -34,7 +72,7 @@ const ImageWithFallback: React.FC<{
       {error ? (
         <div className="absolute inset-0 flex items-center justify-center text-zinc-800 p-12 text-center">
           <ImageOff className="w-8 h-8 mb-4 opacity-20" />
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em]">Asset Delivery Failed</p>
+          <p className="text-[10px] font-bold uppercase tracking-[0.2em]">Asset Failed</p>
         </div>
       ) : (
         <img
@@ -49,155 +87,80 @@ const ImageWithFallback: React.FC<{
   );
 };
 
-const StrategyCard: React.FC<{ point: string; index: number }> = ({ point, index }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  
-  const parts = point.split(/[:：|]/);
-  const label = parts.length > 1 ? parts[0] : null;
-  const content = parts.length > 1 ? parts.slice(1).join(':') : point;
-
-  return (
-    <motion.div
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
-      whileHover={{ y: -5 }}
-      className="relative p-8 rounded-[2rem] bg-zinc-900/20 border border-white/5 hover:border-primary/40 transition-all duration-500 flex flex-col gap-4 overflow-hidden group"
-    >
-      <div className="absolute top-0 right-0 p-6 opacity-5 group-hover:opacity-10 transition-opacity">
-        <span className="text-4xl font-display font-black">{(index + 1).toString().padStart(2, '0')}</span>
-      </div>
-      
-      <div className="flex items-center gap-3">
-        <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-        <span className="text-[9px] font-bold tracking-[0.4em] text-zinc-600 uppercase">Strategic Insight</span>
-      </div>
-
-      {label ? (
-        <div className="space-y-3">
-          <h5 className="text-sm font-bold text-white tracking-tight">{label}</h5>
-          <p className="text-xs text-zinc-400 leading-relaxed font-light">{content}</p>
-        </div>
-      ) : (
-        <p className="text-xs text-zinc-300 leading-relaxed font-medium">{content}</p>
-      )}
-
-      <div className="absolute bottom-0 left-0 h-[2px] bg-primary-gradient transition-all duration-700" style={{ width: isHovered ? '100%' : '0%' }} />
-    </motion.div>
-  );
-};
-
 const SectionHeader: React.FC<{ section: any; Icon: any }> = ({ section, Icon }) => (
-  <div className="flex items-center gap-10 mb-8">
-    <div className="w-16 h-16 md:w-20 md:h-20 rounded-3xl bg-zinc-900/80 border border-white/10 flex items-center justify-center shadow-2xl relative overflow-hidden group flex-shrink-0">
+  <div className="flex items-center gap-8 mb-8">
+    <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-zinc-900/80 border border-white/10 flex items-center justify-center shadow-2xl relative overflow-hidden group flex-shrink-0">
       <div className="absolute inset-0 bg-primary-gradient opacity-5 group-hover:opacity-10 transition-opacity" />
-      <Icon className="w-6 h-6 md:w-8 md:h-8 text-primary group-hover:scale-110 transition-transform duration-500" />
+      <Icon className="w-5 h-5 md:w-6 md:h-6 text-primary group-hover:scale-110 transition-transform duration-500" />
     </div>
-    <div className="flex flex-col gap-1">
-      <div className="flex items-center gap-3">
-        <div className="w-8 h-[1px] bg-primary/30" />
-        <span className="text-[8px] md:text-[9px] font-bold text-primary tracking-[0.5em] uppercase">{section.label}</span>
-      </div>
-      <h4 className="text-2xl md:text-5xl font-display font-bold text-white tracking-tighter leading-none">{section.title}</h4>
+    <div className="flex flex-col gap-0.5">
+      <h4 className="text-xl md:text-3xl font-display font-bold text-white tracking-tight leading-tight">{section.title}</h4>
+      <span className="text-[9px] font-bold text-zinc-600 tracking-[0.4em] uppercase">{section.label}</span>
     </div>
   </div>
 );
 
 const LuxuryCard: React.FC<{ src: string; index: number; total: number }> = ({ src, index, total }) => {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const x = useSpring(0, { stiffness: 100, damping: 30 });
-  const y = useSpring(0, { stiffness: 100, damping: 30 });
-
-  const handleMouseMove = (e: React.MouseEvent) => {
-    if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const centerX = rect.left + rect.width / 2;
-    const centerY = rect.top + rect.height / 2;
-    x.set((e.clientX - centerX) / 30);
-    y.set((e.clientY - centerY) / 30);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
   return (
-    <motion.div 
-      ref={cardRef}
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      className="flex-shrink-0 w-[90vw] md:w-[75vw] lg:w-[60vw] aspect-video snap-center relative group perspective-1000"
-    >
-      <motion.div 
-        style={{ x: useTransform(x, v => v * -1.2), y: useTransform(y, v => v * -1.2) }}
-        className="absolute -top-12 -left-12 text-[12vw] font-display font-black text-white/[0.02] select-none pointer-events-none z-0"
-      >
+    <motion.div className="flex-shrink-0 w-[92vw] md:w-[85vw] lg:w-[75vw] aspect-video snap-center relative group perspective-1000">
+      <div className="absolute -top-12 -left-12 text-[12vw] font-display font-black text-white/[0.02] select-none pointer-events-none z-0">
         {(index + 1).toString().padStart(2, '0')}
-      </motion.div>
-
-      <motion.div 
-        style={{ rotateX: useTransform(y, v => v * -0.8), rotateY: useTransform(x, v => v * 0.8) }}
-        className="w-full h-full rounded-3xl overflow-hidden border border-white/10 bg-zinc-950/50 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9)] relative z-10 backdrop-blur-sm"
-      >
-        <ImageWithFallback 
-          src={src} 
-          alt={`Editorial-${index}`} 
-          mode="contain" 
-          className="w-full h-full object-contain grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-[1.02]" 
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 flex flex-col justify-end p-10">
-           <div className="flex items-center gap-4">
-              <div className="w-10 h-[1px] bg-primary" />
-              <span className="text-[10px] font-bold tracking-[0.4em] text-white uppercase">CHAPTER {(index + 1).toString().padStart(2, '0')}</span>
-           </div>
-           <p className="text-[9px] text-zinc-400 uppercase tracking-widest mt-3 font-medium">Strategic Design Standard // Global Narrative Strategy</p>
-        </div>
-      </motion.div>
+      </div>
+      <div className="w-full h-full rounded-[2.5rem] overflow-hidden border border-white/10 bg-zinc-950 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9)] relative z-10 backdrop-blur-sm">
+        <ImageWithFallback src={src} alt={`Slide-${index}`} mode="contain" className="w-full h-full" />
+      </div>
     </motion.div>
   );
 };
 
 const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => {
+  const isAIProject = project.category === 'AI_CREATIVE';
+
   return (
     <motion.div 
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className="fixed inset-0 z-[100] bg-[#050507] overflow-y-auto overflow-x-hidden no-scrollbar selection:bg-primary/30"
     >
-      <nav className="fixed top-0 left-0 right-0 h-24 px-6 md:px-12 flex items-center justify-between z-[110] bg-background/20 backdrop-blur-3xl border-b border-white/5">
+      <nav className="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-[110] bg-background/20 backdrop-blur-3xl border-b border-white/5">
         <div className="flex items-center gap-4 md:gap-8">
           <button 
             onClick={onClose}
-            className="flex items-center gap-3 px-5 py-2.5 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all group"
+            className="flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition-all group"
           >
-            <ChevronLeft className="w-4 h-4 text-primary group-hover:-translate-x-1 transition-transform" />
-            <span className="text-[10px] font-bold tracking-[0.2em] text-white uppercase hidden sm:block">Back to Lab</span>
+            <ChevronLeft className="w-3.5 h-3.5 text-primary group-hover:-translate-x-1 transition-transform" />
+            <span className="text-[9px] font-bold tracking-[0.15em] text-white uppercase hidden sm:block">Archive</span>
           </button>
-          
-          <div className="w-[1px] h-6 bg-white/10" />
-          
+          <div className="w-[1px] h-5 bg-white/10" />
           <div className="flex flex-col">
-            <span className="text-[8px] font-bold tracking-[0.5em] text-primary uppercase mb-0.5">{project.category.replace('_', ' ')}</span>
-            <h2 className="text-xs md:text-sm font-display font-bold text-white tracking-tight truncate max-w-[150px] md:max-w-none">{project.title}</h2>
+            <span className="text-[7px] font-bold tracking-[0.4em] text-primary uppercase mb-0.5">{project.category.replace('_', ' ')}</span>
+            <h2 className="text-[10px] md:text-xs font-display font-bold text-white tracking-tight truncate max-w-[120px] md:max-w-none">{project.title}</h2>
           </div>
         </div>
-        
-        <button onClick={onClose} className="w-12 h-12 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center transition-all group">
-          <X className="w-5 h-5 text-gray-400 group-hover:text-white" />
+        <button onClick={onClose} className="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-center transition-all group">
+          <X className="w-4 h-4 text-gray-400 group-hover:text-white" />
         </button>
       </nav>
 
       <div className="pt-0 pb-40">
-        <div className="relative w-full h-[60vh] md:h-[90vh] overflow-hidden bg-zinc-950">
-          <ImageWithFallback src={project.imageUrl} alt={project.title} priority={true} className="w-full h-full opacity-60" />
+        <div className={`relative w-full ${isAIProject ? 'h-[70vh] md:h-[95vh]' : 'h-[60vh] md:h-[85vh]'} overflow-hidden bg-zinc-950`}>
+          {project.videoUrl && isAIProject ? (
+            <VideoWithFallback src={project.videoUrl} poster={project.imageUrl} className="w-full h-full" />
+          ) : (
+            <ImageWithFallback src={project.imageUrl} alt={project.title} priority={true} className="w-full h-full opacity-60" />
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-transparent z-10" />
-          <div className="absolute bottom-24 left-8 md:left-24 max-w-5xl z-20">
-             <motion.div initial={{ y: 30, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
-                <h3 className="text-xl md:text-3xl font-display font-bold text-white tracking-tighter mb-10 leading-[1.2] max-w-4xl">
+          <div className="absolute bottom-20 left-8 md:left-24 max-w-5xl z-20">
+             <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
+                <div className="flex items-center gap-3 mb-5">
+                   <div className="w-8 h-[1px] bg-primary" />
+                   <span className="text-[9px] font-bold tracking-[0.4em] text-primary uppercase">Project Narrative</span>
+                </div>
+                <h3 className="text-2xl md:text-4xl font-display font-bold text-white tracking-tight mb-8 leading-[1.2] max-w-4xl">
                   {project.description}
                 </h3>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2.5">
                    {project.tags.map(t => (
-                     <span key={t} className="text-[9px] font-bold tracking-widest text-white/40 border border-white/5 px-8 py-3 rounded-full uppercase bg-white/5 hover:bg-primary/20 hover:text-white transition-all cursor-default">
+                     <span key={t} className="text-[8px] font-bold tracking-widest text-white/50 border border-white/5 px-6 py-2.5 rounded-full uppercase bg-white/5 backdrop-blur-sm">
                        {t}
                      </span>
                    ))}
@@ -206,98 +169,86 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
           </div>
         </div>
 
-        <div className="mt-12 space-y-24 md:space-y-32">
+        <div className="mt-20 space-y-32 md:space-y-48">
            {project.sections?.map((section, idx) => {
-             // Handle Big Section Divider Header
-             if (section.isHeader) {
-               return (
-                 <motion.div 
-                   key={idx} 
-                   initial={{ opacity: 0, y: 30 }} 
-                   whileInView={{ opacity: 1, y: 0 }}
-                   viewport={{ once: true }}
-                   className="px-8 md:px-24 pt-32 pb-12"
-                 >
-                   <div className="flex flex-col gap-6">
-                     <h2 className="text-6xl md:text-[12vw] font-display font-bold tracking-tighter text-white/15 uppercase leading-none select-none">
-                       {section.title}
-                     </h2>
-                     <div className="w-24 h-2 bg-primary mt-4" />
-                   </div>
-                 </motion.div>
-               );
-             }
-
              const Icon = ICON_MAP[section.icon] || Layers;
-             const hasImages = section.images && section.images.length > 0;
+             const hasVideo = !!section.videoUrl;
              const hasPoints = section.points && section.points.length > 0;
              
              return (
                <motion.div 
-                 key={idx} initial={{ opacity: 0, y: 40 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }}
-                 className={`flex flex-col ${section.isSlider ? 'px-0' : 'px-8 md:px-24'} max-w-8xl mx-auto w-full`}
+                 key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }}
+                 className="flex flex-col w-full"
                >
-                  <div className={`${section.isSlider ? 'px-8 md:px-24' : ''}`}>
+                  <div className="px-8 md:px-24 max-w-7xl mx-auto w-full">
                     <SectionHeader section={section} Icon={Icon} />
-                    
-                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-start mb-8 md:mb-12">
-                      <div className="lg:col-span-4 flex flex-col gap-4">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-start mb-10">
+                      <div className={hasPoints ? "lg:col-span-5" : "lg:col-span-12 max-w-4xl"}>
                          {section.description && (
-                           <p className="text-xl md:text-2xl text-zinc-100 font-display font-medium leading-relaxed tracking-tight border-l-4 border-primary pl-6 md:pl-10 py-1">
+                           <p className="text-base md:text-lg text-zinc-300 font-display font-light leading-relaxed tracking-normal border-l-[3px] border-primary pl-6 md:pl-8">
                              {section.description}
                            </p>
                          )}
-                         {hasPoints && (
-                            <div className="flex items-center gap-4 text-[9px] font-bold text-zinc-600 tracking-[0.4em] uppercase mt-2">
-                              <div className="w-6 md:w-8 h-[1px] bg-zinc-800" />
-                              Strategic Breakdown
-                            </div>
-                         )}
                       </div>
-
+                      
                       {hasPoints && (
-                        <div className="lg:col-span-8">
-                           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                              {section.points?.map((pt, pIdx) => (
-                                <StrategyCard key={pIdx} point={pt} index={pIdx} />
-                              ))}
-                           </div>
+                        <div className="lg:col-span-7">
+                          <div className="relative p-8 md:p-10 rounded-[2rem] bg-zinc-900/20 border border-white/5 overflow-hidden group">
+                             <div className="absolute top-0 left-0 w-1 h-0 bg-primary group-hover:h-full transition-all duration-700" />
+                             <div className="flex flex-col gap-10">
+                                {section.points?.map((pt, pIdx) => {
+                                   const parts = pt.split(/[:：|]/);
+                                   const label = parts.length > 1 ? parts[0] : null;
+                                   const content = parts.length > 1 ? parts.slice(1).join(':') : pt;
+                                   
+                                   return (
+                                     <div key={pIdx} className="relative pl-10">
+                                        {pIdx < (section.points?.length || 0) - 1 && (
+                                          <div className="absolute left-[5px] top-4 bottom-[-40px] w-[1px] bg-white/10" />
+                                        )}
+                                        <div className="absolute left-0 top-1 w-[9px] h-[9px] rounded-full bg-primary/20 border border-primary/40 flex items-center justify-center">
+                                           <div className="w-1 h-1 rounded-full bg-primary" />
+                                        </div>
+                                        
+                                        <div className="flex flex-col gap-2">
+                                           {label ? (
+                                             <div className="space-y-1.5">
+                                                <h5 className="text-base font-bold text-white tracking-tight">{label}</h5>
+                                                <p className="text-xs text-zinc-500 leading-relaxed font-light whitespace-pre-line">{content}</p>
+                                             </div>
+                                           ) : (
+                                             <p className="text-sm text-zinc-400 leading-relaxed font-light whitespace-pre-line">{content}</p>
+                                           )}
+                                        </div>
+                                     </div>
+                                   );
+                                })}
+                             </div>
+                          </div>
                         </div>
                       )}
                     </div>
                   </div>
 
-                  {hasImages && (
+                  {hasVideo && (
+                    <div className="relative w-full aspect-video md:aspect-[21/9] rounded-[2rem] overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl mt-8 mx-auto max-w-[92vw]">
+                      <VideoWithFallback src={section.videoUrl!} poster={project.imageUrl} className="w-full h-full" />
+                    </div>
+                  )}
+
+                  {section.images && section.images.length > 0 && (
                     section.isSlider ? (
-                      <div className="relative group overflow-visible mt-6 md:mt-10">
-                        <div className="flex items-center overflow-x-auto gap-8 md:gap-12 px-8 md:px-24 pb-20 md:pb-32 pt-4 snap-x snap-mandatory no-scrollbar scroll-smooth">
-                          {section.images.map((img: string, i: number) => (
-                             <LuxuryCard key={i} src={img} index={i} total={section.images.length} />
-                          ))}
-                          <div className="flex-shrink-0 w-8 md:w-64" />
-                        </div>
-                        <div className="absolute bottom-10 md:bottom-16 left-8 md:left-24 flex items-center gap-6">
-                           <div className="flex items-center gap-2">
-                             <span className="text-[10px] font-bold text-primary">01</span>
-                             <div className="w-32 md:w-48 h-[1px] bg-white/5 relative">
-                                <motion.div className="absolute inset-y-0 left-0 bg-primary/40 w-1/3" />
-                             </div>
-                             <span className="text-[10px] font-bold text-zinc-600">{(section.images.length).toString().padStart(2, '0')}</span>
-                           </div>
-                        </div>
+                      <div className="flex items-center overflow-x-auto gap-8 md:gap-12 px-6 md:px-12 pb-16 pt-8 no-scrollbar snap-x w-full">
+                        {section.images.map((img: string, i: number) => (
+                           <LuxuryCard key={i} src={img} index={i} total={section.images.length} />
+                        ))}
                       </div>
                     ) : (
-                      <div className="flex flex-col gap-12 md:gap-24 mt-6 md:mt-10 px-8 md:px-24">
+                      <div className="grid grid-cols-1 gap-12 mt-12 px-6 md:px-12 max-w-[1600px] mx-auto w-full">
                         {section.images.map((img: string, i: number) => (
-                          <motion.div 
-                            key={i} 
-                            whileHover={{ y: -10 }}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                            className="relative w-full rounded-xl md:rounded-2xl overflow-hidden border border-white/5 bg-zinc-950 shadow-[0_50px_100px_-30px_rgba(0,0,0,0.7)] group"
-                          >
-                             <ImageWithFallback src={img} alt={`${section.title}-${i}`} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[3s] ease-out" />
-                             <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/5 pointer-events-none" />
-                          </motion.div>
+                          <div key={i} className="rounded-[2.5rem] overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl w-full">
+                             <ImageWithFallback src={img} alt={`${section.title}-${i}`} className="w-full h-full" />
+                          </div>
                         ))}
                       </div>
                     )
@@ -306,33 +257,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
              );
            })}
         </div>
-
-        <section className="px-8 md:px-24 py-32 md:py-64 border-t border-white/5 mt-32 md:mt-64 bg-zinc-950/30">
-           <div className="max-w-4xl mx-auto text-center flex flex-col items-center">
-              <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-10">
-                <BarChart3 className="w-6 h-6 text-primary" />
-              </div>
-              <h4 className="text-4xl md:text-6xl font-display font-bold tracking-tighter mb-8">Ready for the Next Chapter?</h4>
-              <p className="text-zinc-500 mb-16 text-lg max-w-2xl font-light">The integration of high-end industrial aesthetics and vertical industry logic defines every strategic movement in this case study.</p>
-              
-              <motion.button
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-                onClick={onClose}
-                className="group relative inline-flex items-center gap-6 px-16 md:px-20 py-6 md:py-8 rounded-full bg-white text-black font-display font-bold text-lg md:text-xl transition-all shadow-2xl hover:shadow-primary/20"
-              >
-                <ChevronLeft className="w-6 h-6 group-hover:-translate-x-2 transition-transform" />
-                Close Archive
-                <div className="absolute inset-0 rounded-full ring-1 ring-white/20 group-hover:ring-offset-8 group-hover:ring-offset-black/50 transition-all" />
-              </motion.button>
-           </div>
-        </section>
       </div>
-
-      <style>{`
-        .perspective-1000 { perspective: 1000px; }
-        .max-w-8xl { max-w: 1440px; }
-      `}</style>
     </motion.div>
   );
 };

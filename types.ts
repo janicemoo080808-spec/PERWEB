@@ -24,11 +24,12 @@ export interface ProjectSection {
   label: string;
   icon: string;
   images: string[];
-  description?: string; // New field for strategic text
-  points?: string[];    // New field for bulleted lists
+  videoUrl?: string;    // 新增：支持分段视频展示
+  description?: string; 
+  points?: string[];    
   isGrid?: boolean;
   isSlider?: boolean;
-  isHeader?: boolean;   // Flag for a big section divider header
+  isHeader?: boolean;   
 }
 
 export interface Project {
