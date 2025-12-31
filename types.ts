@@ -68,6 +68,10 @@ export interface ChatMessage {
 }
 
 export interface SiteContent {
+  nav: {
+    portfolios: string;
+    career: string;
+  };
   hero: {
     title: string;
     subtitle: string;

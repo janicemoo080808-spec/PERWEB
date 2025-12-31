@@ -67,8 +67,8 @@ const App: React.FC = () => {
         <div className="flex items-center gap-10">
           <span className="text-lg font-display font-bold tracking-tighter text-white">JANICE MO</span>
           <div className="hidden lg:flex gap-8 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500">
-             <a href="#projects" className="hover:text-white transition-colors">Portfolios</a>
-             <a href="#journey" className="hover:text-white transition-colors">Career</a>
+             <a href="#projects" className="hover:text-white transition-colors">{CONTENT.nav.portfolios}</a>
+             <a href="#journey" className="hover:text-white transition-colors">{CONTENT.nav.career}</a>
           </div>
         </div>
 
@@ -124,7 +124,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      <section id="projects" className="px-6 md:px-20 py-40">
+      <section id="projects" className="px-6 md:px-20 py-40 scroll-mt-32">
         <div className="flex flex-col gap-12 mb-32">
            <div className="max-w-4xl">
              <h2 className="text-7xl md:text-9xl font-display font-bold tracking-tighter uppercase leading-[0.8]">{language === 'EN' ? 'WORKS' : '项目体验集'}</h2>
@@ -153,7 +153,7 @@ const App: React.FC = () => {
         </motion.div>
       </section>
 
-      <section id="journey" className="px-6 md:px-20 py-40 bg-zinc-950/50">
+      <section id="journey" className="px-6 md:px-20 py-40 bg-zinc-950/50 scroll-mt-32">
          <div className="max-w-7xl mx-auto">
             <div className="flex items-center gap-10 mb-24">
                 <h2 className="text-6xl md:text-9xl font-display font-bold tracking-tighter uppercase leading-none">{CONTENT.resume.experienceTitle}</h2>

@@ -1,4 +1,3 @@
-
 import { SiteContent, Project, ExperienceItem, SkillItem } from './types';
 
 export const BACKGROUND_MUSIC_URL = "https://upload.wikimedia.org/wikipedia/commons/1/15/Erik_Satie_-_Gymnop%C3%A9die_No._1.mp3"; 
@@ -16,13 +15,13 @@ const RIVIAN_SECTIONS_CN = [
     title: 'Rivian 官网交互体验设计', 
     label: 'DIGITAL EXPERIENCE', 
     icon: 'Globe', 
-    description: '通过录屏展示 Rivian 官网的高级交互动效与极简主义 UI 布局。',
+    description: 'Rivian 是一家源自美国的创新电动汽车品牌，致力于定义高性能皮卡与户外探险的新范式。本次合作聚焦于 Rivian 官网的视觉叙事与体验重构，旨在通过极致的数字交互，将品牌的“探险”基因精准传递给全球用户。',
     points: [
       '核心交互：模拟真实的车辆配置器（Configurator）交互流畅度。',
       '视觉风格：延续品牌“探险”基因，采用大面积留白与高对比度的地形纹理。',
       '技术闭环：响应式适配与高性能 WebGL 组件的应用展示。'
     ],
-    images: ['https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=1920'] 
+    images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.175v2c7o3h.webp'] 
   }
 ];
 
@@ -31,17 +30,33 @@ const RIVIAN_SECTIONS_EN = [
     title: 'Rivian Web Interactive Experience', 
     label: 'DIGITAL EXPERIENCE', 
     icon: 'Globe', 
-    description: 'A screen recording showcasing Rivian’s premium interactive motion and minimalist UI layout.',
+    description: 'Rivian is an innovative American EV brand redefining the paradigm of high-performance trucks and adventure. This collaboration focused on Rivian\'s web visual narrative, translating its unique "Adventure" DNA into a seamless digital experience for global audiences.',
     points: [
       'Core Interaction: Simulating real-vehicle configurator smooth transitions.',
       'Visual Identity: Sustaining the "Adventure" DNA with high-contrast topographic textures.',
       'Technical Closure: Responsive adaptation and high-performance WebGL component demonstration.'
     ],
-    images: ['https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=1920'] 
+    images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.175v2c7o3h.webp'] 
   }
 ];
 
-// --- INTU DIVIDER ---
+// --- SECTION DIVIDERS ---
+const RIVIAN_DIVIDER_CN = { 
+  title: 'ABOUT RIVIAN', 
+  label: '', 
+  icon: '', 
+  images: [], 
+  isHeader: true 
+};
+
+const RIVIAN_DIVIDER_EN = { 
+  title: 'ABOUT RIVIAN', 
+  label: '', 
+  icon: '', 
+  images: [], 
+  isHeader: true 
+};
+
 const INTU_DIVIDER_CN = { 
   title: 'ABOUT INTU', 
   label: '', 
@@ -58,7 +73,7 @@ const INTU_DIVIDER_EN = {
   isHeader: true 
 };
 
-// --- INTU SECTIONS (PRESERVED EXACTLY AS PROVIDED) ---
+// --- INTU SECTIONS ---
 const INTU_SECTIONS_CN = [
   { 
     title: '1. 市场挑战与机遇', 
@@ -188,6 +203,7 @@ const CRYDIT_SECTIONS = [
     icon: 'Twitter', 
     isSlider: true, 
     images: [
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/6.3k8hjkbw3b.webp',
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326827.wj17v1a1b.webp',
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp',
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Twitter--post-16.24.53.9rjvidq2h4.webp',
@@ -200,6 +216,13 @@ const CRYDIT_SECTIONS = [
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/World-Football-Day-16.24.53.5q7w3zlz20.webp',
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Just-hold-on-a-bit-longer,-and-financial-freedom-is-yours.-16.24.57.4xv0m95db7.webp'
     ] 
+  },
+  {
+    title: 'Official Website Interface & Security Protocol',
+    label: 'INTERFACE SECURITY',
+    icon: 'ShieldCheck',
+    description: '由于部分业务信息涉及高度商业敏感，以下展示的官网及系统界面已根据合规要求进行脱敏设计处理。',
+    images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.5c1geh3u8f.webp']
   }
 ];
 
@@ -220,18 +243,17 @@ const LUXURY_SECTIONS = [
 ];
 
 // --- PROJECTS LIST ---
-const PROJECTS_CN: Project[] = [
+export const PROJECTS_CN: Project[] = [
   { 
     id: 'automotive-comprehensive-design', 
     title: '汽车品牌与产品设计：Rivian & INTU', 
     category: 'AUTOMOTIVE_DESIGN', 
     subCategory: 'STRATEGY', 
-    description: '整合了 Rivian 的数字交互演示与 INTU 的品牌战略全生态。展示从高级 Web 交互到市场传播闭环的跨维度汽车设计能力。', 
+    description: '整合了 Rivian 的数字交互演示与 INTU 的 brand 战略全生态。展示从高级 Web 交互到市场传播闭环的跨维度汽车设计能力。', 
     imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/61b75b229825189.686c03868bc97.39lnp5zjeb.webp', 
     videoUrl: 'YOUR_VIDEO_URL_HERE.mp4', 
     tags: ['汽车品牌', '数字交互', '品牌战略', 'CMF策略'], 
-    // Inserted Divider here
-    sections: [...RIVIAN_SECTIONS_CN, INTU_DIVIDER_CN, ...INTU_SECTIONS_CN] as any 
+    sections: [RIVIAN_DIVIDER_CN, ...RIVIAN_SECTIONS_CN, INTU_DIVIDER_CN, ...INTU_SECTIONS_CN] as any 
   },
   { id: 'crydit-brand-narrative', title: 'Crydit: 品牌全生态系统构建', category: 'BRAND_ECOSYSTEM', subCategory: 'STRATEGY', description: '从底层视觉标准到全球权威背书，构建链接高端金融科技与生活方式的完整品牌叙事。', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/LIifestyle3.8z700n5tjh.webp', tags: ['品牌全案', '金融科技', 'Web3'], sections: CRYDIT_SECTIONS as any },
   { id: 'luxury-design-paradigm', title: '奢侈品美学范式：视觉与内容设计', category: 'LUXURY_DESIGN', subCategory: 'IDENTITY', description: '深耕 LVMH 美学体系，专注于顶级奢侈品牌公众号视觉叙事，定义卓越的内容策略。', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', tags: ['奢侈品美学', '公众号策略', '高端叙事'], sections: LUXURY_SECTIONS as any },
@@ -239,7 +261,7 @@ const PROJECTS_CN: Project[] = [
   { id: 'ai-creative-drama', title: 'AI 短剧内容与视觉创意', category: 'AI_CREATIVE', subCategory: 'CONTENT_CREATION', description: '利用前沿生成式 AI 技术，重塑短剧制作工作流，打造具有电影感的极致内容体验。', imageUrl: 'https://images.unsplash.com/photo-1677442135968-356c9d09c3a3?q=80&w=1920', tags: ['AI 生成', '创意流', '内容叙事'], sections: [] as any }
 ];
 
-const PROJECTS_EN: Project[] = [
+export const PROJECTS_EN: Project[] = [
   { 
     id: 'automotive-comprehensive-design', 
     title: 'Automotive Design: Rivian & INTU', 
@@ -249,7 +271,7 @@ const PROJECTS_EN: Project[] = [
     imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/61b75b229825189.686c03868bc97.39lnp5zjeb.webp', 
     videoUrl: 'YOUR_VIDEO_URL_HERE.mp4',
     tags: ['Automotive', 'Digital UX', 'Strategy'], 
-    sections: [...RIVIAN_SECTIONS_EN, INTU_DIVIDER_EN, ...INTU_SECTIONS_EN] as any 
+    sections: [RIVIAN_DIVIDER_EN, ...RIVIAN_SECTIONS_EN, INTU_DIVIDER_EN, ...INTU_SECTIONS_EN] as any 
   },
   { id: 'crydit-brand-narrative', title: 'Crydit: Brand Ecosystem Construction', category: 'BRAND_ECOSYSTEM', subCategory: 'STRATEGY', description: 'From visual standards to global authority endorsements, constructing a complete narrative for premium Fintech and Web3 lifestyle.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/LIifestyle3.8z700n5tjh.webp', tags: ['Fintech', 'Strategy', 'Ecosystem'], sections: CRYDIT_SECTIONS as any },
   { id: 'luxury-design-paradigm', title: 'Luxury Aesthetics: Visual & Content Design', category: 'LUXURY_DESIGN', subCategory: 'IDENTITY', description: 'Deep roots in the LVMH aesthetic system, focusing on high-end editorial narratives for premier luxury maisons.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', tags: ['Editorial', 'Aesthetics', 'Luxury'], sections: LUXURY_SECTIONS as any }
@@ -326,6 +348,10 @@ export const STRATEGIC_EXPERTISE_EN = [
 ];
 
 export const CONTENT_CN: SiteContent = {
+  nav: {
+    portfolios: "作品档案",
+    career: "职业轨迹"
+  },
   hero: {
     title: "JANICE MO",
     subtitle: "设计总监 | 9 年行业经验\n深耕垂直行业叙事：从汽车 CMF 到 AI 创意内容。\n定义战略级设计标准。",
@@ -360,6 +386,10 @@ export const CONTENT_CN: SiteContent = {
 };
 
 export const CONTENT_EN: SiteContent = {
+  nav: {
+    portfolios: "Portfolios",
+    career: "Career"
+  },
   hero: {
     title: "JANICE MO",
     subtitle: "Design Director | 9+ Years Experience\nFocusing on Vertical Industry Narratives: From Automotive CMF to AI Creative Content.",

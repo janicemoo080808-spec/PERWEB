@@ -289,10 +289,15 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                     ) : (
                       <div className="flex flex-col gap-12 md:gap-24 mt-6 md:mt-10 px-8 md:px-24">
                         {section.images.map((img: string, i: number) => (
-                          <div key={i} className="relative w-full rounded-[2rem] md:rounded-[3rem] overflow-hidden border border-white/5 bg-zinc-950 shadow-[0_50px_100px_-30px_rgba(0,0,0,0.7)] group">
-                             <ImageWithFallback src={img} alt={`${section.title}-${i}`} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[5s] ease-out" />
+                          <motion.div 
+                            key={i} 
+                            whileHover={{ y: -10 }}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            className="relative w-full rounded-xl md:rounded-2xl overflow-hidden border border-white/5 bg-zinc-950 shadow-[0_50px_100px_-30px_rgba(0,0,0,0.7)] group"
+                          >
+                             <ImageWithFallback src={img} alt={`${section.title}-${i}`} className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-[3s] ease-out" />
                              <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/5 pointer-events-none" />
-                          </div>
+                          </motion.div>
                         ))}
                       </div>
                     )
