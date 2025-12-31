@@ -28,6 +28,7 @@ export interface ProjectSection {
   points?: string[];    // New field for bulleted lists
   isGrid?: boolean;
   isSlider?: boolean;
+  isHeader?: boolean;   // Flag for a big section divider header
 }
 
 export interface Project {

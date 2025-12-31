@@ -10,51 +10,55 @@ const SKILLS_COMMON: SkillItem[] = [
   { name: 'AI Creative Flow', level: 95 },
 ];
 
-// --- PROJECT SECTIONS ---
-
-const CRYDIT_SECTIONS = [
-  { title: 'Core Visual Identity Standard', label: 'BRAND DNA', icon: 'Hexagon', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326722.3govkhorey.webp'] },
-  { title: 'Strategic Positioning & Brand Manual', label: 'BRAND STRATEGY', icon: 'BookOpen', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/1.2vf7y6ub45.webp'] },
-  { title: 'Digital Portal & Official Hub', label: 'WEB ARCHITECTURE', icon: 'Globe', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/4.232cghnb0s.webp'] },
-  { title: 'Fintech Core Product Interface', label: 'APP INTERFACE', icon: 'Smartphone', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/22.8ok67ird05.webp'] },
-  { title: 'Authority PR & Global Recognition', label: 'MEDIA BACKING', icon: 'FileText', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/44.9ddfrjew0e.webp'] },
+// --- RIVIAN SECTIONS ---
+const RIVIAN_SECTIONS_CN = [
   { 
-    title: 'Social Narrative & IP Character', 
-    label: 'SOCIAL VOICE', 
-    icon: 'Twitter', 
-    isSlider: true, 
-    images: [
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326827.wj17v1a1b.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Twitter--post-16.24.53.9rjvidq2h4.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326851.3govki18n9.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326865.6pnzh5oq9s.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326871.4qrsqtj7y3.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/平安夜-16.24.57.26lye6j9b1.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326879.96a7w2vm4f.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/You’ll-regret-selling-your-coins-now-in-the-future..4qrsqtj7w9.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/World-Football-Day-16.24.53.5q7w3zlz20.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Just-hold-on-a-bit-longer,-and-financial-freedom-is-yours.-16.24.57.4xv0m95db7.webp'
-    ] 
+    title: 'Rivian 官网交互体验设计', 
+    label: 'DIGITAL EXPERIENCE', 
+    icon: 'Globe', 
+    description: '通过录屏展示 Rivian 官网的高级交互动效与极简主义 UI 布局。',
+    points: [
+      '核心交互：模拟真实的车辆配置器（Configurator）交互流畅度。',
+      '视觉风格：延续品牌“探险”基因，采用大面积留白与高对比度的地形纹理。',
+      '技术闭环：响应式适配与高性能 WebGL 组件的应用展示。'
+    ],
+    images: ['https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=1920'] 
   }
 ];
 
-const LUXURY_SECTIONS = [
+const RIVIAN_SECTIONS_EN = [
   { 
-    title: 'Luxury Editorial: WeChat Narrative', 
-    label: 'EDITORIAL EXPERIENCE', 
-    icon: 'Camera', 
-    isSlider: true, 
-    images: [
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame.9o09kpepxt.webp', 
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp', 
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-3.2yytvyhl8q.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-4.1ziqiseu2w.webp'
-    ] 
+    title: 'Rivian Web Interactive Experience', 
+    label: 'DIGITAL EXPERIENCE', 
+    icon: 'Globe', 
+    description: 'A screen recording showcasing Rivian’s premium interactive motion and minimalist UI layout.',
+    points: [
+      'Core Interaction: Simulating real-vehicle configurator smooth transitions.',
+      'Visual Identity: Sustaining the "Adventure" DNA with high-contrast topographic textures.',
+      'Technical Closure: Responsive adaptation and high-performance WebGL component demonstration.'
+    ],
+    images: ['https://images.unsplash.com/photo-1619767886558-efdc259cde1a?q=80&w=1920'] 
   }
 ];
 
+// --- INTU DIVIDER ---
+const INTU_DIVIDER_CN = { 
+  title: 'ABOUT INTU', 
+  label: '', 
+  icon: '', 
+  images: [], 
+  isHeader: true 
+};
+
+const INTU_DIVIDER_EN = { 
+  title: 'ABOUT INTU', 
+  label: '', 
+  icon: '', 
+  images: [], 
+  isHeader: true 
+};
+
+// --- INTU SECTIONS (PRESERVED EXACTLY AS PROVIDED) ---
 const INTU_SECTIONS_CN = [
   { 
     title: '1. 市场挑战与机遇', 
@@ -72,10 +76,10 @@ const INTU_SECTIONS_CN = [
     label: 'CORE DNA & VISUALS', 
     icon: 'Hexagon', 
     isSlider: true,
-    description: 'Name: INTU (INSPIRATION TO U) | Slogan: Inspiration To U / 都市灵感。本章节展示品牌视觉标准与 CMF 核心设计。',
+    description: 'INTU (INSPIRATION TO U) | Slogan: Inspiration To U',
     points: [
       '使命与人群：增色生活科技，为一二线城市 Z 世代都市自由青年提供最明智的出行选择。',
-      '视觉与 CMF：强调“感性科技”触感，融合可持续材料，构建极简且具有爆发力的视觉符号。'
+      '视觉与 CMF：强调“感性科技”触感，融合可持续材料，构建极简且具有爆发力的视觉符号系统。'
     ],
     images: [
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_08.7p42ui7p3b.webp',
@@ -130,7 +134,7 @@ const INTU_SECTIONS_EN = [
     label: 'CORE DNA & VISUALS', 
     icon: 'Hexagon', 
     isSlider: true,
-    description: 'Name: INTU (INSPIRATION TO U) | Slogan: Inspiration To U / Urban Inspiration.',
+    description: 'INTU (INSPIRATION TO U) | Slogan: Inspiration To U',
     points: [
       'Mission: Enhancing life with technology, providing the wisest mobility choices for Tier 1 & 2 Gen Z youth.',
       'Strategy: Tactile "Warm Tech" philosophy, blending sustainable materials with a minimal iconic system.'
@@ -171,16 +175,63 @@ const INTU_SECTIONS_EN = [
   }
 ];
 
+// --- OTHER SECTIONS ---
+const CRYDIT_SECTIONS = [
+  { title: 'Core Visual Identity Standard', label: 'BRAND DNA', icon: 'Hexagon', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326722.3govkhorey.webp'] },
+  { title: 'Strategic Positioning & Brand Manual', label: 'BRAND STRATEGY', icon: 'BookOpen', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/1.2vf7y6ub45.webp'] },
+  { title: 'Digital Portal & Official Hub', label: 'WEB ARCHITECTURE', icon: 'Globe', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/4.232cghnb0s.webp'] },
+  { title: 'Fintech Core Product Interface', label: 'APP INTERFACE', icon: 'Smartphone', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/22.8ok67ird05.webp'] },
+  { title: 'Authority PR & Global Recognition', label: 'MEDIA BACKING', icon: 'FileText', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/44.9ddfrjew0e.webp'] },
+  { 
+    title: 'Social Narrative & IP Character', 
+    label: 'SOCIAL VOICE', 
+    icon: 'Twitter', 
+    isSlider: true, 
+    images: [
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326827.wj17v1a1b.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Twitter--post-16.24.53.9rjvidq2h4.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326851.3govki18n9.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326865.6pnzh5oq9s.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326871.4qrsqtj7y3.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/平安夜-16.24.57.26lye6j9b1.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326879.96a7w2vm4f.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/You’ll-regret-selling-your-coins-now-in-the-future..4qrsqtj7w9.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/World-Football-Day-16.24.53.5q7w3zlz20.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Just-hold-on-a-bit-longer,-and-financial-freedom-is-yours.-16.24.57.4xv0m95db7.webp'
+    ] 
+  }
+];
+
+const LUXURY_SECTIONS = [
+  { 
+    title: 'Luxury Editorial: WeChat Narrative', 
+    label: 'EDITORIAL EXPERIENCE', 
+    icon: 'Camera', 
+    isSlider: true, 
+    images: [
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame.9o09kpepxt.webp', 
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp', 
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-3.2yytvyhl8q.webp',
+      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-4.1ziqiseu2w.webp'
+    ] 
+  }
+];
+
+// --- PROJECTS LIST ---
 const PROJECTS_CN: Project[] = [
   { 
-    id: 'intu-brand-strategy', 
-    title: '汽车品牌与产品设计', 
+    id: 'automotive-comprehensive-design', 
+    title: '汽车品牌与产品设计：Rivian & INTU', 
     category: 'AUTOMOTIVE_DESIGN', 
     subCategory: 'STRATEGY', 
-    description: '为全新电动汽车品牌 INTU 构建从 market insight 到三阶段传播闭环的战略蓝图。定义“生活科技”与“都市灵感”的商业叙事。', 
+    description: '整合了 Rivian 的数字交互演示与 INTU 的品牌战略全生态。展示从高级 Web 交互到市场传播闭环的跨维度汽车设计能力。', 
     imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/61b75b229825189.686c03868bc97.39lnp5zjeb.webp', 
-    tags: ['汽车品牌', '传播策略', 'CMF策略', 'INTU'], 
-    sections: INTU_SECTIONS_CN as any 
+    videoUrl: 'YOUR_VIDEO_URL_HERE.mp4', 
+    tags: ['汽车品牌', '数字交互', '品牌战略', 'CMF策略'], 
+    // Inserted Divider here
+    sections: [...RIVIAN_SECTIONS_CN, INTU_DIVIDER_CN, ...INTU_SECTIONS_CN] as any 
   },
   { id: 'crydit-brand-narrative', title: 'Crydit: 品牌全生态系统构建', category: 'BRAND_ECOSYSTEM', subCategory: 'STRATEGY', description: '从底层视觉标准到全球权威背书，构建链接高端金融科技与生活方式的完整品牌叙事。', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/LIifestyle3.8z700n5tjh.webp', tags: ['品牌全案', '金融科技', 'Web3'], sections: CRYDIT_SECTIONS as any },
   { id: 'luxury-design-paradigm', title: '奢侈品美学范式：视觉与内容设计', category: 'LUXURY_DESIGN', subCategory: 'IDENTITY', description: '深耕 LVMH 美学体系，专注于顶级奢侈品牌公众号视觉叙事，定义卓越的内容策略。', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', tags: ['奢侈品美学', '公众号策略', '高端叙事'], sections: LUXURY_SECTIONS as any },
@@ -190,14 +241,15 @@ const PROJECTS_CN: Project[] = [
 
 const PROJECTS_EN: Project[] = [
   { 
-    id: 'intu-brand-strategy', 
-    title: 'INTU: Brand Definition & Communication Strategy', 
+    id: 'automotive-comprehensive-design', 
+    title: 'Automotive Design: Rivian & INTU', 
     category: 'AUTOMOTIVE_DESIGN', 
     subCategory: 'STRATEGY', 
-    description: 'Building a strategic blueprint for the new EV brand INTU, from market insights to a three-phase communication loop. Defining the "Lifestyle Tech" and "Urban Inspiration" narrative.', 
+    description: 'Comprehensive automotive design archive featuring Rivian Digital Experience and INTU Brand Strategy.', 
     imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/61b75b229825189.686c03868bc97.39lnp5zjeb.webp', 
-    tags: ['Automotive', 'Communication', 'Brand Strategy', 'INTU'], 
-    sections: INTU_SECTIONS_EN as any 
+    videoUrl: 'YOUR_VIDEO_URL_HERE.mp4',
+    tags: ['Automotive', 'Digital UX', 'Strategy'], 
+    sections: [...RIVIAN_SECTIONS_EN, INTU_DIVIDER_EN, ...INTU_SECTIONS_EN] as any 
   },
   { id: 'crydit-brand-narrative', title: 'Crydit: Brand Ecosystem Construction', category: 'BRAND_ECOSYSTEM', subCategory: 'STRATEGY', description: 'From visual standards to global authority endorsements, constructing a complete narrative for premium Fintech and Web3 lifestyle.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/LIifestyle3.8z700n5tjh.webp', tags: ['Fintech', 'Strategy', 'Ecosystem'], sections: CRYDIT_SECTIONS as any },
   { id: 'luxury-design-paradigm', title: 'Luxury Aesthetics: Visual & Content Design', category: 'LUXURY_DESIGN', subCategory: 'IDENTITY', description: 'Deep roots in the LVMH aesthetic system, focusing on high-end editorial narratives for premier luxury maisons.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', tags: ['Editorial', 'Aesthetics', 'Luxury'], sections: LUXURY_SECTIONS as any }
@@ -295,7 +347,7 @@ export const CONTENT_CN: SiteContent = {
       activity: "活动类视觉展示",
       brand_ecosystem: "品牌全生态系统",
       luxury: "奢侈品美学范式",
-      automotive: "汽车全链路CMF与策略",
+      automotive: "汽车品牌与产品设计",
       fnb: "餐饮快消商业视觉",
       ai_drama: "AI短剧内容创意"
     }
@@ -329,7 +381,7 @@ export const CONTENT_EN: SiteContent = {
       activity: "Activity Visuals",
       brand_ecosystem: "Brand Ecosystem",
       luxury: "Luxury Aesthetics",
-      automotive: "Automotive CMF & Strategy",
+      automotive: "Automotive Brand & Product",
       fnb: "F&B Commercial",
       ai_drama: "AI Creative"
     }

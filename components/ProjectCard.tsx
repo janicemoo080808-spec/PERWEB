@@ -1,7 +1,7 @@
 
 import React, { useRef, MouseEvent, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Play, Plus, ImageOff } from 'lucide-react';
+import { Play, Plus, ImageOff, MonitorPlay } from 'lucide-react';
 import { Project } from '../types';
 
 interface ProjectCardProps {
@@ -11,7 +11,7 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenVideo, className = "" }) => {
-  const isVideo = !!project.videoUrl;
+  const isVideo = !!project.videoUrl && project.videoUrl !== 'YOUR_VIDEO_URL_HERE.mp4';
   const ref = useRef<HTMLDivElement>(null);
   const [imgError, setImgError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -49,6 +49,14 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenVideo, classNa
       onMouseLeave={handleMouseLeave}
       className={`group relative overflow-hidden bg-zinc-950 cursor-pointer rounded-[2.5rem] ${className}`}
     >
+      {/* Video Indicator Badge */}
+      {isVideo && (
+        <div className="absolute top-8 left-8 z-30 flex items-center gap-2 bg-primary/90 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/20 shadow-xl">
+           <MonitorPlay className="w-3 h-3 text-white" />
+           <span className="text-[9px] font-bold text-white uppercase tracking-widest">Video Case</span>
+        </div>
+      )}
+
       {/* Image Container */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-zinc-900">
         <div className={`absolute inset-0 shimmer transition-opacity duration-1000 ${isLoaded ? 'opacity-0' : 'opacity-20'}`} />
@@ -80,9 +88,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenVideo, classNa
            
            <motion.div 
               onClick={(e) => { e.stopPropagation(); if (isVideo) onOpenVideo(project.videoUrl!); }} 
-              className="w-14 h-14 rounded-full glass flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary hover:text-white shadow-2xl"
+              className={`w-14 h-14 rounded-full glass flex items-center justify-center ${isVideo ? 'opacity-100 bg-primary/20' : 'opacity-0'} group-hover:opacity-100 transition-all duration-500 hover:bg-primary hover:text-white shadow-2xl`}
            >
-              {isVideo ? <Play className="w-4 h-4 fill-current" /> : <Plus className="w-6 h-6" />}
+              {isVideo ? <Play className="w-4 h-4 fill-current ml-1" /> : <Plus className="w-6 h-6" />}
            </motion.div>
         </div>
 

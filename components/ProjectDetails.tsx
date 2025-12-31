@@ -52,7 +52,6 @@ const ImageWithFallback: React.FC<{
 const StrategyCard: React.FC<{ point: string; index: number }> = ({ point, index }) => {
   const [isHovered, setIsHovered] = useState(false);
   
-  // Extract bold labels if they exist (formatted as "Label: Content" or "Label | Content")
   const parts = point.split(/[:：|]/);
   const label = parts.length > 1 ? parts[0] : null;
   const content = parts.length > 1 ? parts.slice(1).join(':') : point;
@@ -209,6 +208,26 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
 
         <div className="mt-12 space-y-24 md:space-y-32">
            {project.sections?.map((section, idx) => {
+             // Handle Big Section Divider Header
+             if (section.isHeader) {
+               return (
+                 <motion.div 
+                   key={idx} 
+                   initial={{ opacity: 0, y: 30 }} 
+                   whileInView={{ opacity: 1, y: 0 }}
+                   viewport={{ once: true }}
+                   className="px-8 md:px-24 pt-32 pb-12"
+                 >
+                   <div className="flex flex-col gap-6">
+                     <h2 className="text-6xl md:text-[12vw] font-display font-bold tracking-tighter text-white/15 uppercase leading-none select-none">
+                       {section.title}
+                     </h2>
+                     <div className="w-24 h-2 bg-primary mt-4" />
+                   </div>
+                 </motion.div>
+               );
+             }
+
              const Icon = ICON_MAP[section.icon] || Layers;
              const hasImages = section.images && section.images.length > 0;
              const hasPoints = section.points && section.points.length > 0;
