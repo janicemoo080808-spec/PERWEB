@@ -185,36 +185,231 @@ export const PROJECTS_EN: Project[] = [
     imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/LIifestyle3.8z700n5tjh.webp', 
     tags: ['Brand Strategy', 'Fintech', 'Web3'], 
     sections: CRYDIT_SECTIONS as any 
+  },
+  { 
+    id: 'ai-drama', 
+    title: 'AI Content & Visual Creativity', 
+    category: 'AI_CREATIVE', 
+    subCategory: 'CONTENT_CREATION', 
+    description: 'Utilizing generative AI to reshape production flows and cinematic experiences.', 
+    imageUrl: 'https://images.unsplash.com/photo-1677442135968-356c9d09c3a3?q=80&w=1920', 
+    videoUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/ai-preview.mp4',
+    tags: ['AI Gen', 'Cinematic', 'Workflow'], 
+    sections: AI_CREATIVE_SECTIONS as any 
+  },
+  { 
+    id: 'luxury', 
+    title: 'Luxury Aesthetics Paradigm', 
+    category: 'LUXURY_DESIGN', 
+    subCategory: 'IDENTITY', 
+    description: 'Visual storytelling and editorial layout within the LVMH aesthetic framework.', 
+    imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', 
+    tags: ['Aesthetic', 'LVMH', 'Content Strategy'], 
+    sections: LUXURY_SECTIONS as any 
   }
 ];
 
 const EXPERIENCE_CN: ExperienceItem[] = [
   {
-    id: 'exp-1',
+    id: 'exp-crydit',
     company: '上海天卓悦科技有限公司 (Crydit)',
     role: '品牌总监 & 设计总监',
     period: '2023.12 - 至今',
-    companyIntro: 'Crydit 是一家区块链资产支付平台，致力于通过 Web3 技术重塑生活消费方式。',
-    responsibilities: ['品牌全生命周期策略', '全球化视觉标准', 'UI/UX 监管'],
-    achievements: ['品牌知名度提升 80%', '主导多项全球跨界联名。']
+    companyIntro: 'Crydit 是一家区块链资产支付平台，为加密用户提供创新交易解决方案。',
+    reportingTo: 'CEO',
+    responsibilities: [
+      '品牌策略与管理：从0到1建立并实施品牌战略，分析市场趋势和竞争对手，制定品牌推广计划，提升品牌知名度和市场份额。',
+      '创意与设计管理：领导设计团队从0到1创建品牌视觉识别系统，监督广告、包装、数据和活动设计等项目，确保设计创新且符合品牌调性。',
+      '跨部门合作：与市场营销、产品开发、销售等部门紧密合作，协调外部供应商和合作伙伴，确保品牌项目高质量完成。',
+      '品牌传播与推广：规划和执行品牌传播活动，管理品牌在各渠道的传播内容，组织品牌推广活动和国际展会，提升品牌市场影响力。',
+      '团队管理与发展：负责招聘、培训和管理设计团队，制定团队工作计划和目标，监督项目进展提升专业能力和工作效率。'
+    ],
+    achievements: [
+      '品牌建设：从0到1成功创建Crydit品牌，设计并实施了全面品牌视觉识别系统，品牌在区块链行业内知名度迅速提升，知名度在6个月内提升了80%。在最初阶段团队未组建之前，独立完成产品全流程设计（用户调研、定位、视觉及交互设计），产品荣获纽约产品设计奖银奖、伦敦设计奖金奖、法国设计奖金奖、美国MUSE奖金奖、欧洲设计奖金奖等多项国际大奖。',
+      '市场推广：通过创新的品牌推广策略，Crydit在推出后的6个月内，品牌知名度提升了30%，用户增长率达50%。',
+      '跨部门协作：领导多个跨部门项目，制定品牌推广流程，使项目完成时间缩短了15%。',
+      '活动策划：主导TOKEN 2049活动，吸引了超过5w名参与者，显著提升品牌影响力和用户参与度。策划并执行了一系列线上线下活动，活动期间社交媒体曝光量增加了50%。'
+    ]
+  },
+  {
+    id: 'exp-zotye',
+    company: '上海君越汽车 (众泰汽车)',
+    role: '资深视觉经理',
+    period: '2022.5 - 2023.6',
+    reasonForLeaving: '公司项目资金停滞',
+    companyIntro: '是众泰汽车重整后的业务主体，全力进军新能源汽车市场。',
+    reportingTo: '品牌部总监',
+    responsibilities: [
+      '品牌设计：独立创建并实施品牌视觉识别系统和设计规范，确保品牌形象一致。',
+      '方案策划：主导品牌创意信息，负责品牌传播视觉设计，提高市场影响力。',
+      '创意把控：审核品牌设计项目，管理品牌资产。',
+      '外联管理：作为品牌设计负责人，对接各部门和供应商，协调跨职能工作关系，主导项目沟通。',
+      '汽车造型设计：主导新款车型的CMF设计（色彩、材料、表面工艺），确保视觉和触感优势。'
+    ]
+  },
+  {
+    id: 'exp-guijiu',
+    company: '中国贵酒集团',
+    role: '品牌高级经理 & 总裁助理',
+    period: '2021.11 - 2022.4',
+    reasonForLeaving: '隶属公司搬迁至深圳',
+    companyIntro: '一家融合经典与创新的综合性酒业集团（股票600696）。',
+    reportingTo: 'CMO营销总裁',
+    responsibilities: [
+      '视觉管理：协助CMO营销总裁，负责中国贵酒集团、海银集团、中国花王集团、章贡酒业、美酒链公司等子公司的设计质量审核与监督。基于品牌设计DNA，持续生成并维护品牌视觉识别系统（Brandbook及Guideline），确保品牌在各个触点的一致性和高质量呈现。',
+      '统筹管理：负责重点项目的统筹，包括团队组建、项目进度跟踪及人员调配，确保项目按时、高质量完成，达成预期目标。',
+      '公共关系：作为品牌部的代表，与各集团及职能部门进行沟通协调，整合跨部门合作的高效性和顺畅性。'
+    ],
+    achievements: [
+      '集团认可：2022年被提名为集团优秀员工，彰显了在职期间的出色表现和贡献。',
+      '品牌建设：在团队组建完成前，仅用2个月时间成功完成花王集团体系搭建及设计执行，助力品牌上市发布会。',
+      '行业荣誉：参与独家冠名CCTV《大国品牌》品牌故事片项目，该项目在第29届中国国际广告节荣获“2022广告主年度案例·年度内容营销案例”及“2022媒企合作年度案例”两项大奖。',
+      '创新案例：“千城万企”项目在国际高品质消费博览会上被评为十大高品质消费创新案例，提升集团品牌影响力和市场美誉度。'
+    ]
+  },
+  {
+    id: 'exp-chunmai',
+    company: '上海淳麦品牌管理有限公司',
+    role: '视觉设计经理',
+    period: '2018.7 - 2021.10',
+    reasonForLeaving: '合同到期',
+    companyIntro: '法国 Les Moulines d\'Antoine 在中国大陆的唯一品牌授权合作方，旗下包括 Le Jardin d\'Antoine 红磨坊餐厅、Antoine Bakery等品牌。',
+    reportingTo: '执行董事',
+    responsibilities: [
+      '品牌形象设计：负责研究与设计公司整体品牌形象，根据品牌定位构建品牌视觉系统，建立并维护品牌视觉标准化。',
+      '团队管理：组建并领导品牌设计团队，负责团队绩效管理与辅导。带领团队完成各类视觉创意项目，包括 VI 系统、平面设计、网页设计、包装设计等，确保设计创意、色彩、版式等符合品牌标准。',
+      '创意设计：根据营销策略，精准挖掘营销卖点，对营销活动进行视觉包装并不断优化，提升品牌影响力。负责品牌和产品上市设计输出，确保设计在各触点及媒体渠道的有效落地和传播。'
+    ],
+    achievements: [
+      '品牌升级：入职两个月内，基于品牌核心策略，独立完成品牌 VIS 2.0 版本视觉系统升级，并沿用至今。',
+      '空间设计：打造北外滩网红西餐厅，成为大众点评虹口区打卡首选；设计的烘焙店新软装成为2021年年度吴江路网红打卡地。',
+      '爆款设计：设计并推出20余款新品包装，成功打造爆款产品，推动销量同比增长10倍。',
+      'IP形象设计：独立完成公司IP形象及其周边延展，IP形象成为2021吴江路网红打卡拍照区。',
+      '电商视觉：设计京东、天猫新店主视觉，上线3周内实现15000+销量。'
+    ]
+  },
+  {
+    id: 'exp-jd',
+    company: '北京京东世纪贸易有限公司 (JD.com)',
+    role: '(实习) 视觉设计师',
+    period: '2017.2 - 2018.7',
+    responsibilities: [
+      '完成店铺促销活动、大型活动、重点项目的页面设计相关工作。',
+      '针对节日/项目需求，设计不同风格页面，对产品整体风格和品牌调性负责。'
+    ]
+  }
+];
+
+const EXPERIENCE_EN: ExperienceItem[] = [
+  {
+    id: 'exp-crydit-en',
+    company: 'Shanghai Tianzhuoyue Technology Co., Ltd. (Crydit)',
+    role: 'Brand Director & Design Director',
+    period: '2023.12 - Present',
+    companyIntro: 'Crydit is a blockchain asset payment platform that provides innovative transaction solutions for cryptocurrency users.',
+    reportingTo: 'CEO',
+    responsibilities: [
+      'Brand Strategy and Management: Established and executed brand strategies from inception, analyzed market trends and competitors, developed brand promotion plans, and enhanced brand awareness and market share.',
+      'Creative and Design Management: Led the design team to create the brand\'s visual identity system from the ground up, overseeing projects including advertising, packaging, digital media, and event design to ensure innovative and brand-consistent outputs.',
+      'Cross-Department Collaboration: Collaborated closely with marketing, product development, and sales departments, and coordinated with external vendors and partners to ensure the high-quality execution of brand projects.',
+      'Brand Communication and Promotion: Planned and executed brand communication activities, managed brand content across various channels, organized promotional events and international exhibitions to boost market influence.',
+      'Team Management and Development: Recruited, trained, and managed the design team, set team work plans and goals, and supervised project progress to enhance professional skills and efficiency.'
+    ],
+    achievements: [
+      'Brand Building: Successfully created the Crydit brand from scratch, designed and implemented a comprehensive brand visual identity system. Increased brand recognition in the blockchain industry significantly, achieving an 80% rise in awareness within six months and earning multiple international awards.',
+      'Market Promotion: Employed innovative brand promotion strategies, resulting in a 30% increase in brand awareness and a 50% user growth rate within six months of launch.',
+      'Cross-Department Collaboration: Led multiple cross-departmental projects, developed brand promotion processes, and reduced project completion time by 15%.',
+      'Event Planning: Headed the TOKEN 2049 event, attracting over 50,000 participants, significantly enhancing brand influence and user engagement. Planned and executed a series of online and offline activities, leading to a 50% increase in social media exposure during the event period.'
+    ]
+  },
+  {
+    id: 'exp-zotye-en',
+    company: 'Shanghai Junqu Automobile (Zotye Auto)',
+    role: 'Senior Visual Manager',
+    period: '2022.5 - 2023.6',
+    reasonForLeaving: 'Project funding stagnation',
+    companyIntro: 'Shanghai Junqu Automobile is the main business entity of the restructured Zotye Auto, fully committed to the new energy vehicle market.',
+    reportingTo: 'Director of Brand Department',
+    responsibilities: [
+      'Brand Design: Developed and implemented the brand\'s visual identity system and design guidelines independently, ensuring a consistent brand image.',
+      'Campaign Planning: Led brand creative initiatives, responsible for the visual design of brand communications to enhance market impact.',
+      'Creative Oversight: Reviewed and managed brand design projects, overseeing brand assets to ensure high-quality standards.',
+      'External Liaison Management: Served as the lead for brand design, interfacing with various departments and suppliers, coordinating cross-functional relationships, and leading project communications.',
+      'Automotive Design: Led the CMF (Color, Material, Finish) design for new car models, ensuring superior visual and tactile appeal.'
+    ]
+  },
+  {
+    id: 'exp-guijiu-en',
+    company: 'China Guijiu Group',
+    role: 'Senior Brand Manager & Executive Assistant to the President',
+    period: '2021.11 - 2022.4',
+    reasonForLeaving: 'Company relocation to Shenzhen',
+    companyIntro: 'A comprehensive liquor group blending tradition with innovation (Stock code: 600696).',
+    reportingTo: 'Chief Marketing Officer (CMO)',
+    responsibilities: [
+      'Visual Management: Assisted the CMO by overseeing and ensuring the design quality for China Guijiu Group and its subsidiaries. Developed and maintained the brand\'s visual identity system (Brandbook and Guidelines) based on the brand design DNA to ensure consistency and high-quality presentation across all touchpoints.',
+      'Project Coordination: Managed key projects by forming teams, tracking project progress, and allocating personnel to ensure projects were completed on time and to a high standard, achieving set goals.',
+      'Public Relations: Represented the brand department in communications and coordination with various groups and functional departments, integrating resources to ensure efficient and smooth cross-departmental collaboration.'
+    ],
+    achievements: [
+      'Group Recognition: Nominated as an outstanding employee in 2022, highlighting exceptional performance and contributions during my tenure.',
+      'Brand Building: Successfully established and executed the visual system for Huawang Group within two months prior to team formation, supporting the brand\'s launch event.',
+      'Industry Honors: Participated in the exclusive sponsorship of the CCTV "National Brand" story project, which won major awards at the 29th China International Advertising Festival.',
+      'Innovative Projects: The "Thousand Cities and Ten Thousand Enterprises" project was recognized as a top ten high-quality consumption innovation case at the International High-Quality Consumption Expo.'
+    ]
+  },
+  {
+    id: 'exp-chunmai-en',
+    company: 'Shanghai Chunmai Brand Management Co., Ltd.',
+    role: 'Visual Design Manager',
+    period: '2018.7 - 2021.10',
+    reasonForLeaving: 'Contract expiration',
+    companyIntro: 'The exclusive brand authorization partner of France\'s Les Moulines d\'Antoine in mainland China.',
+    reportingTo: 'Executive Director',
+    responsibilities: [
+      'Brand Image Design: Conducted research and designed the overall brand image for the company, developed the brand\'s visual system based on brand positioning.',
+      'Team Management: Built and led the brand design team, managed team performance and provided coaching.',
+      'Creative Design: Based on marketing strategies, accurately identified marketing points, visually packaged marketing activities, and continuously optimized them to enhance brand influence.'
+    ],
+    achievements: [
+      'Brand Upgrade: Independently completed the upgrade of the brand VIS 2.0 visual system within two months of joining.',
+      'Space Design: Created the popular Western restaurant at North Bund, becoming the top check-in spot in Hongkou District.',
+      'Hit Product Design: Designed and launched over 20 new product packages, driving a tenfold increase in sales year-over-year.',
+      'IP Image Design: Independently created the company\'s IP image and related extensions.',
+      'E-commerce Visuals: Designed main visuals for stores on JD.com and Tmall, achieving over 15,000 sales in 3 weeks.'
+    ]
+  },
+  {
+    id: 'exp-jd-en',
+    company: 'JD.com (Beijing Jingdong Century Trade Co., Ltd.)',
+    role: '(Intern) Visual Designer',
+    period: '2017.2 - 2018.7',
+    responsibilities: [
+      'Completed page designs for store promotions, major events, and key projects.',
+      'Designed pages in various styles based on holiday and project requirements, ensuring alignment with the overall product style and brand tone.'
+    ]
   }
 ];
 
 export const STRATEGIC_EXPERTISE_CN = [
-  { title: "跨行业视觉战略", desc: "9年深厚经验，涵盖加密市场、奢侈品、汽车 CMF、AI 创意等。" },
-  { title: "AI 驱动的创意流", desc: "主张“人机协同”，利用前沿 AI 工具重塑生产效率。" }
+  { title: "跨行业视觉战略经验", desc: "超过9年工作经验，涵盖加密市场、奢侈品、区块链、F&B、创新消费品、教育、医疗、跨境/国内电商、广告公司等多个行业。" },
+  { title: "全方位品牌管理", desc: "从品牌策略、设计创意到方案策划及执行，全面掌控各环节并具备强大的视觉设计资源能力。" },
+  { title: "多元风格驾驭力", desc: "创意思维活跃，审美前瞻，擅长多风格表达，利用AI工具对设计流程与角色的重构，倡导“人机协同”，推动从“效率驱动”向“创意增强”转变。" },
+  { title: "团队领导与协作", desc: "擅长领导和协调团队，推动项目落地，实现卓越的品牌表现。" }
 ];
 
 export const STRATEGIC_EXPERTISE_EN = [
-  { title: "Cross-Industry Strategy", desc: "9+ years in Crypto, Luxury, Automotive CMF, and AI." },
-  { title: "AI-Powered Flow", desc: "Redefining efficiency through human-AI collaborative workflows." }
+  { title: "Cross-Industry Strategy", desc: "Over 9 years of experience across Crypto, Luxury, Blockchain, F&B, Education, Healthcare, and E-commerce." },
+  { title: "Comprehensive Brand Management", desc: "Strong capability in managing the full brand lifecycle—from strategy to execution—with extensive design resources." },
+  { title: "Versatile Aesthetic & Style", desc: "Creative and forward-thinking, skilled in leveraging AI tools to reshape design workflows and advocate human-AI collaboration." },
+  { title: "Team Leadership & Collaboration", desc: "Experienced in leading and aligning teams, driving project delivery, and achieving exceptional brand expression." }
 ];
 
 export const CONTENT_CN: SiteContent = {
   nav: { portfolios: "作品档案", career: "职业轨迹" },
   hero: {
-    title: "JANICE MO",
-    subtitle: "设计总监 | 9 年行业经验\n深耕垂直行业叙事：从汽车 CMF 到 AI 创意内容。",
+    title: "毛宇君 Janice Mo",
+    subtitle: "品牌总监 & 设计总监 | 9 年行业经验\n深耕垂直行业叙事：从汽车 CMF 到 AI 创意内容。",
     cta: "浏览作品集",
     available: "全球战略合作伙伴"
   },
@@ -242,14 +437,14 @@ export const CONTENT_CN: SiteContent = {
   experience: EXPERIENCE_CN,
   skills: SKILLS_COMMON,
   projects: PROJECTS_CN,
-  aiContext: "Janice Mo (毛宇君) 是一位拥有国际视野的品牌/设计总监。核心成就包括：打造 Crydit Web3 品牌生态；主导 INTU 汽车品牌重塑与三幕式传播战役；为 LVMH 体系提供视觉叙事。"
+  aiContext: "毛宇君 (Janice Mo) 是一位拥有超过9年经验的品牌/设计总监。核心成就包括：从0到1打造 Crydit Web3 品牌生态并获多项国际大奖；主导众泰汽车/君越汽车新能源品牌重塑；为中国贵酒集团及 LVMH 体系提供顶级视觉叙事与传播策略。"
 };
 
 export const CONTENT_EN: SiteContent = {
   nav: { portfolios: "Portfolios", career: "Career" },
   hero: {
-    title: "JANICE MO",
-    subtitle: "Design Director | 9+ Years Experience\nFocusing on Vertical Industry Narratives.",
+    title: "Janice Mo",
+    subtitle: "Brand Director & Design Director | 9+ Years Experience\nFocusing on Vertical Industry Narratives.",
     cta: "Explore Portfolio",
     available: "Global Strategic Partner"
   },
@@ -274,8 +469,8 @@ export const CONTENT_EN: SiteContent = {
     }
   },
   footer: { rights: "© 2025 Janice Mo. Master Archive." },
-  experience: [],
+  experience: EXPERIENCE_EN,
   skills: SKILLS_COMMON,
   projects: PROJECTS_EN,
-  aiContext: "Janice Mo is a Design Director with expertise in Automotive CMF, Luxury Aesthetics, and AI Creative."
+  aiContext: "Janice Mo is a Brand & Design Director with 9+ years of experience. Key achievements include building the Crydit Web3 ecosystem from scratch (winning NYC Design, Muse, etc.), leading NEV brand restructuring for Zotye Auto, and directing visual strategy for China Guijiu Group and LVMH-aligned luxury narratives."
 };
