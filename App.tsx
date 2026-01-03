@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { CONTENT_EN, CONTENT_CN, STRATEGIC_EXPERTISE_EN, STRATEGIC_EXPERTISE_CN } from './constants';
 import { CategoryType, Language, Project } from './types';
 import ProjectCard from './components/ProjectCard';
@@ -7,7 +7,7 @@ import ProjectDetails from './components/ProjectDetails';
 import VideoModal from './components/VideoModal';
 import AIChat from './components/AIChat';
 import ResumeSection from './components/ResumeSection';
-import { Music, X, Award, Mail, Phone, ExternalLink, VolumeX } from 'lucide-react';
+import { X, Award, Mail, Phone, ExternalLink } from 'lucide-react';
 
 const ExpertiseCard: React.FC<{ title: string; desc: string }> = ({ title, desc }) => (
   <motion.div 
@@ -25,13 +25,22 @@ const App: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState<CategoryType>('ALL');
   const [modalVideoUrl, setModalVideoUrl] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-  const [showMusicPlayer, setShowMusicPlayer] = useState(false);
 
   const CONTACT_INFO = { email: "janicemo08@163.com", phone: "186 2156 8644" };
   const CONTENT = language === 'EN' ? CONTENT_EN : CONTENT_CN;
   const EXPERTISE = language === 'EN' ? STRATEGIC_EXPERTISE_EN : STRATEGIC_EXPERTISE_CN;
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+  
+  const { scrollY } = useScroll();
+  // 核心视差逻辑：通过 useSpring 消除滚动震动，实现极其细腻的线性过渡
+  const smoothScrollY = useSpring(scrollY, { stiffness: 100, damping: 30, restDelta: 0.001 });
+
+  // 背景层视差：0.5x 速度 (滚动 1000px，位移 500px)
+  const bgTextY = useTransform(smoothScrollY, [0, 1000], [0, 500]);
+  
+  // 前景内容视差：1.2x 相对速度 (相对于容器向上位移 200px)
+  const fgElementsY = useTransform(smoothScrollY, [0, 1000], [0, -200]);
+  
+  const progressScaleX = useSpring(useTransform(scrollY, [0, 1], [0, 1]), { stiffness: 100, damping: 30 });
 
   const filteredProjects = CONTENT.projects.filter(p => activeCategory === 'ALL' || p.category === activeCategory);
 
@@ -45,43 +54,43 @@ const App: React.FC = () => {
     { id: 'AI_CREATIVE', label: CONTENT.portfolio.filters.ai_drama }
   ];
 
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const element = document.getElementById(targetId);
+    if (element) {
+      const offset = 100;
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <div className="min-h-screen bg-background text-white selection:bg-[#F63C0C]/20">
-      <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-primary z-[60] origin-left" style={{ scaleX }} />
-
-      {/* Music Player Popover */}
-      <AnimatePresence>
-        {showMusicPlayer && (
-          <motion.div 
-            initial={{ opacity: 0, y: 10, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 10, scale: 0.95 }}
-            className="fixed top-24 right-6 md:right-24 z-[70] p-4 glass rounded-3xl border border-white/10 shadow-3xl"
-          >
-            <div className="flex items-center justify-between mb-3 px-2">
-              <span className="text-[10px] font-bold text-primary tracking-[0.2em] uppercase">Soundtrack Active</span>
-              <button onClick={() => setShowMusicPlayer(false)} className="text-zinc-500 hover:text-white">
-                <X className="w-4 h-4" />
-              </button>
-            </div>
-            <div className="rounded-2xl overflow-hidden border border-white/5 bg-black/40">
-              <iframe 
-                frameBorder="0" 
-                width={330} 
-                height={86} 
-                src="//music.163.com/outchain/player?type=2&id=2633715207&auto=1&height=66"
-              ></iframe>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-primary z-[60] origin-left" style={{ scaleX: progressScaleX }} />
 
       <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[95%] max-w-5xl h-[64px] glass rounded-full flex items-center justify-between px-10 border border-white/10 shadow-2xl backdrop-blur-xl">
         <div className="flex items-center gap-10">
           <span className="text-lg font-display font-bold tracking-tighter text-white">JANICE MO</span>
-          <div className="hidden lg:flex gap-8 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500">
-             <a href="#projects" className="hover:text-white transition-colors">{CONTENT.nav.portfolios}</a>
-             <a href="#journey" className="hover:text-white transition-colors">{CONTENT.nav.career}</a>
+          <div className="hidden lg:flex gap-10 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500">
+             <motion.a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
+               {CONTENT.nav.portfolios}
+               <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
+             </motion.a>
+             <motion.a href="#journey" onClick={(e) => handleNavClick(e, 'journey')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
+               {CONTENT.nav.career}
+               <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
+             </motion.a>
+             <motion.a href="#connect" onClick={(e) => handleNavClick(e, 'connect')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
+               {CONTENT.nav.connect}
+               <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
+             </motion.a>
           </div>
         </div>
 
@@ -90,19 +99,24 @@ const App: React.FC = () => {
             <button onClick={() => setLanguage('EN')} className={`px-3 py-1.5 rounded-full text-[9px] font-bold transition-all ${language === 'EN' ? 'bg-white text-black' : 'text-zinc-500'}`}>EN</button>
             <button onClick={() => setLanguage('CN')} className={`px-3 py-1.5 rounded-full text-[9px] font-bold transition-all ${language === 'CN' ? 'bg-white text-black' : 'text-zinc-500'}`}>中文</button>
           </div>
-          <button 
-            onClick={() => setShowMusicPlayer(!showMusicPlayer)} 
-            className={`transition-all p-2 rounded-full hover:bg-white/5 ${showMusicPlayer ? 'text-primary' : 'text-zinc-500'}`}
-          >
-            <Music className={`w-4 h-4 ${showMusicPlayer ? 'animate-pulse' : ''}`} />
-          </button>
           <a href={`mailto:${CONTACT_INFO.email}`} className="px-6 py-2.5 bg-primary text-white text-[10px] font-bold tracking-widest rounded-full hover:brightness-110 transition-all uppercase">Let's Talk</a>
         </div>
       </nav>
 
       <section className="min-h-screen flex flex-col justify-center px-6 md:px-20 relative pt-32 overflow-hidden">
-        <div className="max-w-7xl relative z-10 w-full mx-auto">
-          {/* Hero Main Typography Group */}
+        {/* 背景层：0.5x 慢速位移 */}
+        <motion.div 
+          style={{ y: bgTextY }}
+          className="absolute inset-0 flex items-center justify-center -z-10 select-none pointer-events-none opacity-[0.03]"
+        >
+          <span className="text-[35vw] font-display font-black tracking-tighter text-white">ARCHIVE</span>
+        </motion.div>
+
+        {/* 前景层：1.2x 相对加速位移 */}
+        <motion.div 
+          style={{ y: fgElementsY }}
+          className="max-w-7xl relative z-10 w-full mx-auto"
+        >
           <div className="flex flex-col mb-20 md:mb-32">
             <motion.h1 
               initial={{ opacity: 0, y: 30 }} 
@@ -129,7 +143,6 @@ const App: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* Hero Description & Stats Group - REFINED FONT SIZES */}
           <div className="flex flex-col md:flex-row items-end justify-between gap-16 md:gap-24">
             <motion.div 
               initial={{ opacity: 0, x: -20 }} 
@@ -159,9 +172,8 @@ const App: React.FC = () => {
                </div>
             </motion.div>
           </div>
-        </div>
+        </motion.div>
         
-        {/* Background Ambient Decorative Elements */}
         <div className="absolute bottom-0 right-0 w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
       </section>
 
@@ -220,7 +232,7 @@ const App: React.FC = () => {
          </div>
       </section>
 
-      <footer className="px-6 md:px-20 py-64 text-center border-t border-white/5 relative overflow-hidden">
+      <footer id="connect" className="px-6 md:px-20 py-64 text-center border-t border-white/5 relative overflow-hidden scroll-mt-20">
         <div className="max-w-7xl mx-auto">
           <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-[14vw] md:text-[12vw] font-display font-bold tracking-tighter leading-none mb-40">
             LET'S <span className="text-primary-gradient">CREATE</span><br />LEGACY

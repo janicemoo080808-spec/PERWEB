@@ -24,7 +24,8 @@ export interface ProjectSection {
   label: string;
   icon: string;
   images: string[];
-  videoUrl?: string;    // 新增：支持分段视频展示
+  videoUrl?: string;    
+  iframeUrl?: string;   // 新增：支持 Bilibili 等外部嵌入视频
   description?: string; 
   points?: string[];    
   isGrid?: boolean;
@@ -72,6 +73,7 @@ export interface SiteContent {
   nav: {
     portfolios: string;
     career: string;
+    connect: string;
   };
   hero: {
     title: string;

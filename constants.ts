@@ -1,4 +1,3 @@
-
 import { SiteContent, Project, ExperienceItem, SkillItem } from './types';
 
 const SKILLS_COMMON: SkillItem[] = [
@@ -14,7 +13,7 @@ const RIVIAN_SECTIONS = [
     title: 'Rivian 官网交互体验设计', 
     label: 'DIGITAL EXPERIENCE', 
     icon: 'Globe', 
-    description: 'Rivian 致力于定义高性能电动皮卡的新范式。本次合作聚焦于 Rivian 官网的视觉叙事与体验重构，通过模拟真实的车辆配置器交互与 WebGL 3D 资产即时响应，营造极致的数字探险质感。',
+    description: 'Rivian 致力于 definition 高性能电动皮卡的新范式。本次合作聚焦于 Rivian 官网的视觉叙事与体验重构，通过模拟真实的车辆配置器交互与 WebGL 3D 资产即时响应，营造极致的数字探险质感。',
     images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.175v2c7o3h.webp'] 
   }
 ];
@@ -60,30 +59,105 @@ const INTU_SECTIONS = [
 
 // --- 3. CRYDIT ---
 const CRYDIT_SECTIONS = [
-  { title: '核心视觉身份标准', label: 'BRAND DNA', icon: 'Hexagon', description: '建立 Crydit 的底层视觉基因，通过高度几何化的符号系统定义金融科技。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326722.3govkhorey.webp'] },
+  { title: '核心视觉身份标准', label: 'BRAND DNA', icon: 'Hexagon', description: '建立 Crydit 的底层视觉基因，通过高度几何化的符号系统 definition 金融科技。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326722.3govkhorey.webp'] },
   { title: '战略定位与品牌手册', label: 'BRAND STRATEGY', icon: 'BookOpen', description: '从市场竞争分析到品牌语境推演，构建了一套完整的品牌叙事逻辑。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/1.2vf7y6ub45.webp'] },
   { title: '数字化门户与官方枢纽', label: 'WEB ARCHITECTURE', icon: 'Globe', description: '强调信息层级的高效流动与 Web3 交互美学。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/4.232cghnb0s.webp'] },
   { title: '金融科技核心产品界面', label: 'APP INTERFACE', icon: 'Smartphone', description: '专注于去中心化资产管理的移动端 UI/UX。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/22.8ok67ird05.webp'] },
   { title: '权威公关与全球化背书', label: 'MEDIA BACKING', icon: 'FileText', description: '在顶级金融媒体中的一致性发声。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/44.9ddfrjew0e.webp'] },
-  { title: '社交叙事与 IP 人格化', label: 'SOCIAL VOICE', icon: 'Twitter', isSlider: true, description: '在社交平台构建具有温度的 IP 叙事，将 Web3 叙事转化为感性内容。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/6.3k8hjkbw3b.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326827.wj17v1a1b.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Twitter--post-16.24.53.9rjvidq2h4.webp'] },
+  { title: '社交叙事与 IP 人格化', label: 'SOCIAL VOICE', icon: 'Twitter', isSlider: true, description: '在社交平台构建具有温度的 IP 叙事，将 Web3 叙事转化为感性内容。', images: ['https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/6.3k8hjkbw3b.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326827.wj17v1a1b.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Twitter--post-16.24.53.9rjvidq2h4.webp'] },
   { title: '合规性界面与安全协议', label: 'INTERFACE SECURITY', icon: 'ShieldCheck', description: '安全中心与合规架构界面，强调信息的严谨性与安全性。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.5c1geh3u8f.webp'] }
 ];
 
 // --- 4. LUXURY DESIGN ---
-const LUXURY_SECTIONS = [
+const LUXURY_COMMON_EDITORIAL = { 
+  title: '奢侈品美学编辑：微信视觉叙事', 
+  label: 'EDITORIAL EXPERIENCE', 
+  icon: 'Camera', 
+  isSlider: true, 
+  description: '深耕 LVMH 美学体系，专注于顶级奢侈品牌公众号视觉叙事。采用黄金比例排版，通过艺术化分镜重组商业资讯，强调呼吸感与留白的美学。', 
+  images: [
+    'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp', 
+    'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp',
+    'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-4.8ok694ajjv.webp',
+    'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-3.7eh92ssk8m.webp'
+  ] 
+};
+
+const LUXURY_LOEWE_IMAGES = [
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326728.175v5pf78q.webp', 
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326724.iclloro8u.webp', 
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326726.pfth4dtmv.webp',
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326727.13m97zm4ik.webp'
+];
+
+const LUXURY_LORO_PIANA_IMAGES = [
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326737.6m4do4uclr.webp',
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326738.1sfis09nhl.webp',
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326740.2kse9qq99e.webp',
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326741.9kgnrn2m1q.webp'
+];
+
+const LUXURY_CARTIER_IMAGES = [
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326732.51emonx56r.webp',
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326733.4cld4n9m52.webp',
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326734.58huk3jaj2.webp',
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326735.39lntrdsag.webp',
+  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326736.3ns3kmm33k.webp'
+];
+
+const LUXURY_SECTIONS_CN = [
+  LUXURY_COMMON_EDITORIAL,
   { 
-    title: '奢侈品美学编辑：微信视觉叙事', 
-    label: 'EDITORIAL EXPERIENCE', 
-    icon: 'Camera', 
-    isSlider: true, 
-    description: '深耕 LVMH 美学体系，专注于顶级奢侈品牌公众号视觉叙事。采用黄金比例排版，通过艺术化分镜重组商业资讯，强调呼吸感与留白的美学。', 
-    images: [
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame.9o09kpepxt.webp', 
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp', 
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-4.8ok694ajjv.webp',
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-3.7eh92ssk8m.webp'
-    ] 
+    title: 'LOEWE：有机超现实主义与触感温润', 
+    label: 'BRAND CAMPAIGN', 
+    icon: 'Sparkles', 
+    isGrid: true, 
+    description: '一场关于工艺与想象力的策略性探索，捕捉品牌独有的智性趣味与工匠精神。艺术指导的核心在于营造一种‘梦境般的自然主义’——通过充满阳光感的柔焦美学与丰富的材质肌理互动，确立了一套充满灵性、以艺术为驱动的视觉语汇，模糊了现实物件与梦境的边界。', 
+    images: LUXURY_LOEWE_IMAGES 
+  },
+  { 
+    title: 'Loro Piana：静谧奢华与纤维之巅', 
+    label: 'BRAND CAMPAIGN', 
+    icon: 'Sparkles', 
+    isGrid: true, 
+    description: '深入 Loro Piana 的静谧奢华语境，通过视觉语言传达稀有纤维的触感美学与大自然的永恒韵律。本次战役强调人类精湛工艺与地球珍稀资源的和谐共振，利用 1792x2400 的超大垂直画幅，将观众带入一场充满质感与温度的叙事旅程，重新定义当代高端生活方式的审美高度。', 
+    images: LUXURY_LORO_PIANA_IMAGES 
+  },
+  { 
+    title: 'CARTIER ：隽永光影', 
+    label: 'BRAND CAMPAIGN', 
+    icon: 'Sparkles', 
+    isGrid: true, 
+    description: '这组作品是我们对“永恒”的一次光影探索，以克制而精准的电影语言，捕捉那些凝固在时光中的优雅瞬间，重塑卡地亚不可复制的传奇风范。', 
+    images: LUXURY_CARTIER_IMAGES 
+  }
+];
+
+const LUXURY_SECTIONS_EN = [
+  LUXURY_COMMON_EDITORIAL,
+  { 
+    title: 'LOEWE : Organic Surrealism & Tactile Warmth', 
+    label: 'BRAND CAMPAIGN', 
+    icon: 'Sparkles', 
+    isGrid: true, 
+    description: 'A strategic exploration of craft and imagination, capturing the intellectual playfulness and artisanal spirit of the brand. The art direction prioritizes a dreamlike naturalism—using sun-drenched, soft-focus aesthetics and rich textural interplay to create a soulful, art-driven visual language that blurs the line between object and dream.', 
+    images: LUXURY_LOEWE_IMAGES 
+  },
+  { 
+    title: 'Loro Piana: The Essence of Tactile Luxury', 
+    label: 'BRAND CAMPAIGN', 
+    icon: 'Sparkles', 
+    isGrid: true, 
+    description: 'A deep dive into Loro Piana\'s quiet luxury ethos, translating the tactile excellence of rare fibers into a timeless visual narrative. This campaign emphasizes the harmony between meticulous human craftsmanship and the raw beauty of nature. Presented through a 1792x2400 vertical tapestry, it invites viewers into a sensory-rich experience that celebrates quality over artifice.', 
+    images: LUXURY_LORO_PIANA_IMAGES 
+  },
+  { 
+    title: 'CARTIER :Timeless Radiance', 
+    label: 'BRAND CAMPAIGN', 
+    icon: 'Sparkles', 
+    isGrid: true, 
+    description: 'This series is a photographic exploration of "timelessness," employing a restrained and precise cinematic language to capture moments of elegance frozen in time, reshaping the inimitable legend of Cartier.', 
+    images: LUXURY_CARTIER_IMAGES 
   }
 ];
 
@@ -94,7 +168,7 @@ const AI_CREATIVE_SECTIONS = [
     label: 'CINEMATIC AI', 
     icon: 'Sparkles', 
     description: '重塑光影美学，打破拍摄物理边界。通过超 surreal 主义风格与 SVD 镜头律动，定义 AI 时代的数字生命与虚拟叙事标准。', 
-    videoUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/ai-preview.mp4', 
+    videoUrl: 'https://github.com/user-attachments/assets/e3f24a85-721f-409e-9bcb-c220b7a692ad',
     images: [] 
   },
   { 
@@ -102,7 +176,7 @@ const AI_CREATIVE_SECTIONS = [
     label: 'VIRTUAL IDENTITY', 
     icon: 'Fingerprint', 
     isSlider: true, 
-    description: '利用生成式技术定义 AI 时代的虚拟生命一致性标准。', 
+    description: '利用生成式技术 definition AI 时代的虚拟生命一致性标准。', 
     images: ['https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1000', 'https://images.unsplash.com/photo-1633167606207-d840b5070fc2?q=80&w=1000'] 
   }
 ];
@@ -151,7 +225,7 @@ export const PROJECTS_CN: Project[] = [
     description: 'LVMH 美学体系下的视觉叙事与内容排版。', 
     imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', 
     tags: ['美学范式', 'LVMH', '内容策略'], 
-    sections: LUXURY_SECTIONS as any 
+    sections: LUXURY_SECTIONS_CN as any 
   },
   {
     id: 'activity-visual',
@@ -205,7 +279,7 @@ export const PROJECTS_EN: Project[] = [
     description: 'Visual storytelling and editorial layout within the LVMH aesthetic framework.', 
     imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', 
     tags: ['Aesthetic', 'LVMH', 'Content Strategy'], 
-    sections: LUXURY_SECTIONS as any 
+    sections: LUXURY_SECTIONS_EN as any 
   }
 ];
 
@@ -406,7 +480,7 @@ export const STRATEGIC_EXPERTISE_EN = [
 ];
 
 export const CONTENT_CN: SiteContent = {
-  nav: { portfolios: "作品档案", career: "职业轨迹" },
+  nav: { portfolios: "WORKS", career: "Professional Path", connect: "Connect" },
   hero: {
     title: "毛宇君 Janice Mo",
     subtitle: "品牌总监 & 设计总监 | 9 年行业经验\n深耕垂直行业叙事：从汽车 CMF 到 AI 创意内容。",
@@ -415,7 +489,7 @@ export const CONTENT_CN: SiteContent = {
   },
   resume: {
     aboutTitle: "项目体验维度",
-    aboutText: "以行业战略逻辑为核心，提供多维度的视觉解决方案。",
+    aboutText: "以行业战略逻辑为核心，提供多维度视觉解决方案。",
     stats: { exp: "从业年限", projects: "落地项目", awards: "国际大奖" },
     skillsTitle: "核心能力",
     experienceTitle: "职业轨迹"
@@ -441,7 +515,7 @@ export const CONTENT_CN: SiteContent = {
 };
 
 export const CONTENT_EN: SiteContent = {
-  nav: { portfolios: "Portfolios", career: "Career" },
+  nav: { portfolios: "WORKS", career: "Professional Path", connect: "Connect" },
   hero: {
     title: "Janice Mo",
     subtitle: "Brand Director & Design Director | 9+ Years Experience\nFocusing on Vertical Industry Narratives.",

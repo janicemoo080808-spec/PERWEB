@@ -1,4 +1,3 @@
-
 import React, { useRef, MouseEvent, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Play, Plus, ImageOff, MonitorPlay } from 'lucide-react';

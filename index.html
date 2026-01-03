@@ -1,13 +1,15 @@
-
 <!DOCTYPE html>
 <html lang="en" style="scroll-behavior: smooth;">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Janice Mo | Design & Strategy</title>
-    <!-- 预连接图片服务器 -->
-    <link rel="preconnect" href="https://img.heliar.top">
-    <link rel="dns-prefetch" href="https://img.heliar.top">
+    <!-- 性能优化：预连接图片和静态资源服务器 -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://images.unsplash.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -16,10 +18,10 @@
           extend: {
             colors: {
               background: '#0B0B0D',
-              surface: '#121214',
-              brandStart: '#F63C0C',
+              surface: '#9D5E28',
+              brandStart: '#D09048',
               brandEnd: '#FE812E',
-              primary: '#F63C0C', 
+              primary: '#D09048', 
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],

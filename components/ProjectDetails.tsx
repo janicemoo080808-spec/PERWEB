@@ -1,17 +1,11 @@
-
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
-import { X, Smartphone, ShieldCheck, ImageOff, Sparkles, Layers, Globe, FileText, Hexagon, Twitter, BookOpen, Zap, Award, Camera, Utensils, Heart, ArrowRight, ChevronLeft, TrendingUp, Target, Cpu, Rocket, BarChart3, Users, Fingerprint, Map, PlayCircle } from 'lucide-react';
-import { Project, ProjectSection } from '../types';
+import { X, Smartphone, ShieldCheck, ImageOff, Sparkles, Layers, Globe, FileText, Hexagon, Twitter, BookOpen, Zap, Award, Camera, Utensils, Heart, TrendingUp, Target, Cpu, Rocket, BarChart3, Users, Fingerprint, Map, PlayCircle, ChevronLeft } from 'lucide-react';
+import { Project } from '../types';
 
 const ICON_MAP: Record<string, any> = {
   Hexagon, BookOpen, Globe, Smartphone, FileText, Sparkles, Twitter, ShieldCheck, Layers, Zap, Award, Camera, Utensils, Heart, TrendingUp, Target, Cpu, Rocket, BarChart3, Users, Fingerprint, Map
 };
-
-interface ProjectDetailsProps {
-  project: Project;
-  onClose: () => void;
-}
 
 const optimizeImageUrl = (url: string, width: number = 1920) => {
   if (url.includes('unsplash.com')) return url.split('?')[0] + `?q=80&fm=webp&w=${width}&fit=crop`;
@@ -57,7 +51,7 @@ const VideoWithFallback: React.FC<{
 };
 
 const ImageWithFallback: React.FC<{ 
-  src: string; alt: string; className?: string; priority?: boolean; mode?: "cover" | "contain";
+  src: string; alt: string; className?: string; priority?: boolean; mode?: "cover" | "contain" | "natural";
 }> = ({ src, alt, className, priority = false, mode = "cover" }) => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -66,8 +60,7 @@ const ImageWithFallback: React.FC<{
   return (
     <div className={`relative overflow-hidden bg-zinc-950 ${className}`}>
       <div 
-        className={`absolute inset-0 transition-opacity duration-1000 bg-zinc-900 ${loaded ? 'opacity-0' : 'opacity-100'}`}
-        style={{ backgroundImage: `url(${src})`, backgroundSize: 'cover', filter: 'blur(30px) brightness(0.5)', transform: 'scale(1.1)' }}
+        className={`absolute inset-0 transition-opacity duration-1000 bg-zinc-900 ${loaded ? 'opacity-0' : 'opacity-100'} shimmer`}
       />
       {error ? (
         <div className="absolute inset-0 flex items-center justify-center text-zinc-800 p-12 text-center">
@@ -76,14 +69,55 @@ const ImageWithFallback: React.FC<{
         </div>
       ) : (
         <img
-          src={optimizedSrc} alt={alt}
+          src={optimizedSrc} 
+          alt={alt}
           onLoad={() => setLoaded(true)}
           onError={() => setError(true)}
           loading={priority ? "eager" : "lazy"}
-          className={`w-full h-full ${mode === 'cover' ? 'object-cover' : 'object-contain'} transition-all duration-[800ms] ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
+          decoding="async"
+          className={`w-full transition-all duration-[800ms] 
+            ${mode === 'natural' ? 'h-auto block' : 'h-full'}
+            ${mode === 'cover' ? 'object-cover' : mode === 'contain' ? 'object-contain' : ''} 
+            ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
         />
       )}
     </div>
+  );
+};
+
+const LuxuryImage: React.FC<{ src: string; index: number }> = ({ src, index }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  // 内部微位移视差，增加滚动时的深度流动感
+  const y = useTransform(scrollYProgress, [0, 1], [0, (index % 2 === 0 ? -40 : 40)]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.02, 1, 1.02]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, margin: "-100px" }}
+      transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+      style={{ y, opacity }}
+      className={`relative rounded-sm overflow-hidden bg-[#050507] group`}
+    >
+      <motion.div style={{ scale }} className="w-full relative h-auto">
+        <ImageWithFallback 
+          src={src} 
+          alt={`Editorial-${index}`} 
+          mode="natural" 
+          className="w-full transition-transform duration-[4s] group-hover:scale-105 ease-out" 
+        />
+        {/* 彻底移除 Scene 标签和细边框，回归纯粹影像叙事 */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/5 pointer-events-none transition-opacity duration-1000 group-hover:opacity-0" />
+      </motion.div>
+    </motion.div>
   );
 };
 
@@ -113,13 +147,27 @@ const LuxuryCard: React.FC<{ src: string; index: number; total: number }> = ({ s
   );
 };
 
+interface ProjectDetailsProps {
+  project: Project;
+  onClose: () => void;
+}
+
 const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => {
   const isAIProject = project.category === 'AI_CREATIVE';
+  const scrollRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollY } = useScroll({ container: scrollRef });
+  const smoothY = useSpring(scrollY, { stiffness: 100, damping: 30 });
+
+  const yBg = useTransform(smoothY, [0, 800], [0, 400]);
+  const yFg = useTransform(smoothY, [0, 800], [0, -160]);
+  const opacityFg = useTransform(smoothY, [0, 400], [1, 0]);
 
   return (
     <motion.div 
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
       className="fixed inset-0 z-[100] bg-[#050507] overflow-y-auto overflow-x-hidden no-scrollbar selection:bg-primary/30"
+      ref={scrollRef}
     >
       <nav className="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-[110] bg-background/20 backdrop-blur-3xl border-b border-white/5">
         <div className="flex items-center gap-4 md:gap-8">
@@ -143,13 +191,22 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
 
       <div className="pt-0 pb-40">
         <div className={`relative w-full ${isAIProject ? 'h-[70vh] md:h-[95vh]' : 'h-[60vh] md:h-[85vh]'} overflow-hidden bg-zinc-950`}>
-          {project.videoUrl && isAIProject ? (
-            <VideoWithFallback src={project.videoUrl} poster={project.imageUrl} className="w-full h-full" />
-          ) : (
-            <ImageWithFallback src={project.imageUrl} alt={project.title} priority={true} className="w-full h-full opacity-60" />
-          )}
-          <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-transparent z-10" />
-          <div className="absolute bottom-20 left-8 md:left-24 max-w-5xl z-20">
+          <motion.div 
+            style={{ y: yBg }}
+            className="absolute inset-0 w-full h-full"
+          >
+            {project.videoUrl && isAIProject ? (
+              <VideoWithFallback src={project.videoUrl} poster={project.imageUrl} className="w-full h-full" />
+            ) : (
+              <ImageWithFallback src={project.imageUrl} alt={project.title} priority={true} className="w-full h-full opacity-60" />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#050507] via-transparent to-transparent z-10" />
+          </motion.div>
+
+          <motion.div 
+            style={{ y: yFg, opacity: opacityFg }}
+            className="absolute bottom-20 left-8 md:left-24 max-w-5xl z-20"
+          >
              <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2 }}>
                 <div className="flex items-center gap-3 mb-5">
                    <div className="w-8 h-[1px] bg-primary" />
@@ -166,14 +223,16 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                    ))}
                 </div>
              </motion.div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="mt-20 space-y-32 md:space-y-48">
+        <div className="mt-20 space-y-32 md:space-y-64">
            {project.sections?.map((section, idx) => {
              const Icon = ICON_MAP[section.icon] || Layers;
              const hasVideo = !!section.videoUrl;
+             const hasIframe = !!section.iframeUrl;
              const hasPoints = section.points && section.points.length > 0;
+             const isLuxuryCampaign = section.label === 'BRAND CAMPAIGN';
              
              return (
                <motion.div 
@@ -185,7 +244,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-14 items-start mb-10">
                       <div className={hasPoints ? "lg:col-span-5" : "lg:col-span-12 max-w-4xl"}>
                          {section.description && (
-                           <p className="text-base md:text-lg text-zinc-300 font-display font-light leading-relaxed tracking-normal border-l-[3px] border-primary pl-6 md:pl-8">
+                           <p className="text-base md:text-lg text-zinc-300 font-display font-light leading-relaxed tracking-normal border-l-[3px] border-primary pl-6 md:pl-8 whitespace-pre-line">
                              {section.description}
                            </p>
                          )}
@@ -230,6 +289,20 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                     </div>
                   </div>
 
+                  {hasIframe && (
+                    <div className="px-6 md:px-24 w-full mt-8">
+                       <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-black shadow-2xl max-w-6xl mx-auto">
+                         <iframe 
+                           src={section.iframeUrl} 
+                           scrolling="no" 
+                           frameBorder="no" 
+                           allowFullScreen={true}
+                           className="absolute inset-0 w-full h-full"
+                         ></iframe>
+                       </div>
+                    </div>
+                  )}
+
                   {hasVideo && (
                     <div className="relative w-full aspect-video md:aspect-[21/9] rounded-[2rem] overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl mt-8 mx-auto max-w-[92vw]">
                       <VideoWithFallback src={section.videoUrl!} poster={project.imageUrl} className="w-full h-full" />
@@ -237,7 +310,14 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                   )}
 
                   {section.images && section.images.length > 0 && (
-                    section.isSlider ? (
+                    isLuxuryCampaign ? (
+                      /* 优化：统一尺寸，强制双列布局，移除标签，增加排版节奏 */
+                      <div className="px-6 md:px-24 max-w-[1600px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mt-20 md:mt-32 relative">
+                         {section.images.map((img: string, i: number) => (
+                           <LuxuryImage key={i} src={img} index={i} />
+                         ))}
+                      </div>
+                    ) : section.isSlider ? (
                       <div className="flex items-center overflow-x-auto gap-8 md:gap-12 px-6 md:px-12 pb-16 pt-8 no-scrollbar snap-x w-full">
                         {section.images.map((img: string, i: number) => (
                            <LuxuryCard key={i} src={img} index={i} total={section.images.length} />
@@ -247,7 +327,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                       <div className="grid grid-cols-1 gap-12 mt-12 px-6 md:px-12 max-w-[1600px] mx-auto w-full">
                         {section.images.map((img: string, i: number) => (
                           <div key={i} className="rounded-[2.5rem] overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl w-full">
-                             <ImageWithFallback src={img} alt={`${section.title}-${i}`} className="w-full h-full" />
+                             <ImageWithFallback src={img} alt={`${section.title}-${i}`} mode="natural" className="w-full" />
                           </div>
                         ))}
                       </div>
