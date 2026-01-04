@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageSquare, Send, X, Loader2 } from 'lucide-react';
@@ -65,7 +64,7 @@ const AIChat: React.FC<AIChatProps> = ({ context }) => {
           >
             <div className="absolute inset-0 bg-primary-gradient opacity-0 group-hover:opacity-10 transition-opacity" />
             <MessageSquare className="text-gray-400 group-hover:text-white w-5 h-5 transition-colors" />
-            <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(246,60,12,0.8)]" />
+            <div className="absolute top-3 right-3 w-1.5 h-1.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(134, 87, 11, 0.8)]" />
           </motion.button>
         )}
       </AnimatePresence>

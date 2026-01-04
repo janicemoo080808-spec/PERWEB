@@ -1,0 +1,82 @@
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1.5rem;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.magic-bento-card {
+  position: relative;
+  border-radius: 1.5rem;
+  padding: 1.5rem 2rem; 
+  min-height: 130px;     /* 显著减小最小高度：从 180px 降至 130px */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: border-color 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.magic-bento-card--border-glow:hover {
+  border-color: rgba(var(--glow-color), 0.3);
+}
+
+.magic-bento-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--glow-x, 50%) var(--glow-y, 50%),
+    rgba(var(--glow-color), calc(var(--glow-intensity, 0) * 0.15)) 0%,
+    transparent var(--glow-radius, 300px)
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+.magic-bento-card__title {
+  font-size: 1.1rem; /* 减小标题字号适配更扁的卡片 */
+  font-weight: 700;
+  color: white;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.magic-bento-card__description {
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: #a1a1aa;
+}
+
+.magic-bento-card--text-autohide .magic-bento-card__description {
+  opacity: 0.6;
+  transform: translateY(0);
+  transition: all 0.4s ease;
+}
+
+.magic-bento-card--text-autohide:hover .magic-bento-card__description {
+  opacity: 1;
+  color: white;
+}
+
+.particle {
+  will-change: transform, opacity;
+}
+
+.global-spotlight {
+  filter: blur(60px);
+}
+
+.particle-container {
+  background: #0F0F11 !important;
+}

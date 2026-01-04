@@ -23,7 +23,7 @@ const VideoModal: React.FC<VideoModalProps> = ({ isOpen, videoUrl, onClose }) =>
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[150] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
+          className="fixed inset-0 z-[300] flex items-center justify-center bg-black/95 backdrop-blur-md p-4"
           onClick={onClose}
         >
           <motion.div

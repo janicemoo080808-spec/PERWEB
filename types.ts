@@ -1,4 +1,3 @@
-
 export type CategoryType = 
   | 'ALL' 
   | 'ACTIVITY_VISUALS'
@@ -25,7 +24,7 @@ export interface ProjectSection {
   icon: string;
   images: string[];
   videoUrl?: string;    
-  iframeUrl?: string;   // 新增：支持 Bilibili 等外部嵌入视频
+  iframeUrl?: string;   
   description?: string; 
   points?: string[];    
   isGrid?: boolean;
@@ -67,6 +66,12 @@ export interface ChatMessage {
   id: string;
   role: 'user' | 'model';
   text: string;
+}
+
+export interface AwardItem {
+  name: string;
+  level: string;
+  desc: string;
 }
 
 export interface SiteContent {
@@ -112,4 +117,5 @@ export interface SiteContent {
   skills: SkillItem[];
   projects: Project[];
   aiContext: string;
+  awards?: AwardItem[];
 }

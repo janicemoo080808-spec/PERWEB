@@ -1,3 +1,4 @@
+
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { X, Smartphone, ShieldCheck, ImageOff, Sparkles, Layers, Globe, FileText, Hexagon, Twitter, BookOpen, Zap, Award, Camera, Utensils, Heart, TrendingUp, Target, Cpu, Rocket, BarChart3, Users, Fingerprint, Map, PlayCircle, ChevronLeft } from 'lucide-react';
@@ -174,10 +175,10 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
   return (
     <motion.div 
       initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] bg-[#050507] overflow-y-auto overflow-x-hidden no-scrollbar selection:bg-primary/30"
+      className="fixed inset-0 z-[200] bg-[#050507] overflow-y-auto overflow-x-hidden no-scrollbar selection:bg-primary/30"
       ref={scrollRef}
     >
-      <nav className="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-[110] bg-background/20 backdrop-blur-3xl border-b border-white/5">
+      <nav className="fixed top-0 left-0 right-0 h-20 px-6 md:px-12 flex items-center justify-between z-[210] bg-background/20 backdrop-blur-3xl border-b border-white/5">
         <div className="flex items-center gap-4 md:gap-8">
           <button 
             onClick={onClose}
