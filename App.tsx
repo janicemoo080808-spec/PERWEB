@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { CONTENT_EN, CONTENT_CN, STRATEGIC_EXPERTISE_EN, STRATEGIC_EXPERTISE_CN } from './constants';
@@ -31,13 +32,13 @@ const App: React.FC = () => {
   const EXPERTISE = language === 'EN' ? STRATEGIC_EXPERTISE_EN : STRATEGIC_EXPERTISE_CN;
   
   const { scrollY } = useScroll();
-  // 核心视差逻辑：通过 useSpring 消除滚动震动，实现极其细腻的线性过渡
+  // 使用 useSpring 模拟物理惯性，restDelta 设为极小值确保停止点精确
   const smoothScrollY = useSpring(scrollY, { stiffness: 100, damping: 30, restDelta: 0.001 });
 
-  // 背景层视差：0.5x 速度 (滚动 1000px，位移 500px)
+  // 背景层：0.5x 慢速位移 (纵深后退)
   const bgTextY = useTransform(smoothScrollY, [0, 1000], [0, 500]);
   
-  // 前景内容视差：1.2x 相对速度 (相对于容器向上位移 200px)
+  // 前景层：1.2x 加速位移 (向用户扑来)
   const fgElementsY = useTransform(smoothScrollY, [0, 1000], [0, -200]);
   
   const progressScaleX = useSpring(useTransform(scrollY, [0, 1], [0, 1]), { stiffness: 100, damping: 30 });
@@ -103,8 +104,9 @@ const App: React.FC = () => {
         </div>
       </nav>
 
+      {/* Hero Section with Parallax */}
       <section className="min-h-screen flex flex-col justify-center px-6 md:px-20 relative pt-32 overflow-hidden">
-        {/* 背景层：0.5x 慢速位移 */}
+        {/* 背景视差文字 (0.5x) */}
         <motion.div 
           style={{ y: bgTextY }}
           className="absolute inset-0 flex items-center justify-center -z-10 select-none pointer-events-none opacity-[0.03]"
@@ -112,7 +114,7 @@ const App: React.FC = () => {
           <span className="text-[35vw] font-display font-black tracking-tighter text-white">ARCHIVE</span>
         </motion.div>
 
-        {/* 前景层：1.2x 相对加速位移 */}
+        {/* 前景视差内容 (1.2x) */}
         <motion.div 
           style={{ y: fgElementsY }}
           className="max-w-7xl relative z-10 w-full mx-auto"
@@ -177,6 +179,7 @@ const App: React.FC = () => {
         <div className="absolute bottom-0 right-0 w-[60vw] h-[60vw] bg-primary/5 rounded-full blur-[120px] -z-10 pointer-events-none" />
       </section>
 
+      {/* Sections remain unchanged in content */}
       <section className="px-6 md:px-20 py-40 bg-[#08080A]">
         <div className="max-w-7xl mx-auto">
           <div className="mb-24">

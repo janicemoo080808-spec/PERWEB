@@ -92,7 +92,9 @@ const LuxuryImage: React.FC<{ src: string; index: number }> = ({ src, index }) =
     offset: ["start end", "end start"]
   });
 
-  // 内部微位移视差，增加滚动时的深度流动感
+  const isVideo = src.includes('github.com/user-attachments/assets') || src.endsWith('.mp4');
+
+  // 位移增加深度感
   const y = useTransform(scrollYProgress, [0, 1], [0, (index % 2 === 0 ? -40 : 40)]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.02, 1, 1.02]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
@@ -105,16 +107,22 @@ const LuxuryImage: React.FC<{ src: string; index: number }> = ({ src, index }) =
       viewport={{ once: true, margin: "-100px" }}
       transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
       style={{ y, opacity }}
-      className={`relative rounded-sm overflow-hidden bg-[#050507] group`}
+      className={`relative rounded-3xl overflow-hidden bg-[#050507] group`}
     >
       <motion.div style={{ scale }} className="w-full relative h-auto">
-        <ImageWithFallback 
-          src={src} 
-          alt={`Editorial-${index}`} 
-          mode="natural" 
-          className="w-full transition-transform duration-[4s] group-hover:scale-105 ease-out" 
-        />
-        {/* 彻底移除 Scene 标签和细边框，回归纯粹影像叙事 */}
+        {isVideo ? (
+          <div className="w-full aspect-[480/640]">
+             <VideoWithFallback src={src} className="w-full h-full" />
+          </div>
+        ) : (
+          <ImageWithFallback 
+            src={src} 
+            alt={`Editorial-${index}`} 
+            mode="natural" 
+            className="w-full transition-transform duration-[4s] group-hover:scale-105 ease-out" 
+          />
+        )}
+        {/* 彻底移除装饰性标签和边框，仅保留优雅渐变 */}
         <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/5 pointer-events-none transition-opacity duration-1000 group-hover:opacity-0" />
       </motion.div>
     </motion.div>
@@ -140,7 +148,7 @@ const LuxuryCard: React.FC<{ src: string; index: number; total: number }> = ({ s
       <div className="absolute -top-12 -left-12 text-[12vw] font-display font-black text-white/[0.02] select-none pointer-events-none z-0">
         {(index + 1).toString().padStart(2, '0')}
       </div>
-      <div className="w-full h-full rounded-[2.5rem] overflow-hidden border border-white/10 bg-zinc-950 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9)] relative z-10 backdrop-blur-sm">
+      <div className="w-full h-full rounded-3xl overflow-hidden border border-white/10 bg-zinc-950 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9)] relative z-10 backdrop-blur-sm">
         <ImageWithFallback src={src} alt={`Slide-${index}`} mode="contain" className="w-full h-full" />
       </div>
     </motion.div>
@@ -252,7 +260,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                       
                       {hasPoints && (
                         <div className="lg:col-span-7">
-                          <div className="relative p-8 md:p-10 rounded-[2rem] bg-zinc-900/20 border border-white/5 overflow-hidden group">
+                          <div className="relative p-8 md:p-10 rounded-3xl bg-zinc-900/20 border border-white/5 overflow-hidden group">
                              <div className="absolute top-0 left-0 w-1 h-0 bg-primary group-hover:h-full transition-all duration-700" />
                              <div className="flex flex-col gap-10">
                                 {section.points?.map((pt, pIdx) => {
@@ -291,7 +299,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
 
                   {hasIframe && (
                     <div className="px-6 md:px-24 w-full mt-8">
-                       <div className="relative w-full aspect-video rounded-[2rem] overflow-hidden border border-white/10 bg-black shadow-2xl max-w-6xl mx-auto">
+                       <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-white/10 bg-black shadow-2xl max-w-6xl mx-auto">
                          <iframe 
                            src={section.iframeUrl} 
                            scrolling="no" 
@@ -304,14 +312,13 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                   )}
 
                   {hasVideo && (
-                    <div className="relative w-full aspect-video md:aspect-[21/9] rounded-[2rem] overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl mt-8 mx-auto max-w-[92vw]">
+                    <div className="relative w-full aspect-video md:aspect-[21/9] rounded-3xl overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl mt-8 mx-auto max-w-[92vw]">
                       <VideoWithFallback src={section.videoUrl!} poster={project.imageUrl} className="w-full h-full" />
                     </div>
                   )}
 
                   {section.images && section.images.length > 0 && (
                     isLuxuryCampaign ? (
-                      /* 优化：统一尺寸，强制双列布局，移除标签，增加排版节奏 */
                       <div className="px-6 md:px-24 max-w-[1600px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mt-20 md:mt-32 relative">
                          {section.images.map((img: string, i: number) => (
                            <LuxuryImage key={i} src={img} index={i} />
@@ -326,7 +333,7 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                     ) : (
                       <div className="grid grid-cols-1 gap-12 mt-12 px-6 md:px-12 max-w-[1600px] mx-auto w-full">
                         {section.images.map((img: string, i: number) => (
-                          <div key={i} className="rounded-[2.5rem] overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl w-full">
+                          <div key={i} className="rounded-3xl overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl w-full">
                              <ImageWithFallback src={img} alt={`${section.title}-${i}`} mode="natural" className="w-full" />
                           </div>
                         ))}
