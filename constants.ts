@@ -42,7 +42,7 @@ const INTU_SECTIONS = [
   },
   { 
     title: '三幕式传播战役规划', 
-    label: 'CAMPAIGN STRATEGY', 
+    label: 'CAMPAIGN STRATEATEGY', 
     icon: 'Rocket', 
     description: '策略核心：锐角切入 × 跨界共振 × 场景渗透 。我们将传播节奏包装为一部“都市灵感电影”的三部曲。',
     points: [
@@ -64,7 +64,7 @@ const CRYDIT_SECTIONS = [
   { title: '数字化门户与官方枢纽', label: 'WEB ARCHITECTURE', icon: 'Globe', description: '强调信息层级的高效流动与 Web3 交互美学。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/4.232cghnb0s.webp'] },
   { title: '金融科技核心产品界面', label: 'APP INTERFACE', icon: 'Smartphone', description: '专注于去中心化资产管理的移动端 UI/UX。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/22.8ok67ird05.webp'] },
   { title: '权威公关与全球化背书', label: 'MEDIA BACKING', icon: 'FileText', description: '在顶级金融媒体中的一致性发声。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/44.9ddfrjew0e.webp'] },
-  { title: '社交叙事与 IP 人格化', label: 'SOCIAL VOICE', icon: 'Twitter', isSlider: true, description: '在社交平台构建具有温度的 IP 叙事，将 Web3 叙事转化为感性内容。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/6.3k8hjkbw3b.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326827.wj17v1a1b.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Twitter--post-16.24.53.9rjvidq2h4.webp'] },
+  { title: '社交叙事与 IP 人格化', label: 'SOCIAL VOICE', icon: 'Twitter', isSlider: true, description: '在社交平台构建具有温度的 IP 叙事，将 Web3 叙事转化为感性内容。', images: ['https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/6.3k8hjkbw3b.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326827.wj17v1a1b.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Twitter--post-16.24.53.9rjvidq2h4.webp'] },
   { title: '合规性界面与安全协议', label: 'INTERFACE SECURITY', icon: 'ShieldCheck', description: '安全中心与合规架构界面，强调信息的严谨性与安全性。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.5c1geh3u8f.webp'] }
 ];
 
@@ -99,10 +99,9 @@ const LUXURY_LORO_PIANA_IMAGES = [
 
 const LUXURY_CARTIER_IMAGES = [
   'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326732.51emonx56r.webp',
-  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326733.4cld4n9m52.webp',
-  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326734.58huk3jaj2.webp',
+  'https://github.com/user-attachments/assets/40d73c9b-37b2-4ff9-b362-0e4035b366d8', // 替换为雨窗少女视频
+  'https://github.com/user-attachments/assets/fd425ba6-edf7-447c-ac48-ec4d49cb008e', // 既有视频：手套与腕表
   'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326735.39lntrdsag.webp',
-  'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326736.3ns3kmm33k.webp'
 ];
 
 const LUXURY_SECTIONS_CN = [
