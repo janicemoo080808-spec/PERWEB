@@ -1,3 +1,4 @@
+
 export type CategoryType = 
   | 'ALL' 
   | 'ACTIVITY_VISUALS'
@@ -30,6 +31,7 @@ export interface ProjectSection {
   isGrid?: boolean;
   isSlider?: boolean;
   isHeader?: boolean;   
+  isCircularGallery?: boolean; // New flag for interactive circular gallery
 }
 
 export interface Project {

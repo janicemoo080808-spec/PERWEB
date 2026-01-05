@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { X, Smartphone, ShieldCheck, ImageOff, Sparkles, Layers, Globe, FileText, Hexagon, Twitter, BookOpen, Zap, Award, Camera, Utensils, Heart, TrendingUp, Target, Cpu, Rocket, BarChart3, Users, Fingerprint, Map, PlayCircle, ChevronLeft } from 'lucide-react';
 import { Project } from '../types';
+import CircularGallery from './CircularGallery';
 
 const ICON_MAP: Record<string, any> = {
   Hexagon, BookOpen, Globe, Smartphone, FileText, Sparkles, Twitter, ShieldCheck, Layers, Zap, Award, Camera, Utensils, Heart, TrendingUp, Target, Cpu, Rocket, BarChart3, Users, Fingerprint, Map
@@ -95,7 +96,6 @@ const LuxuryImage: React.FC<{ src: string; index: number }> = ({ src, index }) =
 
   const isVideo = src.includes('github.com/user-attachments/assets') || src.endsWith('.mp4');
 
-  // 位移增加深度感
   const y = useTransform(scrollYProgress, [0, 1], [0, (index % 2 === 0 ? -40 : 40)]);
   const scale = useTransform(scrollYProgress, [0, 0.5, 1], [1.02, 1, 1.02]);
   const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
@@ -123,7 +123,6 @@ const LuxuryImage: React.FC<{ src: string; index: number }> = ({ src, index }) =
             className="w-full transition-transform duration-[4s] group-hover:scale-105 ease-out" 
           />
         )}
-        {/* 彻底移除装饰性标签和边框，仅保留优雅渐变 */}
         <div className="absolute inset-0 bg-gradient-to-tr from-black/20 via-transparent to-white/5 pointer-events-none transition-opacity duration-1000 group-hover:opacity-0" />
       </motion.div>
     </motion.div>
@@ -318,7 +317,15 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                     </div>
                   )}
 
-                  {section.images && section.images.length > 0 && (
+                  {section.isCircularGallery ? (
+                    <div className="w-full h-[500px] md:h-[700px] mt-12 mb-20 relative bg-zinc-950/20">
+                      <CircularGallery 
+                        items={section.images.map(img => ({ image: img, text: 'Token 2049' }))}
+                        bend={2}
+                        borderRadius={0.03}
+                      />
+                    </div>
+                  ) : section.images && section.images.length > 0 && (
                     isLuxuryCampaign ? (
                       <div className="px-6 md:px-24 max-w-[1600px] mx-auto w-full grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 mt-20 md:mt-32 relative">
                          {section.images.map((img: string, i: number) => (

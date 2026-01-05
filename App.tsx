@@ -62,7 +62,7 @@ const AwardsSection: React.FC<{ awards?: AwardItem[]; language: Language }> = ({
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-3xl"
+            className="max-w-4xl"
           >
             <div className="flex items-center gap-4 mb-8">
                <motion.div 
@@ -143,58 +143,64 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-background text-white selection:bg-[#86570B]/20">
       <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-primary z-[1100] origin-left" style={{ scaleX: progressScaleX }} />
 
-      {/* FIXED NAV - REMAINS FULLY FUNCTIONAL */}
-      <div className="fixed top-6 left-0 right-0 z-[1000] flex justify-center px-4 pointer-events-none">
-        <motion.nav 
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.8, ease: "circOut" }}
-          className="relative w-full max-w-6xl h-[68px] glass rounded-full flex items-center justify-between px-8 md:px-10 border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] backdrop-blur-3xl pointer-events-auto"
-        >
-          <div className="flex-1 flex justify-start">
-            <motion.span 
-              onClick={(e) => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              whileHover={{ scale: 1.05 }}
-              className="text-lg font-display font-bold tracking-tighter text-white cursor-pointer uppercase whitespace-nowrap"
-            >
-              JANICE MO
-            </motion.span>
-          </div>
+      {/* FIXED NAV - 优化：二级详情页打开时隐藏，解决重叠问题 */}
+      <AnimatePresence>
+        {!selectedProject && (
+          <motion.div 
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: -100, opacity: 0 }}
+            transition={{ duration: 0.6, ease: "circOut" }}
+            className="fixed top-6 left-0 right-0 z-[1000] flex justify-center px-4 pointer-events-none"
+          >
+            <nav className="relative w-full max-w-6xl h-[68px] glass rounded-full flex items-center justify-between px-8 md:px-10 border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] backdrop-blur-3xl pointer-events-auto">
+              <div className="flex-1 flex justify-start">
+                <motion.span 
+                  onClick={(e) => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  whileHover={{ scale: 1.05 }}
+                  className="text-lg font-display font-bold tracking-tighter text-white cursor-pointer uppercase whitespace-nowrap"
+                >
+                  JANICE MO
+                </motion.span>
+              </div>
 
-          <div className="hidden lg:flex items-center justify-center gap-10">
-             <div className="flex gap-10 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500">
-               <motion.a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
-                 {CONTENT.nav.portfolios}
-                 <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
-               </motion.a>
-               <motion.a href="#journey" onClick={(e) => handleNavClick(e, 'journey')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
-                 {CONTENT.nav.career}
-                 <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
-               </motion.a>
-               <motion.a href="#connect" onClick={(e) => handleNavClick(e, 'connect')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
-                 {CONTENT.nav.connect}
-                 <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
-               </motion.a>
-             </div>
-          </div>
+              <div className="hidden lg:flex items-center justify-center gap-10">
+                 <div className="flex gap-10 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500">
+                   <motion.a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
+                     {CONTENT.nav.portfolios}
+                     <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
+                   </motion.a>
+                   <motion.a href="#journey" onClick={(e) => handleNavClick(e, 'journey')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
+                     {CONTENT.nav.career}
+                     <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
+                   </motion.a>
+                   <motion.a href="#connect" onClick={(e) => handleNavClick(e, 'connect')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
+                     {CONTENT.nav.connect}
+                     <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
+                   </motion.a>
+                 </div>
+              </div>
 
-          <div className="flex-1 flex justify-end items-center gap-4 md:gap-6">
-            <div className="hidden sm:flex items-center bg-white/5 rounded-full p-1 border border-white/10">
-              <button onClick={() => setLanguage('EN')} className={`px-3 py-1.5 rounded-full text-[9px] font-bold transition-all ${language === 'EN' ? 'bg-white text-black shadow-lg' : 'text-zinc-500 hover:text-white'}`}>EN</button>
-              <button onClick={() => setLanguage('CN')} className={`px-3 py-1.5 rounded-full text-[9px] font-bold transition-all ${language === 'CN' ? 'bg-white text-black shadow-lg' : 'text-zinc-500 hover:text-white'}`}>中文</button>
-            </div>
-            <motion.a 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href={`mailto:${CONTACT_INFO.email}`} 
-              className="px-5 md:px-6 py-2.5 bg-primary text-white text-[10px] font-bold tracking-widest rounded-full hover:brightness-110 transition-all uppercase shadow-lg shadow-[#86570B]/20 whitespace-nowrap"
-            >
-              Let's Talk
-            </motion.a>
-          </div>
-        </motion.nav>
-      </div>
+              <div className="flex-1 flex justify-end items-center gap-4 md:gap-6">
+                <div className="hidden sm:flex items-center bg-white/5 rounded-full p-1 border border-white/10">
+                  <button onClick={() => setLanguage('EN')} className={`px-3 py-1.5 rounded-full text-[9px] font-bold transition-all ${language === 'EN' ? 'bg-white text-black shadow-lg' : 'text-zinc-500 hover:text-white'}`}>EN</button>
+                  <button onClick={() => setLanguage('CN')} className={`px-3 py-1.5 rounded-full text-[9px] font-bold transition-all ${language === 'CN' ? 'bg-white text-black shadow-lg' : 'text-zinc-500 hover:text-white'}`}>中文</button>
+                </div>
+                <motion.a 
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  href={`mailto:${CONTACT_INFO.email}`} 
+                  className="px-5 md:px-6 py-2.5 bg-primary text-white text-[10px] font-bold tracking-widest rounded-full hover:brightness-110 transition-all uppercase shadow-lg shadow-[#86570B]/20 whitespace-nowrap"
+                >
+                  Let's Talk
+                </motion.a>
+              </div>
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
+      {/* Hero */}
       <section className="min-h-screen flex flex-col justify-center px-6 md:px-20 relative pt-24 overflow-hidden bg-background">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <LightRays 
@@ -257,18 +263,27 @@ const App: React.FC = () => {
         </motion.div>
       </section>
 
+      {/* Strategic Expertise Section - UNIFIED STYLE */}
       <section id="expertise" className="px-6 md:px-20 py-40 bg-[#08080A]">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-24"
+            className="mb-32"
           >
-            <h2 className="text-5xl md:text-8xl font-display font-bold tracking-tighter uppercase mb-6 text-center md:text-left">
+            <div className="flex items-center gap-4 mb-8">
+               <motion.div 
+                 initial={{ width: 0 }}
+                 whileInView={{ width: 48 }}
+                 transition={{ duration: 1, delay: 0.2 }}
+                 className="h-[1px] bg-[#86570B]" 
+               />
+               <span className="text-[10px] font-bold tracking-[0.5em] text-primary uppercase">Expertise</span>
+            </div>
+            <h2 className="text-5xl md:text-9xl font-display font-bold tracking-tighter uppercase mb-12">
               {CONTENT.resume.aboutTitle}
             </h2>
-            <div className="w-24 h-1 bg-primary mb-12 mx-auto md:mx-0" />
           </motion.div>
           
           <MagicBento 
@@ -281,39 +296,49 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Projects Grid Section - HORIZONTAL CARDS */}
+      {/* Archive Section - UNIFIED STYLE */}
       <section id="projects" className="px-6 md:px-20 py-40">
         <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col items-center text-center gap-16 mb-32">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-6xl md:text-9xl font-display font-bold tracking-tighter uppercase mb-4">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-24"
+          >
+            <div className="flex items-center gap-4 mb-8">
+               <motion.div 
+                 initial={{ width: 0 }}
+                 whileInView={{ width: 48 }}
+                 transition={{ duration: 1, delay: 0.2 }}
+                 className="h-[1px] bg-[#86570B]" 
+               />
+               <span className="text-[10px] font-bold tracking-[0.5em] text-primary uppercase">Portfolio</span>
+            </div>
+            <div className="flex flex-col md:flex-row md:items-end justify-between gap-12">
+              <h2 className="text-5xl md:text-9xl font-display font-bold tracking-tighter uppercase">
                 {CONTENT.portfolio.title}
               </h2>
-            </motion.div>
-            
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="flex flex-wrap justify-center gap-4 max-w-5xl"
-            >
-              {filterButtons.map(btn => (
-                <motion.button
-                  key={btn.id}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  onClick={() => setActiveCategory(btn.id as CategoryType)}
-                  className={`px-8 py-3 rounded-full text-[10px] font-bold tracking-widest uppercase transition-all border shadow-lg ${activeCategory === btn.id ? 'bg-white text-black border-white' : 'text-zinc-500 border-white/10 hover:border-white/20 hover:bg-white/5'}`}
-                >
-                  {btn.label}
-                </motion.button>
-              ))}
-            </motion.div>
-          </div>
+              
+              <motion.div 
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="flex flex-wrap gap-3"
+              >
+                {filterButtons.map(btn => (
+                  <motion.button
+                    key={btn.id}
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    onClick={() => setActiveCategory(btn.id as CategoryType)}
+                    className={`px-6 py-2 rounded-full text-[9px] font-bold tracking-widest uppercase transition-all border shadow-lg ${activeCategory === btn.id ? 'bg-white text-black border-white' : 'text-zinc-500 border-white/10 hover:border-white/20 hover:bg-white/5'}`}
+                  >
+                    {btn.label}
+                  </motion.button>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
 
           <motion.div 
             layout
@@ -342,8 +367,29 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Journey Section - UNIFIED STYLE ADDED */}
       <section id="journey" className="px-6 md:px-20 py-40 bg-[#08080A]">
         <div className="max-w-7xl mx-auto">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-32"
+          >
+            <div className="flex items-center gap-4 mb-8">
+               <motion.div 
+                 initial={{ width: 0 }}
+                 whileInView={{ width: 48 }}
+                 transition={{ duration: 1, delay: 0.2 }}
+                 className="h-[1px] bg-[#86570B]" 
+               />
+               <span className="text-[10px] font-bold tracking-[0.5em] text-primary uppercase">Career</span>
+            </div>
+            <h2 className="text-5xl md:text-9xl font-display font-bold tracking-tighter uppercase mb-12">
+              {CONTENT.resume.experienceTitle}
+            </h2>
+          </motion.div>
+
           <ResumeSection 
             content={CONTENT.resume} 
             experience={CONTENT.experience} 
@@ -352,8 +398,10 @@ const App: React.FC = () => {
         </div>
       </section>
 
+      {/* Awards Section - ALREADY UNIFIED STYLE */}
       <AwardsSection awards={CONTENT.awards} language={language} />
 
+      {/* Connect Section - UNIFIED STYLE */}
       <section id="connect" className="px-6 md:px-20 py-40 bg-background relative overflow-hidden">
         <motion.div 
           animate={{ rotate: 360 }}
@@ -361,17 +409,28 @@ const App: React.FC = () => {
           className="absolute -top-[20%] -right-[20%] w-[60%] aspect-square rounded-full border border-white/[0.02] border-dashed pointer-events-none" 
         />
         
-        <div className="max-w-5xl mx-auto text-center relative z-10">
-          <motion.h2 
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+        <div className="max-w-7xl mx-auto relative z-10">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-5xl md:text-9xl font-display font-bold tracking-tighter uppercase mb-20"
+            className="mb-32"
           >
-            Let's Create.
-          </motion.h2>
+            <div className="flex items-center gap-4 mb-8">
+               <motion.div 
+                 initial={{ width: 0 }}
+                 whileInView={{ width: 48 }}
+                 transition={{ duration: 1, delay: 0.2 }}
+                 className="h-[1px] bg-[#86570B]" 
+               />
+               <span className="text-[10px] font-bold tracking-[0.5em] text-primary uppercase">Contact</span>
+            </div>
+            <h2 className="text-5xl md:text-9xl font-display font-bold tracking-tighter uppercase">
+              Let's Create.
+            </h2>
+          </motion.div>
           
-          <div className="flex flex-col md:flex-row items-center justify-center gap-12 md:gap-32">
+          <div className="flex flex-col md:flex-row items-center gap-12 md:gap-32">
             <motion.a 
               whileHover={{ y: -10 }}
               initial={{ opacity: 0, y: 20 }}
@@ -379,14 +438,14 @@ const App: React.FC = () => {
               viewport={{ once: true }}
               transition={{ delay: 0.2 }}
               href={`mailto:${CONTACT_INFO.email}`} 
-              className="flex flex-col items-center gap-6 group"
+              className="flex flex-col items-start gap-6 group"
             >
                <div className="w-20 h-20 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:rotate-12 transition-all duration-500 shadow-2xl">
                   <Mail className="w-8 h-8 text-zinc-500 group-hover:text-white" />
                </div>
-               <div className="flex flex-col items-center gap-1">
+               <div className="flex flex-col items-start gap-1">
                  <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-zinc-600 group-hover:text-primary transition-colors">Direct Email</span>
-                 <span className="text-xs font-bold text-white group-hover:text-primary transition-colors tracking-wide">{CONTACT_INFO.email}</span>
+                 <span className="text-xl font-bold text-white group-hover:text-primary transition-colors tracking-tight">{CONTACT_INFO.email}</span>
                </div>
             </motion.a>
             
@@ -396,14 +455,14 @@ const App: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4 }}
-              className="flex flex-col items-center gap-6 group cursor-pointer"
+              className="flex flex-col items-start gap-6 group cursor-pointer"
             >
                <div className="w-20 h-20 rounded-3xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary group-hover:border-primary group-hover:-rotate-12 transition-all duration-500 shadow-2xl">
                   <Phone className="w-8 h-8 text-zinc-500 group-hover:text-white" />
                </div>
-               <div className="flex flex-col items-center gap-1">
+               <div className="flex flex-col items-start gap-1">
                  <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-zinc-600 group-hover:text-primary transition-colors">Business Line</span>
-                 <span className="text-xs font-bold text-white group-hover:text-primary transition-colors tracking-wide">{CONTACT_INFO.phone}</span>
+                 <span className="text-xl font-bold text-white group-hover:text-primary transition-colors tracking-tight">{CONTACT_INFO.phone}</span>
                </div>
             </motion.div>
           </div>
