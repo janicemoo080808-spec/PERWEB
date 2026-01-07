@@ -1,3 +1,4 @@
+
 import { SiteContent, Project, ExperienceItem, SkillItem } from './types';
 
 const SKILLS_COMMON: SkillItem[] = [
@@ -71,7 +72,7 @@ const CRYDIT_SECTIONS_CN = [
     isSlider: true, 
     description: '在社交平台构建具有温度的 IP 叙事，将复杂的 Web3 概念转化为易于传播的感性内容，拉近与用户的距离。', 
     images: [
-      'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326851.3govki18n9.webp',
+      'https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326851.3govki18n9.webp',
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326865.6pnzh5oq9s.webp',
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326871.4qrsqtj7y3.webp',
       'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326882-16.24.57.1ziqiqx3w6.webp',
@@ -107,7 +108,7 @@ const CRYDIT_SECTIONS_EN = [
   { title: 'Core Visual Identity Standards', label: 'BRAND DNA', icon: 'Hexagon', description: 'Establishing the foundational visual DNA of Crydit, defining fintech through a highly geometric symbolic system.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326722.3govkhorey.webp'] },
   { title: 'Strategic Positioning & Brand Manual', label: 'BRAND STRATEGY', icon: 'BookOpen', description: 'From market competitive analysis to brand contextual deduction, constructing a complete brand narrative logic.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/1.2vf7y6ub45.webp'] },
   { title: 'Digital Portal & Official Hub', label: 'WEB ARCHITECTURE', icon: 'Globe', description: 'Emphasizing efficient flow of information hierarchy and Web3 interactive aesthetics.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/4.232cghnb0s.webp'] },
-  { title: 'Fintech Core Product Interface', label: 'APP INTERFACE', icon: 'Smartphone', description: 'Focusing on mobile UI/UX for decentralized asset management.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/22.8ok67ird05.webp'] },
+  { title: 'Fintech Core Product Interface', label: 'APP INTERFACE', icon: 'Smartphone', description: 'Focusing on mobile UI/UX for decentralized asset management.', images: ['https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/22.8ok67ird05.webp'] },
   { title: 'Media Relations & Global Endorsements', label: 'MEDIA BACKING', icon: 'FileText', description: 'Consistent voice across top-tier financial media outlets.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/44.9ddfrjew0e.webp'] },
   { 
     title: 'Social Narrative & IP Branding', 
@@ -149,12 +150,26 @@ const CRYDIT_SECTIONS_EN = [
 ];
 
 // --- 4. LUXURY DESIGN ---
-const LUXURY_COMMON_EDITORIAL = { 
+const LUXURY_COMMON_EDITORIAL_CN = { 
   title: '奢侈品美学编辑：微信视觉叙事', 
   label: 'EDITORIAL EXPERIENCE', 
   icon: 'Camera', 
   isSlider: true, 
-  description: '深耕 LVMH 美学体系，专注于顶级奢侈品牌公众号视觉叙事。采用黄金比例排版，通过艺术化分镜重组商业资讯，强调呼吸感与留白的美学。', 
+  description: '专注于顶级奢侈品牌公众号的视觉资产深度创意。将商业资讯转化为极具艺术价值的数字读物。在为 Dom Pérignon、Balmain、Kerbedanz 等品牌操盘期间，我强调“呼吸感美学”对用户情绪的引导，使每一次指尖滑动都成为一场沉浸式的品牌价值传递之旅。', 
+  images: [
+    'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp', 
+    'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp',
+    'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-4.8ok694ajjv.webp',
+    'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-3.7eh92ssk8m.webp'
+  ] 
+};
+
+const LUXURY_COMMON_EDITORIAL_EN = { 
+  title: 'Luxury Aesthetic Editorial: WeChat Visual Storytelling', 
+  label: 'EDITORIAL EXPERIENCE', 
+  icon: 'Camera', 
+  isSlider: true, 
+  description: 'Specializing in deep creative visual assets for top-tier luxury brand WeChat accounts. Transforming commercial information into digital reads of significant artistic value. During my tenure directing for brands such as Dom Pérignon, Balmain, and Kerbedanz, I emphasized the guidance of user emotions through "Breathable Aesthetics," making every swipe an immersive journey of brand value transmission.', 
   images: [
     'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp', 
     'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp',
@@ -209,7 +224,7 @@ const LUXURY_SECTIONS_CN = [
     description: '这组作品是我们对“永恒”的一次光影探索，以克制而精准的电影语言，捕捉那些凝固在时光中的优雅瞬间。', 
     images: LUXURY_CARTIER_IMAGES 
   },
-  LUXURY_COMMON_EDITORIAL
+  LUXURY_COMMON_EDITORIAL_CN
 ];
 
 const LUXURY_SECTIONS_EN = [
@@ -237,7 +252,7 @@ const LUXURY_SECTIONS_EN = [
     description: 'This series is a photographic exploration of "timelessness," employing a restrained and precise cinematic language to capture moments of elegance.', 
     images: LUXURY_CARTIER_IMAGES 
   },
-  LUXURY_COMMON_EDITORIAL
+  LUXURY_COMMON_EDITORIAL_EN
 ];
 
 // --- 5. AI CREATIVE ---
@@ -317,11 +332,17 @@ const ACTIVITY_SECTIONS = [
     ]
   },
   {
-    title: '上海贵酒：盛典沉浸式影像叙事',
-    label: 'EVENT CINEMATIC',
+    title: 'CCTV-1 央视大片与“大国品牌”战略操盘',
+    label: 'NATIONAL BRAND STRATEGY',
     icon: 'Rocket',
     isSlider: true,
-    description: '全方位展示上海贵酒年度品牌盛典的视觉张力。从沉浸式品牌叙事到高光时刻，通过左右滑动的动态影像集锦，深度还原艺术表演与空间美学的统一。',
+    description: '深谙权威媒体赋能品牌的长远力量，我主导了上海贵酒两支核心 TVC 广告片的策略定位与视觉执行，并前瞻性布局 CCTV-1 等顶级频道。通过独家冠名 CCTV《大国品牌》等国家级叙事项目，成功将品牌资产与国家级声望深度绑定。',
+    points: [
+      '权威背书与双重大奖：主导的《大国品牌》系列故事片在第 29 届中国国际广告节荣获“2022 年度内容营销案例”与“2022 媒企合作年度案例”双项大奖，实现了艺术审美与商业价值的国际化公认。',
+      '顶级频道心智触达：操盘两支核心 TVC 广告的全流程视觉与策略，通过在央视黄金档的精准投放，有效提升了品牌在全国范围内的市场美誉度，极大降低了用户对高端白酒的信任成本。',
+      '高品质消费案例：亲自策划并主导“千城万企”项目，在国际高品质消费博览会获评“十大高品质消费创新案例”，实现了品牌影响力对区域市场的降维打击。',
+      '[ 备注 ]：如需了解如何通过官方权威媒介背书（Official Endorsement）显著降低品牌沟通成本并提升溢价空间，欢迎深度探讨。'
+    ],
     images: [
       'https://github.com/user-attachments/assets/8bbc8de6-8284-4acb-a7eb-ec99a2121b5f',
       'https://github.com/user-attachments/assets/a25a2c1c-01f2-40f3-b455-7c5168017c96',
@@ -377,7 +398,7 @@ export const PROJECTS_CN: Project[] = [
     title: '品牌活动与空间',
     category: 'ACTIVITY_VISUALS',
     subCategory: 'CAMPAIGN',
-    description: '从国际峰会到高端白酒品牌盛典，通过多维空间叙事强化品牌线下资产。',
+    description: '从新加坡的国际视野到央视的国家高度，我致力于用极具未来感的视觉语言，重塑品牌在全球竞争中的叙事主权。',
     imageUrl: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?q=80&w=1920',
     tags: ['活动视觉', '线下展陈', '全球视野'],
     sections: ACTIVITY_SECTIONS as any
@@ -431,7 +452,7 @@ export const PROJECTS_EN: Project[] = [
     title: 'EVENT & SPACE', 
     category: 'ACTIVITY_VISUALS',
     subCategory: 'CAMPAIGN',
-    description: 'From international summits to high-end brand ceremonies.',
+    description: 'From the global perspective of Singapore to the national prestige of CCTV, I am dedicated to redefining brand narrative sovereignty in global competition through futuristic visual language.',
     imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/54848677226_0c430fb790_c.58hunv4b5g.webp',
     tags: ['Event Visuals', 'Exhibition', 'Global'],
     sections: ACTIVITY_SECTIONS as any
@@ -458,7 +479,7 @@ const EXPERIENCE_CN: ExperienceItem[] = [
       '奖项荣誉：产品荣获纽约产品设计奖银奖、伦敦设计奖金奖、法国设计奖金奖、美国 MUSE 奖金奖、欧洲设计奖金奖等多项国际大奖。',
       '市场推广：通过创新的品牌推广策略，Crydit 在推出后的 6 个月内，品牌知名度在区块链行业内提升了 80%，用户增长率达 50%。',
       '跨部门协作：领导多个跨部门项目，制定品牌推广流程，使项目完成时间缩短了 15%。',
-      '活动策划：主导 TOKEN 2049 活动，吸引了超过 5w 名参与者，显著提升品牌影响力和用户参与度。策划并执行了一系列线上线下活动，社交媒体曝光量增加了 50%。'
+      '活动策划：主导 TOKEN 2049 活动，吸引了超过 5w 名参与者，显著提升品牌影响力和用户参与度. 策划并执行了一系列线上线下活动，社交媒体曝光量增加了 50%。'
     ]
   },
   {
@@ -620,7 +641,7 @@ const EXPERIENCE_EN: ExperienceItem[] = [
 export const STRATEGIC_EXPERTISE_CN = [
   { title: "跨行业视觉战略经验", desc: "超过 9 年经验，涵盖加密市场、奢侈品、区块链、餐饮酒水、创新消费品、教育、医疗、跨境/国内电商、广告公司等多个行业。" },
   { title: "全方位品牌管理", desc: "具备掌控品牌全生命周期的卓越能力——从战略制定到创意执行。结合丰富的视觉设计资源，实现品牌跨职能的高效领导。" },
-  { title: "多元风格驾驭力", desc: "创意思维活跃，审美前瞻，能够驾驭并执行多元视觉风格。擅长利用 AI 工具重构设计工作流，倡导“人机协同”，推动效率驱动转向创意增强。" },
+  { title: "多元风格驾驭力", desc: "创意思维活跃，审美前瞻，能够驾驭并执行多元视觉风格. 擅长利用 AI 工具重构设计工作流，倡导“人机协同”，推动效率驱动转向创意增强。" },
   { title: "团队领导与协作", desc: "在领导和对齐设计团队方面经验丰富，擅长通过高效的跨部门协作推动项目落地，实现卓越且一致的品牌表达。" }
 ];
 
