@@ -193,7 +193,6 @@ class Media {
         void main() {
           vUv = uv;
           vec3 p = position;
-          // 添加水波纹动态效果
           p.z = (sin(p.x * 4.0 + uTime) * 1.2 + cos(p.y * 2.0 + uTime) * 1.2) * (0.05 + abs(uSpeed) * 0.4);
           gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
         }
@@ -310,15 +309,15 @@ class Media {
     if (screen) this.screen = screen;
     if (viewport) {
       this.viewport = viewport;
-      if (this.plane.program.uniforms.uViewportSizes) {
-        this.plane.program.uniforms.uViewportSizes.value = [this.viewport.width, this.viewport.height];
-      }
     }
+    
+    if (!this.screen || !this.viewport) return;
+    
     this.scale = this.screen.height / 1500;
     
-    // 关键优化：针对横版图片调整 Plane 比例 (3:2)
+    // 强制更新 Plane 比例
     const baseHeight = 700;
-    const baseWidth = baseHeight * 1.5; // 1050
+    const baseWidth = baseHeight * 1.5;
     
     this.plane.scale.y = (this.viewport.height * (baseHeight * this.scale)) / this.screen.height;
     this.plane.scale.x = (this.viewport.width * (baseWidth * this.scale)) / this.screen.width;
@@ -379,6 +378,11 @@ class CircularApp {
     this.createMedias(items, bend, textColor, borderRadius, font);
     this.update();
     this.addEventListeners();
+    
+    // 初次创建后，再次强制触发布局校准，防止 CSS 未就绪
+    setTimeout(() => {
+      this.onResize();
+    }, 100);
   }
   createRenderer() {
     this.renderer = new Renderer({
@@ -406,7 +410,6 @@ class CircularApp {
   }
   createMedias(items: any[], bend = 1, textColor: string, borderRadius: number, font: string) {
     const galleryItems = items && items.length ? items : [];
-    // 循环衔接处理
     this.mediasImages = galleryItems.concat(galleryItems);
     this.medias = this.mediasImages.map((data, index) => {
       return new Media({
@@ -460,6 +463,10 @@ class CircularApp {
       width: this.container.clientWidth,
       height: this.container.clientHeight
     };
+    
+    // 兜底逻辑：如果容器宽度高度为0（可能是在隐藏状态下初始化），先不设置 renderer 大小
+    if (this.screen.width === 0 || this.screen.height === 0) return;
+
     this.renderer.setSize(this.screen.width, this.screen.height);
     this.camera.perspective({
       aspect: this.screen.width / this.screen.height
@@ -535,13 +542,30 @@ const CircularGallery: React.FC<CircularGalleryProps> = ({
   scrollEase = 0.05
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const appRef = useRef<CircularApp | null>(null);
+
   useEffect(() => {
     if (!containerRef.current) return;
+    
+    // 初始化应用
     const app = new CircularApp(containerRef.current, { items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase });
+    appRef.current = app;
+
+    // 关键修复：监听容器实际尺寸变化，解决入场动画导致的初始尺寸不正确
+    const resizeObserver = new ResizeObserver(() => {
+      if (appRef.current) {
+        appRef.current.onResize();
+      }
+    });
+    
+    resizeObserver.observe(containerRef.current);
+
     return () => {
+      resizeObserver.disconnect();
       app.destroy();
     };
   }, [items, bend, textColor, borderRadius, font, scrollSpeed, scrollEase]);
+
   return <div className="circular-gallery" ref={containerRef} />;
 };
 

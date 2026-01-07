@@ -1,4 +1,3 @@
-
 import React, { useRef, MouseEvent, useState, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { Play, Plus, ImageOff, MonitorPlay } from 'lucide-react';
@@ -10,11 +9,17 @@ interface ProjectCardProps {
   className?: string;
 }
 
+const getPlaceholderUrl = (url: string) => {
+  if (url.includes('unsplash.com')) return url.split('?')[0] + `?q=20&fm=webp&w=50&blur=10&fit=crop`;
+  return null;
+};
+
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenVideo, className = "" }) => {
   const isVideo = !!project.videoUrl && project.videoUrl !== 'YOUR_VIDEO_URL_HERE.mp4';
   const ref = useRef<HTMLDivElement>(null);
   const [imgError, setImgError] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
+  const placeholderSrc = getPlaceholderUrl(project.imageUrl);
 
   const x = useMotionValue(0);
   const y = useMotionValue(0);
@@ -59,10 +64,22 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenVideo, classNa
 
       {/* Image Container */}
       <div className="absolute inset-0 z-0 overflow-hidden bg-zinc-900">
-        <div className={`absolute inset-0 shimmer transition-opacity duration-1000 ${isLoaded ? 'opacity-0' : 'opacity-20'}`} />
+        {/* Placeholder / Blur Effect */}
+        <div className={`absolute inset-0 z-0 transition-opacity duration-1000 ${isLoaded ? 'opacity-0' : 'opacity-40'}`}>
+          {placeholderSrc ? (
+            <img 
+              src={placeholderSrc} 
+              className="w-full h-full object-cover blur-md scale-110" 
+              alt=""
+              aria-hidden="true"
+            />
+          ) : (
+            <div className="w-full h-full shimmer" />
+          )}
+        </div>
         
         {imgError ? (
-          <div className="absolute inset-0 flex items-center justify-center bg-zinc-900">
+          <div className="absolute inset-0 flex items-center justify-center bg-zinc-900 z-10">
             <ImageOff className="w-8 h-8 text-zinc-800" />
           </div>
         ) : (
@@ -73,14 +90,16 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, onOpenVideo, classNa
             onLoad={() => setIsLoaded(true)}
             loading="lazy"
             decoding="async"
-            className={`w-full h-full object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 ${isLoaded ? 'opacity-80 group-hover:opacity-100 scale-100 group-hover:scale-105' : 'opacity-0 scale-110'}`}
+            // @ts-ignore
+            fetchPriority="auto"
+            className={`w-full h-full object-cover transition-all duration-1000 grayscale group-hover:grayscale-0 relative z-10 ${isLoaded ? 'opacity-80 group-hover:opacity-100 scale-100 group-hover:scale-105' : 'opacity-0 scale-110'}`}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent z-20" />
       </div>
 
       {/* Smaller text and tighter padding (p-8 instead of p-10) */}
-      <div className="absolute inset-0 z-20 p-8 flex flex-col justify-between" style={{ transform: "translateZ(60px)" }}>
+      <div className="absolute inset-0 z-30 p-8 flex flex-col justify-between" style={{ transform: "translateZ(60px)" }}>
         <div className="flex justify-between items-start">
            <div className="flex flex-col">
               <span className="text-[9px] font-bold text-primary uppercase tracking-[0.4em] mb-2">{project.category.replace('_', ' ')}</span>

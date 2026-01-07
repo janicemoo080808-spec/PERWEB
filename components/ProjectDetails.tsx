@@ -1,4 +1,3 @@
-
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 import { X, Smartphone, ShieldCheck, ImageOff, Sparkles, Layers, Globe, FileText, Hexagon, Twitter, BookOpen, Zap, Award, Camera, Utensils, Heart, TrendingUp, Target, Cpu, Rocket, BarChart3, Users, Fingerprint, Map, PlayCircle, ChevronLeft } from 'lucide-react';
@@ -9,9 +8,15 @@ const ICON_MAP: Record<string, any> = {
   Hexagon, BookOpen, Globe, Smartphone, FileText, Sparkles, Twitter, ShieldCheck, Layers, Zap, Award, Camera, Utensils, Heart, TrendingUp, Target, Cpu, Rocket, BarChart3, Users, Fingerprint, Map
 };
 
-const optimizeImageUrl = (url: string, width: number = 1920) => {
+// 性能优化：通过 CDN 参数限制加载图片的物理尺寸，从而显著提升“网速”感知
+const optimizeImageUrl = (url: string, width: number = 1200) => {
   if (url.includes('unsplash.com')) return url.split('?')[0] + `?q=80&fm=webp&w=${width}&fit=crop`;
   return url;
+};
+
+const getPlaceholderUrl = (url: string) => {
+  if (url.includes('unsplash.com')) return url.split('?')[0] + `?q=20&fm=webp&w=50&blur=10&fit=crop`;
+  return null;
 };
 
 const VideoWithFallback: React.FC<{ 
@@ -53,19 +58,28 @@ const VideoWithFallback: React.FC<{
 };
 
 const ImageWithFallback: React.FC<{ 
-  src: string; alt: string; className?: string; priority?: boolean; mode?: "cover" | "contain" | "natural";
-}> = ({ src, alt, className, priority = false, mode = "cover" }) => {
+  src: string; alt: string; className?: string; priority?: boolean; mode?: "cover" | "contain" | "natural"; isSmall?: boolean;
+}> = ({ src, alt, className, priority = false, mode = "cover", isSmall = false }) => {
   const [loaded, setLoaded] = useState(false);
   const [error, setError] = useState(false);
-  const optimizedSrc = optimizeImageUrl(src);
+  // 针对 Web3 或 Automotive 类目：请求更小物理尺寸资源，配合容器尺寸缩小，实现极致网速响应
+  const optimizedSrc = optimizeImageUrl(src, isSmall ? 800 : 1600);
+  const placeholderSrc = getPlaceholderUrl(src);
 
   return (
     <div className={`relative overflow-hidden bg-zinc-950 ${className}`}>
-      <div 
-        className={`absolute inset-0 transition-opacity duration-1000 bg-zinc-900 ${loaded ? 'opacity-0' : 'opacity-100'} shimmer`}
-      />
+      <div className={`absolute inset-0 transition-opacity duration-1000 ${loaded ? 'opacity-0' : 'opacity-100'} z-0`}>
+        {placeholderSrc ? (
+          <img src={placeholderSrc} className="w-full h-full object-cover blur-md scale-110" alt="" aria-hidden="true" />
+        ) : (
+          <div className="w-full h-full bg-[#0B0B0D] shimmer flex items-center justify-center">
+             <div className="w-1/2 h-1/2 bg-primary/5 rounded-full blur-3xl" />
+          </div>
+        )}
+      </div>
+
       {error ? (
-        <div className="absolute inset-0 flex items-center justify-center text-zinc-800 p-12 text-center">
+        <div className="absolute inset-0 flex items-center justify-center text-zinc-800 p-12 text-center z-10">
           <ImageOff className="w-8 h-8 mb-4 opacity-20" />
           <p className="text-[10px] font-bold uppercase tracking-[0.2em]">Asset Failed</p>
         </div>
@@ -76,8 +90,10 @@ const ImageWithFallback: React.FC<{
           onLoad={() => setLoaded(true)}
           onError={() => setError(true)}
           loading={priority ? "eager" : "lazy"}
+          // @ts-ignore
+          fetchPriority={priority ? "high" : "auto"}
           decoding="async"
-          className={`w-full transition-all duration-[800ms] 
+          className={`w-full relative z-10 transition-all duration-[800ms] 
             ${mode === 'natural' ? 'h-auto block' : 'h-full'}
             ${mode === 'cover' ? 'object-cover' : mode === 'contain' ? 'object-contain' : ''} 
             ${loaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`}
@@ -119,7 +135,7 @@ const LuxuryImage: React.FC<{ src: string; index: number }> = ({ src, index }) =
           <ImageWithFallback 
             src={src} 
             alt={`Editorial-${index}`} 
-            mode="natural" 
+            mode="natural"
             className="w-full transition-transform duration-[4s] group-hover:scale-105 ease-out" 
           />
         )}
@@ -142,14 +158,31 @@ const SectionHeader: React.FC<{ section: any; Icon: any }> = ({ section, Icon })
   </div>
 );
 
-const LuxuryCard: React.FC<{ src: string; index: number; total: number }> = ({ src, index, total }) => {
+const LuxuryCard: React.FC<{ src: string; index: number; total: number; isNatural?: boolean; isSmallProject?: boolean }> = ({ src, index, total, isNatural = false, isSmallProject = false }) => {
+  const isVideo = src.includes('github.com/user-attachments/assets') || src.endsWith('.mp4');
+  
+  // 针对 Web3 或 Automotive 优化：显著减小卡片占用宽度（由 80vw 降至 55vw-65vw），提升网速加载感
+  const widthClass = isSmallProject 
+    ? 'w-[75vw] md:w-[60vw] lg:w-[50vw]' 
+    : 'w-[80vw] md:w-[60vw] lg:w-[50vw]';
+
   return (
-    <motion.div className="flex-shrink-0 w-[92vw] md:w-[85vw] lg:w-[75vw] aspect-video snap-center relative group perspective-1000">
+    <motion.div className={`flex-shrink-0 snap-center relative group perspective-1000 ${isNatural ? 'h-[45vh] md:h-[60vh] w-auto' : `${widthClass} aspect-video`}`}>
       <div className="absolute -top-12 -left-12 text-[12vw] font-display font-black text-white/[0.02] select-none pointer-events-none z-0">
         {(index + 1).toString().padStart(2, '0')}
       </div>
-      <div className="w-full h-full rounded-3xl overflow-hidden border border-white/10 bg-zinc-950 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9)] relative z-10 backdrop-blur-sm">
-        <ImageWithFallback src={src} alt={`Slide-${index}`} mode="contain" className="w-full h-full" />
+      <div className="h-full w-full rounded-3xl overflow-hidden border border-white/10 bg-zinc-950 shadow-[0_40px_100px_-30px_rgba(0,0,0,0.9)] relative z-10 backdrop-blur-sm">
+        {isVideo ? (
+          <VideoWithFallback src={src} className="w-full h-full" />
+        ) : (
+          <ImageWithFallback 
+            src={src} 
+            alt={`Slide-${index}`} 
+            mode={isNatural ? "natural" : "cover"} 
+            className="h-full w-full"
+            isSmall={isSmallProject}
+          />
+        )}
       </div>
     </motion.div>
   );
@@ -162,6 +195,7 @@ interface ProjectDetailsProps {
 
 const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => {
   const isAIProject = project.category === 'AI_CREATIVE';
+  const isSmallProject = project.category === 'BRAND_ECOSYSTEM' || project.category === 'AUTOMOTIVE_DESIGN';
   const scrollRef = useRef<HTMLDivElement>(null);
   
   const { scrollY } = useScroll({ container: scrollRef });
@@ -241,11 +275,14 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
              const hasIframe = !!section.iframeUrl;
              const hasPoints = section.points && section.points.length > 0;
              const isLuxuryCampaign = section.label === 'BRAND CAMPAIGN';
+             const isForce169 = section.label === 'OFFICIAL WEBSITE' || section.label === 'MEDIA BACKING' || section.title.includes('TANGIBLES') || section.label === 'SOCIAL VOICE';
              
+             const isCircular = section.isCircularGallery;
+
              return (
                <motion.div 
                  key={idx} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-100px" }}
-                 className="flex flex-col w-full"
+                 className={`flex flex-col w-full ${isCircular ? 'mb-[-100px] md:mb-[-150px]' : ''}`}
                >
                   <div className="px-8 md:px-24 max-w-7xl mx-auto w-full">
                     <SectionHeader section={section} Icon={Icon} />
@@ -312,17 +349,19 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                   )}
 
                   {hasVideo && (
-                    <div className="relative w-full aspect-video md:aspect-[21/9] rounded-3xl overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl mt-8 mx-auto max-w-[92vw]">
+                    <div className="relative w-full aspect-video rounded-3xl overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl mt-8 mx-auto max-w-[92vw]">
                       <VideoWithFallback src={section.videoUrl!} poster={project.imageUrl} className="w-full h-full" />
                     </div>
                   )}
 
                   {section.isCircularGallery ? (
-                    <div className="w-full h-[500px] md:h-[700px] mt-12 mb-20 relative bg-zinc-950/20">
+                    <div className="w-full h-[450px] md:h-[600px] mt-4 mb-0 relative bg-zinc-950/20">
                       <CircularGallery 
-                        items={section.images.map(img => ({ image: img, text: 'Token 2049' }))}
+                        items={section.images.map(img => ({ image: img, text: section.title.split(/[:：]/)[0] }))}
                         bend={2}
                         borderRadius={0.03}
+                        scrollSpeed={0.8}
+                        scrollEase={0.03}
                       />
                     </div>
                   ) : section.images && section.images.length > 0 && (
@@ -333,16 +372,22 @@ const ProjectDetails: React.FC<ProjectDetailsProps> = ({ project, onClose }) => 
                          ))}
                       </div>
                     ) : section.isSlider ? (
-                      <div className="flex items-center overflow-x-auto gap-8 md:gap-12 px-6 md:px-12 pb-16 pt-8 no-scrollbar snap-x w-full">
+                      <div className="flex items-center overflow-x-auto gap-8 md:gap-12 px-6 md:gap-12 pb-16 pt-8 no-scrollbar snap-x w-full">
                         {section.images.map((img: string, i: number) => (
-                           <LuxuryCard key={i} src={img} index={i} total={section.images.length} />
+                           <LuxuryCard key={i} src={img} index={i} total={section.images.length} isNatural={false} isSmallProject={isSmallProject} />
                         ))}
                       </div>
                     ) : (
-                      <div className="grid grid-cols-1 gap-12 mt-12 px-6 md:px-12 max-w-[1600px] mx-auto w-full">
+                      <div className={`grid grid-cols-1 gap-12 mt-12 px-6 md:px-12 ${isSmallProject ? 'max-w-[1000px]' : 'max-w-[1600px]'} mx-auto w-full`}>
                         {section.images.map((img: string, i: number) => (
-                          <div key={i} className="rounded-3xl overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl w-full">
-                             <ImageWithFallback src={img} alt={`${section.title}-${i}`} mode="natural" className="w-full" />
+                          <div key={i} className={`rounded-3xl overflow-hidden border border-white/5 bg-zinc-950 shadow-2xl w-full ${isForce169 ? 'aspect-video' : ''}`}>
+                             <ImageWithFallback 
+                               src={img} 
+                               alt={`${section.title}-${i}`} 
+                               mode={isForce169 ? "cover" : "natural"} 
+                               className="w-full h-full" 
+                               isSmall={isSmallProject}
+                             />
                           </div>
                         ))}
                       </div>
