@@ -254,8 +254,8 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Hero Section - Refined Alignment and Hierarchy */}
-      <section className="min-h-screen flex flex-col justify-center px-6 md:px-24 relative pt-24 overflow-hidden bg-background">
+      {/* Hero Section - Redesigned for pure black (#000000) and refined text hierarchy */}
+      <section className="min-h-screen flex flex-col justify-center px-6 md:px-24 relative pt-24 overflow-hidden bg-[#000000]">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <LightRays 
             raysOrigin="top-center"
@@ -299,23 +299,23 @@ const App: React.FC = () => {
               </h1>
             </motion.div>
             
-            {/* Descriptive Vision: Philosophy Line & Refined Sniper Statement */}
+            {/* Descriptive Vision: Refined Hierarchy */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.6 }}
               className="max-w-5xl space-y-8 pl-1"
             >
-               {/* Philosophy Line: Subtler and Clean (English Only) */}
+               {/* Philosophy Line: Subtler and Smaller (English Only) */}
                <motion.p 
-                 className="text-lg md:text-2xl font-display font-bold text-white/70 tracking-tight leading-[1.1] uppercase border-l-[2px] border-primary/40 pl-6"
+                 className="text-sm md:text-lg font-display font-bold text-white/60 tracking-tight leading-[1.1] uppercase border-l-[2px] border-primary/40 pl-6"
                >
                  {philosophyLine}
                </motion.p>
                
-               {/* Sniper Statement: Slightly enlarged for presence while maintaining elegance */}
+               {/* Sniper Statement: Slightly Enlarged for more presence while maintaining luxury feel */}
                <motion.p 
-                 className="text-sm md:text-lg text-zinc-500 font-light max-w-2xl leading-relaxed tracking-wide opacity-80"
+                 className="text-base md:text-xl text-zinc-500 font-light max-w-2xl leading-relaxed tracking-wide opacity-80"
                >
                  {sniperStatement}
                </motion.p>
@@ -323,7 +323,7 @@ const App: React.FC = () => {
           </div>
         </motion.div>
 
-        {/* Scroll Indicator - Centered for better flow */}
+        {/* Scroll Indicator - Centered horizontally */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -340,7 +340,7 @@ const App: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Strategic Expertise Section */}
+      {/* Strategic Expertise Section - Restores to default background */}
       <section id="expertise" className="px-6 md:px-20 py-40 bg-[#08080A]">
         <div className="max-w-7xl mx-auto">
           <motion.div 

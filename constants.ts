@@ -22,7 +22,7 @@ export const STRATEGIC_EXPERTISE_CN = [
 
 export const STRATEGIC_EXPERTISE_EN = [
   { title: "Cross-Industry Visual Strategy", desc: "Over 9 years of experience across Crypto, Luxury, Blockchain, F&B, Consumer Goods, Healthcare, and E-commerce agencies.", label: "EXPERIENCE" },
-  { title: "End-to-End Brand Management", desc: "From brand strategy and creative i-deation to execution, with a strong capability in visual resource integration.", label: "BRAND MANAGEMENT" },
+  { title: "End-to-End Brand Management", desc: "From brand strategy and creative ideation to execution, with a strong capability in visual resource integration.", label: "BRAND MANAGEMENT" },
   { title: "AI-Driven Creative Ecosystems", desc: "Bridging the gap between human intuition and machine precision. Harnessing AI as a strategic lever to amplify brand sovereignty in a post-digital world.", label: "VERSATILITY" },
   { title: "Human-AI Collaboration", desc: "Leading the paradigm shift from traditional design cycles to AI-augmented creative sovereignty and global asset reconstruction.", label: "LEADERSHIP" }
 ];
