@@ -197,7 +197,7 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-background text-white selection:bg-[#86570B]/20">
       <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-primary z-[1100] origin-left" style={{ scaleX: progressScaleX }} />
 
-      {/* FIXED NAV */}
+      {/* FIXED NAV - Slimmer height (h-[54px]) */}
       <AnimatePresence>
         {!selectedProject && (
           <motion.div 
@@ -207,7 +207,7 @@ const App: React.FC = () => {
             transition={{ duration: 0.6, ease: "circOut" }}
             className="fixed top-6 left-0 right-0 z-[1000] flex justify-center px-4 pointer-events-none"
           >
-            <nav className="relative w-full max-w-6xl h-[68px] glass rounded-full flex items-center justify-between px-8 md:px-10 border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] backdrop-blur-3xl pointer-events-auto">
+            <nav className="relative w-full max-w-6xl h-[54px] glass rounded-full flex items-center justify-between px-8 md:px-10 border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] backdrop-blur-3xl pointer-events-auto">
               <div className="flex-1 flex justify-start">
                 <motion.span 
                   onClick={(e) => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -244,7 +244,7 @@ const App: React.FC = () => {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   href={`mailto:${CONTACT_INFO.email}`} 
-                  className="px-5 md:px-6 py-2.5 bg-primary text-white text-[10px] font-bold tracking-widest rounded-full hover:brightness-110 transition-all uppercase shadow-lg shadow-[#86570B]/20 whitespace-nowrap"
+                  className="px-5 md:px-6 py-2 bg-primary text-white text-[10px] font-bold tracking-widest rounded-full hover:brightness-110 transition-all uppercase shadow-lg shadow-[#86570B]/20 whitespace-nowrap"
                 >
                   Let's Talk
                 </motion.a>
@@ -254,7 +254,7 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Hero Section - Redesigned for pure black (#000000) and refined text hierarchy */}
+      {/* Hero Section - Background set to pure black (#000000) */}
       <section className="min-h-screen flex flex-col justify-center px-6 md:px-24 relative pt-24 overflow-hidden bg-[#000000]">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <LightRays 
@@ -275,7 +275,7 @@ const App: React.FC = () => {
           className="max-w-7xl relative z-10 w-full mx-auto"
         >
           <div className="flex flex-col items-start text-left">
-            {/* Professional Label with premium divider */}
+            {/* Professional Label */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -288,59 +288,41 @@ const App: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Main Name: High-impact display */}
+            {/* Main Name */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.4, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h1 className="text-[12vw] md:text-[10vw] font-display font-bold leading-[0.8] tracking-tighter text-white uppercase mb-20 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+              <h1 className="text-[12vw] md:text-[10vw] font-display font-bold leading-[0.8] tracking-tighter text-white uppercase mb-16 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                 JANICE MO
               </h1>
             </motion.div>
             
-            {/* Descriptive Vision: Refined Hierarchy */}
+            {/* Subtitle Block: Identical font size and narrowed spacing */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.6 }}
-              className="max-w-5xl space-y-8 pl-1"
+              className="max-w-5xl pl-1 space-y-0.5" 
             >
-               {/* Philosophy Line: Subtler and Smaller (English Only) */}
                <motion.p 
-                 className="text-sm md:text-lg font-display font-bold text-white/60 tracking-tight leading-[1.1] uppercase border-l-[2px] border-primary/40 pl-6"
+                 className="text-lg md:text-xl font-display font-bold text-white/70 tracking-tight leading-[1.1] uppercase border-l-[2px] border-primary/40 pl-6"
                >
                  {philosophyLine}
                </motion.p>
                
-               {/* Sniper Statement: Slightly Enlarged for more presence while maintaining luxury feel */}
                <motion.p 
-                 className="text-base md:text-xl text-zinc-500 font-light max-w-2xl leading-relaxed tracking-wide opacity-80"
+                 className="text-lg md:text-xl text-white/70 font-display font-bold max-w-4xl leading-[1.1] tracking-tight pl-6 uppercase"
                >
                  {sniperStatement}
                </motion.p>
             </motion.div>
           </div>
         </motion.div>
-
-        {/* Scroll Indicator - Centered horizontally */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 left-0 right-0 flex flex-col items-center gap-4 text-zinc-800"
-        >
-          <span className="text-[8px] uppercase tracking-[0.5em] font-bold">Explore</span>
-          <motion.div 
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          >
-            <ArrowDown className="w-4 h-4 opacity-40" />
-          </motion.div>
-        </motion.div>
       </section>
 
-      {/* Strategic Expertise Section - Restores to default background */}
+      {/* Strategic Expertise Section */}
       <section id="expertise" className="px-6 md:px-20 py-40 bg-[#08080A]">
         <div className="max-w-7xl mx-auto">
           <motion.div 
