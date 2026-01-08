@@ -9,6 +9,8 @@ import AIChat from './components/AIChat';
 import ResumeSection from './components/ResumeSection';
 import LightRays from './components/LightRays';
 import MagicBento from './components/MagicBento';
+import BlurText from './components/BlurText';
+import ShinyText from './components/ShinyText';
 import { X, Award as AwardIcon, Mail, Phone, ExternalLink, Trophy, Star, ChevronRight, ArrowDown, GraduationCap, FileCheck, ChevronLeft, Download } from 'lucide-react';
 
 const AwardRow: React.FC<{ award: AwardItem; index: number; language: Language }> = ({ award, index, language }) => {
@@ -301,23 +303,23 @@ const App: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Main Name */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1.4, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            >
-              <h1 className="text-[12vw] md:text-[10vw] font-display font-bold leading-[0.8] tracking-tighter text-white uppercase mb-16">
-                JANICE MO
-              </h1>
-            </motion.div>
+            {/* Main Name with BlurText effect */}
+            <div className="mb-16">
+              <BlurText
+                text="JANICE MO"
+                delay={150}
+                animateBy="letters"
+                direction="top"
+                className="text-[12vw] md:text-[10vw] font-display font-bold leading-[0.8] tracking-tighter text-white uppercase"
+              />
+            </div>
             
-            {/* Subtitle Block */}
+            {/* Subtitle Block - 文字效果代码已按要求移除 */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.6 }}
-              className="max-w-5xl pl-1 space-y-0.5" 
+              className="max-w-5xl pl-1 space-y-2" 
             >
                <motion.p 
                  className="text-lg md:text-xl font-display font-bold text-white tracking-tight leading-[1.1] uppercase border-l-[2px] border-primary pl-6"
