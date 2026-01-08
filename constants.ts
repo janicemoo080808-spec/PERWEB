@@ -1,18 +1,20 @@
 import { SiteContent, Project, ExperienceItem, SkillItem, EducationItem, CertificateItem } from './types';
 
+export const CV_URL = 'YOUR_CV_FILE_PATH.pdf'; // 您之后只需将此处替换为真实的 PDF 文件路径即可
+
 export const DESIGN_PHILOSOPHY_CN = {
   title: "设计哲学",
-  quote: "以美学为杠杆，撬动商业增长",
-  description: "我致力于打破传统设计的‘装饰性’局限，将其重构为核心商业战略资产。在 Web3 与汽车等高技术密度赛道，我强调‘人机协同’下的效率革命，通过构建具有高度秩序感与情绪引导力的视觉资产，帮助品牌在激烈的全球竞争中建立绝对的‘信任溢价’与叙事主权。"
+  quote: "真正的战略视觉，不该被行业壁垒设限。",
+  description: "拥有跨越加密、高奢、快消及科技等 9 年+ 多赛道实战经验，我拒绝做单纯的执行者，而是擅长捕捉不同商业形态下的核心共性。\n\n打破策略与设计的边界，我利用 AI 效能重构工作流，将抽象的商业策略无损翻译为具象的视觉资产。无论赛道如何切换，我的目的只有一个：帮品牌建立绝对的“信任溢价”，拿回市场的叙事主权。"
 };
 
 export const DESIGN_PHILOSOPHY_EN = {
   title: "Design Philosophy",
-  quote: "Leveraging Aesthetics to Drive Business Growth.",
-  description: "I aim to move beyond decorative design and reposition visual identity as a core strategic asset. In high-tech sectors like Web3 and Automotive, I focus on the 'Human-AI Collaboration' revolution, creating high-order visual assets that guide emotional response and establish 'Trust Premium' and narrative sovereignty in the global marketplace."
+  quote: "True strategic design should recognize no boundaries.",
+  description: "With 9+ years of expertise spanning Crypto, Luxury, FMCG, and Tech, I refuse to be a mere executor. Instead, I specialize in identifying the core commercial logic across diverse sectors.\n\nBridging the gap between Strategy and Design, I leverage AI to reconstruct workflows, flawlessly translating abstract business strategies into tangible visual assets. Regardless of the industry, my goal remains singular: to secure a definitive \"Trust Premium\" for the brand and reclaim its \"Narrative Sovereignty\" in the market."
 };
 
-// --- STRATEGIC EXPERTISE DATA (STRATEGIC MOAT) ---
+// --- STRATEGIC MOAT (CORE LETHALITY) DATA ---
 export const STRATEGIC_EXPERTISE_CN = [
   { 
     title: "跨域视觉战略", 
@@ -66,7 +68,7 @@ const SKILLS_COMMON: SkillItem[] = [
   { name: 'AI Creative Flow', level: 95 },
 ];
 
-// --- PROJECT DATA ---
+// --- PROJECT DATA (STRICT PRESERVATION) ---
 const RIVIAN_SECTIONS_CN = [{ title: 'Rivian 官网交互体验设计', label: 'DIGITAL EXPERIENCE', icon: 'Globe', description: '致力于定义高性能电动皮卡的新范式。本次合作聚焦于 Rivian 官网的视觉叙事与体验重构。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.175v2c7o3h.webp'] }];
 const RIVIAN_SECTIONS_EN = [{ title: 'Rivian Digital Experience & Configurator', label: 'DIGITAL EXPERIENCE', icon: 'Globe', description: 'Defining a new paradigm for high-performance electric trucks.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.175v2c7o3h.webp'] }];
 
@@ -76,7 +78,7 @@ const INTU_SECTIONS_CN = [
   { title: '三幕式传播战役规划', label: 'CAMPAIGN STRATEGY', icon: 'Rocket', description: '策略核心：锐角切入 × 跨界共振 × 场景渗透。', points: ['第一幕：启示录 (The Spark) | 主题：INSPIRED by FUN','第二幕：高光时刻 (The Ignition) | 主题：Ins to U','第三幕：城市漫游 (The Flow) | 主题：Ins to City'], images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.41yj8f2y6n.webp', 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.9gx1quihex.webp'] }
 ];
 const INTU_SECTIONS_EN = [
-  { title: 'INTU Strategic Architecture', label: 'STRATEGIC ARCHITECTURE', icon: 'Hexagon', description: 'Positioning INTU as a "Lifestyle Tech Brand".', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Slide-16_9---1.6wr7csl4f3.webp'] },
+  { title: 'INTU Strategic Architecture', label: 'STRATEGIC ARCHITECTURE', icon: 'Hexagon', description: 'Positioning INTU as a \"Lifestyle Tech Brand\".', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Slide-16_9---1.6wr7csl4f3.webp'] },
   { title: 'Visual Narrative & CMF System', label: 'VISUAL & CMF SYSTEM', icon: 'Layers', isSlider: true, description: 'Integrating brand identity and interior/exterior CMF design.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_08.7p42ui7p3b.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_09.58hufl0t6w.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_10.1hsoucbxzd.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/毛宇君个人设计作品集(高清版)_页面_11.eszktuu8e.webp'] }
 ];
 
@@ -120,7 +122,7 @@ export const PROJECTS_EN: Project[] = [
   { id: 'activity-visual-en', title: 'EVENT & SPACE', category: 'ACTIVITY_VISUALS', subCategory: 'CAMPAIGN', description: 'Redefining brand narrative sovereignty in global competition through futuristic visual language.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/54848677226_0c430fb790_c.58hunv4b5g.webp', tags: ['Event Visuals', 'Exhibition', 'Global'], sections: ACTIVITY_SECTIONS_EN as any }
 ];
 
-// --- EXPERIENCE (FULL TRANSCRIPTION) ---
+// --- EXPERIENCE (STRICT PRESERVATION) ---
 
 const EXPERIENCE_CN: ExperienceItem[] = [
   {
@@ -264,8 +266,8 @@ const EXPERIENCE_EN: ExperienceItem[] = [
     achievements: [
       'Group Recognition: Nominated as an outstanding employee in 2022, highlighting exceptional performance and contributions.',
       'Brand Building: Successfully established and executed the visual system for Huawang Group within two months prior to team formation, supporting the brand\'s launch event.',
-      'Industry Honors: Participated in the exclusive sponsorship of the CCTV "National Brand" story project, which won "2022 Advertiser of the Year" and "2022 Media-Enterprise Cooperation" awards at the 29th China International Advertising Festival.',
-      'Innovative Projects: The "Thousand Cities and Ten Thousand Enterprises" project was recognized as one of the top ten high-quality consumption innovation cases at the International High-Quality Consumption Expo.'
+      'Industry Honors: Participated in the exclusive sponsorship of the CCTV \"National Brand\" story project, which won \"2022 Advertiser of the Year\" and \"2022 Media-Enterprise Cooperation\" awards at the 29th China International Advertising Festival.',
+      'Innovative Projects: The \"Thousand Cities and Ten Thousand Enterprises\" project was recognized as one of the top ten high-quality consumption innovation cases at the International High-Quality Consumption Expo.'
     ]
   },
   {

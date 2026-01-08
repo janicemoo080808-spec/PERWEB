@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform, AnimatePresence } from 'framer-motion';
-import { CONTENT_EN, CONTENT_CN, STRATEGIC_EXPERTISE_EN, STRATEGIC_EXPERTISE_CN } from './constants';
+import { CONTENT_EN, CONTENT_CN, STRATEGIC_EXPERTISE_EN, STRATEGIC_EXPERTISE_CN, CV_URL } from './constants';
 import { CategoryType, Language, Project, AwardItem, EducationItem, CertificateItem } from './types';
 import ProjectCard from './components/ProjectCard';
 import ProjectDetails from './components/ProjectDetails';
@@ -9,7 +9,7 @@ import AIChat from './components/AIChat';
 import ResumeSection from './components/ResumeSection';
 import LightRays from './components/LightRays';
 import MagicBento from './components/MagicBento';
-import { X, Award as AwardIcon, Mail, Phone, ExternalLink, Trophy, Star, ChevronRight, ArrowDown, GraduationCap, FileCheck, ChevronLeft } from 'lucide-react';
+import { X, Award as AwardIcon, Mail, Phone, ExternalLink, Trophy, Star, ChevronRight, ArrowDown, GraduationCap, FileCheck, ChevronLeft, Download } from 'lucide-react';
 
 const AwardRow: React.FC<{ award: AwardItem; index: number; language: Language }> = ({ award, index, language }) => {
   return (
@@ -207,7 +207,7 @@ const App: React.FC = () => {
             transition={{ duration: 0.6, ease: "circOut" }}
             className="fixed top-6 left-0 right-0 z-[1000] flex justify-center px-4 pointer-events-none"
           >
-            <nav className="relative w-full max-w-6xl h-[54px] glass rounded-full flex items-center justify-between px-8 md:px-10 border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] backdrop-blur-3xl pointer-events-auto">
+            <nav className="relative w-full max-w-6xl h-[54px] glass rounded-full flex items-center justify-between px-8 md:px-10 border border-white/10 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.8)] backdrop-blur-3xl pointer-events-auto overflow-hidden">
               <div className="flex-1 flex justify-start">
                 <motion.span 
                   onClick={(e) => window.scrollTo({ top: 0, behavior: 'smooth' })}
@@ -218,8 +218,8 @@ const App: React.FC = () => {
                 </motion.span>
               </div>
 
-              <div className="hidden lg:flex items-center justify-center gap-10">
-                 <div className="flex gap-10 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500">
+              <div className="hidden lg:flex items-center justify-center gap-8">
+                 <div className="flex gap-8 text-[10px] uppercase tracking-[0.3em] font-bold text-zinc-500">
                    <motion.a href="#projects" onClick={(e) => handleNavClick(e, 'projects')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
                      {CONTENT.nav.portfolios}
                      <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
@@ -230,6 +230,17 @@ const App: React.FC = () => {
                    </motion.a>
                    <motion.a href="#connect" onClick={(e) => handleNavClick(e, 'connect')} whileHover={{ scale: 1.05, color: "#fff" }} className="hover:text-white transition-all relative group py-2">
                      {CONTENT.nav.connect}
+                     <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
+                   </motion.a>
+                   <motion.a 
+                    href={CV_URL} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05, color: "#fff" }} 
+                    className="flex items-center gap-2 hover:text-white transition-all relative group py-2 text-primary"
+                   >
+                     <Download className="w-3.5 h-3.5" />
+                     {language === 'CN' ? '下载 CV' : 'DOWNLOAD CV'}
                      <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-primary group-hover:w-full transition-all duration-300 origin-center" />
                    </motion.a>
                  </div>
