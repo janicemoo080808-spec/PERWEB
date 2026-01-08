@@ -3,15 +3,15 @@ import { SiteContent, Project, ExperienceItem, SkillItem, EducationItem, Certifi
 export const CV_URL = 'YOUR_CV_FILE_PATH.pdf'; // 您之后只需将此处替换为真实的 PDF 文件路径即可
 
 export const DESIGN_PHILOSOPHY_CN = {
-  title: "设计哲学",
-  quote: "真正的战略视觉，不该被行业壁垒设限。",
-  description: "拥有跨越加密、高奢、快消及科技等 9 年+ 多赛道实战经验，我拒绝做单纯的执行者，而是擅长捕捉不同商业形态下的核心共性。\n\n打破策略与设计的边界，我利用 AI 效能重构工作流，将抽象的商业策略无损翻译为具象的视觉资产。无论赛道如何切换，我的目的只有一个：帮品牌建立绝对的“信任溢价”，拿回市场的叙事主权。"
+  title: "", // 标题留空以便在 UI 中移除
+  quote: "真正的战略视觉，不该被行业壁垒设限",
+  description: "我拒绝做单纯的执行者，而是擅长捕捉不同商业形态下的核心共性。 打破策略与设计的边界，我利用 AI 效能重构工作流，将抽象的商业策略无损翻译为具象的视觉资产。\n\n无论赛道如何切换，我的目的只有一个：帮品牌建立绝对的“信任溢价”，拿回市场的叙事主权。"
 };
 
 export const DESIGN_PHILOSOPHY_EN = {
-  title: "Design Philosophy",
+  title: "", // 标题留空以便在 UI 中移除
   quote: "True strategic design should recognize no boundaries.",
-  description: "With 9+ years of expertise spanning Crypto, Luxury, FMCG, and Tech, I refuse to be a mere executor. Instead, I specialize in identifying the core commercial logic across diverse sectors.\n\nBridging the gap between Strategy and Design, I leverage AI to reconstruct workflows, flawlessly translating abstract business strategies into tangible visual assets. Regardless of the industry, my goal remains singular: to secure a definitive \"Trust Premium\" for the brand and reclaim its \"Narrative Sovereignty\" in the market."
+  description: "I refuse to be a mere executor. Instead, I specialize in identifying the core commercial logic across diverse sectors.\n\nBridging the gap between Strategy and Design, I leverage AI to reconstruct workflows, flawlessly translating abstract business strategies into tangible visual assets. Regardless of the industry, my goal remains singular: to secure a definitive \"Trust Premium\" for the brand and reclaim its \"Narrative Sovereignty\" in the market."
 };
 
 // --- STRATEGIC MOAT (CORE LETHALITY) DATA ---
@@ -23,7 +23,7 @@ export const STRATEGIC_EXPERTISE_CN = [
   },
   { 
     title: "全链路品牌操盘", 
-    desc: "从顶层战略推演到像素级落地，全案掌控。 拒绝割裂执行，具备极强的资源整合力。我是品牌资产的**“增值操盘手”**，确保品牌策略在每一个视觉触点都能精准兑现，实现商业价值最大化。", 
+    desc: "从顶层战略推演到像素级落地，全案掌控。 拒绝割裂执行，具备极强的资源整合力. 我是品牌资产的“增值操盘手”，确保品牌策略在每一个视觉触点都能精准兑现，实现商业价值最大化。", 
     label: "Full-Link Brand Command" 
   },
   { 
@@ -330,7 +330,7 @@ export const CONTENT_CN: SiteContent = {
   nav: { portfolios: "作品集", career: "职业路径", connect: "联系我" },
   hero: {
     title: "JANICE MO",
-    subtitle: "BEYOND VISUALS, INTO NARRATIVE.|一个以 AI 为准星，精准重构全球品牌美学资产与叙事逻辑的视觉狙击手",
+    subtitle: "BEYOND VISUALS, INTO NARRATIVE.|一个以 AI 为准星，精准重构全球品牌美学资产与叙事逻辑的狙击手",
     cta: "浏览作品集",
     available: ""
   },
@@ -354,7 +354,7 @@ export const CONTENT_CN: SiteContent = {
   certificates: CERTIFICATES_CN,
   skills: SKILLS_COMMON,
   projects: PROJECTS_CN,
-  aiContext: "毛宇君 (Janice Mo) 是一位以 AI 为准星的视觉狙击手。核心成就：从 0 到 1 打造 Crydit Web3 品牌并获多项国际设计大奖；主导众泰汽车新能源 CMF 设计；持有 LVMH 奢侈品品牌管理证书。",
+  aiContext: "Janice Mo 是一位以 AI 为准星的视觉狙击手。核心成就：从 0 到 1 打造 Crydit Web3 品牌并获多项国际设计大奖；主导众泰汽车新能源 CMF 设计；持有 LVMH 奢侈品品牌管理证书。",
   awards: [
     { name: "New York Product Design Award", level: "Gold", desc: "纽约产品设计奖" },
     { name: "London Design Award", level: "Silver", desc: "伦敦设计奖" },

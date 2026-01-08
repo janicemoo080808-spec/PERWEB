@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronDown, Sparkles, User, LogOut, Building2, Quote } from 'lucide-react';
@@ -30,20 +29,17 @@ const DesignPhilosophy: React.FC<{ isEn: boolean }> = ({ isEn }) => {
       <div className="absolute bottom-0 left-0 w-[30%] h-full bg-[#86570B]/10 blur-[100px] rounded-full pointer-events-none" />
       
       <div className="relative z-10 max-w-5xl mx-auto">
-        <div className="flex items-center gap-4 mb-10">
-          <div className="w-8 h-[1px] bg-primary" />
-          <span className="text-[10px] font-bold tracking-[0.5em] text-primary uppercase">{content.title}</span>
-        </div>
+        {/* 标题已移除 */}
         
-        <div className="flex flex-col md:flex-row gap-12 items-start">
+        <div className="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
           <div className="flex-1">
-            <h3 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight leading-[1.1] mb-10">
-              <Quote className="w-12 h-12 text-primary opacity-20 mb-6" />
+            <h3 className="text-xl md:text-3xl font-display font-bold text-white tracking-tight leading-[1.3] mb-6">
+              <Quote className="w-8 h-8 text-primary opacity-20 mb-4" />
               {content.quote}
             </h3>
           </div>
           <div className="flex-1 md:border-l md:border-white/10 md:pl-12">
-            <p className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed">
+            <p className="text-sm md:text-base text-zinc-400 font-light leading-loose whitespace-pre-line">
               {content.description}
             </p>
           </div>
@@ -153,7 +149,7 @@ const ExperienceCard: React.FC<{ item: any; index: number }> = ({ item, index })
 };
 
 const ResumeSection: React.FC<any> = ({ content, experience, skills }) => {
-  const isEn = content.experienceTitle.toLowerCase().includes('journey');
+  const isEn = content.experienceTitle.toLowerCase().includes('journey') || content.experienceTitle.toLowerCase().includes('experience');
 
   return (
     <div className="flex flex-col gap-12">
