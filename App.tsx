@@ -299,54 +299,43 @@ const App: React.FC = () => {
               </h1>
             </motion.div>
             
-            {/* Descriptive Vision: Philosophy Line & Weakened Sniper Statement */}
+            {/* Descriptive Vision: Philosophy Line & Refined Sniper Statement */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.2, delay: 0.6 }}
-              className="max-w-5xl space-y-10 pl-1"
+              className="max-w-5xl space-y-8 pl-1"
             >
-               {/* Philosophy Line: Strong and Bold */}
+               {/* Philosophy Line: Subtler and Clean (English Only) */}
                <motion.p 
-                 className="text-2xl md:text-5xl font-display font-bold text-white tracking-tight leading-[1.1]"
+                 className="text-lg md:text-2xl font-display font-bold text-white/70 tracking-tight leading-[1.1] uppercase border-l-[2px] border-primary/40 pl-6"
                >
                  {philosophyLine}
                </motion.p>
                
-               {/* Sniper Statement: Significantly Weakened as Requested */}
+               {/* Sniper Statement: Slightly enlarged for presence while maintaining elegance */}
                <motion.p 
-                 className="text-xs md:text-sm text-zinc-600 font-light max-w-xl leading-relaxed tracking-wide opacity-60"
+                 className="text-sm md:text-lg text-zinc-500 font-light max-w-2xl leading-relaxed tracking-wide opacity-80"
                >
                  {sniperStatement}
                </motion.p>
-
-               {/* Availability Indicator */}
-               <motion.div 
-                 initial={{ opacity: 0 }}
-                 animate={{ opacity: 1 }}
-                 transition={{ delay: 1, duration: 1.5 }}
-                 className="flex items-center gap-4 pt-6"
-               >
-                  <div className="w-1 h-1 rounded-full bg-primary/40 animate-pulse" />
-                  <span className="text-[9px] font-bold tracking-[0.4em] text-zinc-800 uppercase">{CONTENT.hero.available}</span>
-               </motion.div>
             </motion.div>
           </div>
         </motion.div>
 
-        {/* Scroll Indicator */}
+        {/* Scroll Indicator - Centered for better flow */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 right-12 flex flex-col items-center gap-4 text-zinc-800"
+          className="absolute bottom-12 left-0 right-0 flex flex-col items-center gap-4 text-zinc-800"
         >
-          <span className="text-[8px] uppercase tracking-[0.4em] font-bold" style={{ writingMode: 'vertical-rl' }}>Explore</span>
+          <span className="text-[8px] uppercase tracking-[0.5em] font-bold">Explore</span>
           <motion.div 
             animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
-            <ArrowDown className="w-4 h-4 opacity-50" />
+            <ArrowDown className="w-4 h-4 opacity-40" />
           </motion.div>
         </motion.div>
       </section>

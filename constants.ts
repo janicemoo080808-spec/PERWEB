@@ -22,7 +22,7 @@ export const STRATEGIC_EXPERTISE_CN = [
 
 export const STRATEGIC_EXPERTISE_EN = [
   { title: "Cross-Industry Visual Strategy", desc: "Over 9 years of experience across Crypto, Luxury, Blockchain, F&B, Consumer Goods, Healthcare, and E-commerce agencies.", label: "EXPERIENCE" },
-  { title: "End-to-End Brand Management", desc: "From brand strategy and creative ideation to execution, with a strong capability in visual resource integration.", label: "BRAND MANAGEMENT" },
+  { title: "End-to-End Brand Management", desc: "From brand strategy and creative i-deation to execution, with a strong capability in visual resource integration.", label: "BRAND MANAGEMENT" },
   { title: "AI-Driven Creative Ecosystems", desc: "Bridging the gap between human intuition and machine precision. Harnessing AI as a strategic lever to amplify brand sovereignty in a post-digital world.", label: "VERSATILITY" },
   { title: "Human-AI Collaboration", desc: "Leading the paradigm shift from traditional design cycles to AI-augmented creative sovereignty and global asset reconstruction.", label: "LEADERSHIP" }
 ];
@@ -63,11 +63,11 @@ const CRYDIT_SECTIONS_EN = [
 
 // 4. LUXURY (LVMH)
 const LUXURY_SECTIONS_CN = [
-  { title: '奢侈品美学编辑', label: 'EDITORIAL EXPERIENCE', icon: 'Camera', isSlider: true, description: '为 Dom Pérignon、Balmain 等品牌操盘期间，强调“呼吸感美学”。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-4.8ok694ajjv.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-3.7eh92ssk8m.webp'] },
+  { title: '奢侈品美学编辑', label: 'EDITORIAL EXPERIENCE', icon: 'Camera', isSlider: true, description: '为 Dom Pérignon、Balmain 等品牌操盘期间，强调“呼吸感美学”。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-4.8ok694自由.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-3.7eh92ssk8m.webp'] },
   { title: 'LOEWE：有机超 surreal', label: 'BRAND CAMPAIGN', icon: 'Sparkles', isGrid: true, description: '关于工艺与想象力的策略性探索。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326728.175v5pf78q.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326724.iclloro8u.webp'] }
 ];
 const LUXURY_SECTIONS_EN = [
-  { title: 'Luxury Aesthetic Editorial', label: 'EDITORIAL EXPERIENCE', icon: 'Camera', isSlider: true, description: 'Creative visual assets for luxury brand WeChat accounts.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-4.8ok694ajjv.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-3.7eh92ssk8m.webp'] }
+  { title: 'Luxury Aesthetic Editorial', label: 'EDITORIAL EXPERIENCE', icon: 'Camera', isSlider: true, description: 'Creative visual assets for luxury brand WeChat accounts.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-1.6f15o1r8b3.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2.9rjvif7snh.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-4.8ok694自由.webp','https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-3.7eh92ssk8m.webp'] }
 ];
 
 // 5. ACTIVITY
@@ -172,6 +172,8 @@ const EDUCATION_CN: EducationItem[] = [
   }
 ];
 
+const EXPERIENCE_EN_MAPPED: ExperienceItem[] = EXPERIENCE_EN;
+
 const EDUCATION_EN: EducationItem[] = [
   {
     school: 'Harbin University of Science and Technology',
@@ -194,6 +196,7 @@ export const CONTENT_CN: SiteContent = {
     title: "JANICE MO",
     subtitle: "BEYOND VISUALS, INTO NARRATIVE.|一个以 AI 为准星，精准重构全球品牌美学资产与叙事逻辑的视觉狙击手",
     cta: "浏览作品集",
+    available: ""
   },
   resume: {
     aboutTitle: "核心战略专长",
@@ -215,7 +218,7 @@ export const CONTENT_CN: SiteContent = {
   certificates: CERTIFICATES_CN,
   skills: SKILLS_COMMON,
   projects: PROJECTS_CN,
-  aiContext: "Janice Mo 从 0 到 1 打造 Crydit Web3 品牌并获多项国际设计大奖；主导众泰汽车新能源 CMF 设计；持有 LVMH 奢侈品品牌管理证书。",
+  aiContext: "毛宇君 (Janice Mo) 是一位以 AI 为准星的视觉狙击手。核心成就：从 0 到 1 打造 Crydit Web3 品牌并获多项国际设计大奖；主导众泰汽车新能源 CMF 设计；持有 LVMH 奢侈品品牌管理证书。",
   awards: [
     { name: "New York Product Design Award", level: "Silver", desc: "纽约产品设计奖" },
     { name: "London Design Award", level: "Gold", desc: "伦敦设计奖" },
@@ -231,7 +234,7 @@ export const CONTENT_EN: SiteContent = {
     title: "JANICE MO",
     subtitle: "BEYOND VISUALS, INTO NARRATIVE.|An Aesthetic Sniper leveraging AI precision to recalibrate brand narratives and reconstruct global visual assets with surgical accuracy.",
     cta: "Explore Portfolio",
-    available: "Global Strategic Partner"
+    available: ""
   },
   resume: {
     aboutTitle: "Strategic Expertise",
@@ -248,7 +251,7 @@ export const CONTENT_EN: SiteContent = {
     filters: { all: "All", activity: "EVENT & SPACE", brand_ecosystem: "WEB3 FINANCE", luxury: "LUXURY AESTHETICS", automotive: "SMART MOBILITY", fnb: "F&B Commercial", ai_drama: "AIGC VIDEO" }
   },
   footer: { rights: "© 2025 Janice Mo. All Rights Reserved." },
-  experience: EXPERIENCE_EN,
+  experience: EXPERIENCE_EN_MAPPED,
   education: EDUCATION_EN,
   certificates: CERTIFICATES_EN,
   skills: SKILLS_COMMON,
