@@ -197,7 +197,7 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-background text-white selection:bg-[#86570B]/20">
       <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-primary z-[1100] origin-left" style={{ scaleX: progressScaleX }} />
 
-      {/* FIXED NAV - Slimmer height (h-[54px]) */}
+      {/* FIXED NAV */}
       <AnimatePresence>
         {!selectedProject && (
           <motion.div 
@@ -254,9 +254,11 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Hero Section - Background set to pure black (#000000) */}
-      <section className="min-h-screen flex flex-col justify-center px-6 md:px-24 relative pt-24 overflow-hidden bg-[#000000]">
+      {/* Hero Section */}
+      <section className="min-h-screen flex flex-col justify-center px-6 md:px-24 relative pt-24 overflow-hidden bg-black">
+        {/* Decorative Light Elements */}
         <div className="absolute inset-0 z-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-dots opacity-20" />
           <LightRays 
             raysOrigin="top-center"
             raysColor="#EEA72E" 
@@ -283,7 +285,7 @@ const App: React.FC = () => {
               className="flex items-center gap-6 mb-10"
             >
               <div className="w-12 h-[1px] bg-primary" />
-              <p className="text-zinc-500 uppercase tracking-[0.6em] text-[10px] font-bold">
+              <p className="text-zinc-200 uppercase tracking-[0.6em] text-[10px] font-bold">
                  Creative Director / Visual Strategist
               </p>
             </motion.div>
@@ -294,12 +296,12 @@ const App: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1.4, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             >
-              <h1 className="text-[12vw] md:text-[10vw] font-display font-bold leading-[0.8] tracking-tighter text-white uppercase mb-16 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+              <h1 className="text-[12vw] md:text-[10vw] font-display font-bold leading-[0.8] tracking-tighter text-white uppercase mb-16">
                 JANICE MO
               </h1>
             </motion.div>
             
-            {/* Subtitle Block: Identical font size and narrowed spacing */}
+            {/* Subtitle Block */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -307,13 +309,13 @@ const App: React.FC = () => {
               className="max-w-5xl pl-1 space-y-0.5" 
             >
                <motion.p 
-                 className="text-lg md:text-xl font-display font-bold text-white/70 tracking-tight leading-[1.1] uppercase border-l-[2px] border-primary/40 pl-6"
+                 className="text-lg md:text-xl font-display font-bold text-white tracking-tight leading-[1.1] uppercase border-l-[2px] border-primary pl-6"
                >
                  {philosophyLine}
                </motion.p>
                
                <motion.p 
-                 className="text-lg md:text-xl text-white/70 font-display font-bold max-w-4xl leading-[1.1] tracking-tight pl-6 uppercase"
+                 className="text-lg md:text-xl text-white/90 font-display font-bold max-w-4xl leading-[1.1] tracking-tight pl-6 uppercase"
                >
                  {sniperStatement}
                </motion.p>
@@ -322,7 +324,7 @@ const App: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Strategic Expertise Section */}
+      {/* Strategic Moat Section */}
       <section id="expertise" className="px-6 md:px-20 py-40 bg-[#08080A]">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -338,7 +340,7 @@ const App: React.FC = () => {
                  transition={{ duration: 1, delay: 0.2 }}
                  className="h-[1px] bg-[#86570B]" 
                />
-               <span className="text-[10px] font-bold tracking-[0.5em] text-primary uppercase">Expertise</span>
+               <span className="text-[10px] font-bold tracking-[0.5em] text-primary uppercase">Strategy</span>
             </div>
             <h2 className="text-5xl md:text-9xl font-display font-bold tracking-tighter uppercase mb-12">
               {CONTENT.resume.aboutTitle}

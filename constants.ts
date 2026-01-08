@@ -12,49 +12,49 @@ export const DESIGN_PHILOSOPHY_EN = {
   description: "I aim to move beyond decorative design and reposition visual identity as a core strategic asset. In high-tech sectors like Web3 and Automotive, I focus on the 'Human-AI Collaboration' revolution, creating high-order visual assets that guide emotional response and establish 'Trust Premium' and narrative sovereignty in the global marketplace."
 };
 
-// --- STRATEGIC EXPERTISE (Updated from PDF Screenshots) ---
+// --- STRATEGIC EXPERTISE DATA (STRATEGIC MOAT) ---
 export const STRATEGIC_EXPERTISE_CN = [
   { 
-    title: "跨行业视觉战略经验", 
-    desc: "超过 9 年从业经验，涵盖加密市场、奢侈品、区块链、餐饮酒水、创新消费品、教育、医疗、跨境/国内电商、广告公司等多个行业。", 
-    label: "EXPERIENCE" 
+    title: "跨域视觉战略", 
+    desc: "9年+实战，视界无疆。 深耕涵盖 WEB3 市场、奢侈品、餐饮酒水、创新消费品、教育、医疗、跨境/国内电商、广告公司等多个行业赛道。擅长利用跨界思维打破行业同质化，将复杂的商业逻辑转化为极具穿透力的视觉语言，实现降维打击。", 
+    label: "Cross-Domain Visual Strategy" 
   },
   { 
-    title: "全方位品牌管理", 
-    desc: "从品牌策略、设计创意到方案策划及执行，全面掌控各环节并具备强大的视觉设计资源整合能力。", 
-    label: "BRAND MANAGEMENT" 
+    title: "全链路品牌操盘", 
+    desc: "从顶层战略推演到像素级落地，全案掌控。 拒绝割裂执行，具备极强的资源整合力。我是品牌资产的**“增值操盘手”**，确保品牌策略在每一个视觉触点都能精准兑现，实现商业价值最大化。", 
+    label: "Full-Link Brand Command" 
   },
   { 
-    title: "多元风格驾驭力", 
-    desc: "创意思维活跃，擅长多风格表达，利用 AI 工具对设计流程与角色重构，提倡“人机协同”，推动从“效率驱动”向“创意增强”转变。", 
-    label: "VERSATILITY" 
+    title: "AIGC 智能工作流架构 (🔥 核心杀手锏)", 
+    desc: "AI 时代的视觉先锋与破局者。 拒绝盲目堆砌工具，专注于用 AI 重构创意生产关系。建立“人机协同”的超级工作流，将创意验证周期压缩至极限，以指数级效率输出高品质方案，在技术变革中为品牌抢占绝对先机。", 
+    label: "AIGC Workflow Architecture" 
   },
   { 
-    title: "团队领导与协作", 
-    desc: "擅长领导与协调团队，推动项目落地，实现卓越的品牌表现。", 
-    label: "LEADERSHIP" 
+    title: "敏捷效能领导力", 
+    desc: "推动组织从“人力驱动”向“智力增强”进化。 打造适应 AI 变革的敏捷特种部队。不仅是管理者，更是技术布道者，擅长领导与协调团队在不确定的市场环境中，以最快速度锁定目标，拿结果说话。", 
+    label: "Agile Leadership & Efficiency" 
   }
 ];
 
 export const STRATEGIC_EXPERTISE_EN = [
   { 
-    title: "Cross-Industry Visual Strategy Expertise", 
-    desc: "Over 9 years of experience across diverse industries including crypto, luxury, blockchain, F&B, emerging consumer goods, education, healthcare, cross-border and domestic e-commerce, and advertising agencies.", 
-    label: "EXPERIENCE" 
+    title: "Cross-Domain Visual Strategy", 
+    desc: "Vision Without Borders: 9+ Years of Field Mastery. Deep expertise across diverse high-barrier sectors including Web3, Luxury, F&B, CPG, Education, Healthcare, Global E-commerce, and Advertising. I specialize in leveraging cross-industry insights to shatter market homogeneity, translating complex business logic into penetrating visual languages that deliver a strategic multidimensional impact.", 
+    label: "STRATEGY" 
   },
   { 
-    title: "Comprehensive Brand Management", 
-    desc: "Strong capability in managing the full brand lifecycle—from strategy and creative direction to execution—combined with extensive visual design resources and cross-functional leadership.", 
-    label: "BRAND MANAGEMENT" 
+    title: "Full-Link Brand Command", 
+    desc: "From Top-Tier Strategy to Pixel-Perfect Execution. I reject fragmented execution. With exceptional resource integration capabilities, I operate as a \"Brand Asset Growth Architect.\" I ensure brand strategy is precisely realized across every visual touchpoint, maximizing commercial value through holistic control and consistency.", 
+    label: "COMMAND" 
   },
   { 
-    title: "Versatile Aesthetic & Style Adaptability", 
-    desc: "Creative and forward-thinking, with the ability to execute across diverse visual styles. Skilled in leveraging AI tools to reshape design workflows and redefine the designer's role—advocating for human-AI collaboration and driving a shift from efficiency-driven output to creativity-enhanced processes.", 
-    label: "VERSATILITY" 
+    title: "AIGC Workflow Architecture", 
+    desc: "Visual Pioneer & Disruptor in the AI Era. I go beyond tool stacking to reconstruct the creative production ecosystem with AI. By building a \"Human-AI Collaborative\" super workflow, I compress creative validation cycles to the absolute limit. This delivers high-quality solutions with exponential efficiency, securing a definitive competitive edge for brands amidst technological shifts.", 
+    label: "AIGC" 
   },
   { 
-    title: "Team Leadership & Collaboration", 
-    desc: "Experienced in leading and aligning design teams, driving project delivery, and ensuring exceptional brand expression through effective cross-department collaboration.", 
+    title: "Agile Leadership & Efficiency", 
+    desc: "Evolving Organizations from \"Manpower-Driven\" to \"Intelligence-Enhanced.\" I build agile \"special forces\" teams adapted for the AI revolution. More than just a manager, I am a technical evangelist. I excel at leading and coordinating teams through market uncertainty, rapidly locking onto targets, and letting results speak for themselves.", 
     label: "LEADERSHIP" 
   }
 ];
@@ -66,7 +66,7 @@ const SKILLS_COMMON: SkillItem[] = [
   { name: 'AI Creative Flow', level: 95 },
 ];
 
-// --- PROJECT DATA (Strictly Preserving All Links) ---
+// --- PROJECT DATA ---
 const RIVIAN_SECTIONS_CN = [{ title: 'Rivian 官网交互体验设计', label: 'DIGITAL EXPERIENCE', icon: 'Globe', description: '致力于定义高性能电动皮卡的新范式。本次合作聚焦于 Rivian 官网的视觉叙事与体验重构。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.175v2c7o3h.webp'] }];
 const RIVIAN_SECTIONS_EN = [{ title: 'Rivian Digital Experience & Configurator', label: 'DIGITAL EXPERIENCE', icon: 'Globe', description: 'Defining a new paradigm for high-performance electric trucks.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.175v2c7o3h.webp'] }];
 
@@ -120,7 +120,7 @@ export const PROJECTS_EN: Project[] = [
   { id: 'activity-visual-en', title: 'EVENT & SPACE', category: 'ACTIVITY_VISUALS', subCategory: 'CAMPAIGN', description: 'Redefining brand narrative sovereignty in global competition through futuristic visual language.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/54848677226_0c430fb790_c.58hunv4b5g.webp', tags: ['Event Visuals', 'Exhibition', 'Global'], sections: ACTIVITY_SECTIONS_EN as any }
 ];
 
-// --- EXPERIENCE (FULL TRANSCRIPTION FROM PROVIDED IMAGES) ---
+// --- EXPERIENCE (FULL TRANSCRIPTION) ---
 
 const EXPERIENCE_CN: ExperienceItem[] = [
   {
@@ -333,7 +333,7 @@ export const CONTENT_CN: SiteContent = {
     available: ""
   },
   resume: {
-    aboutTitle: "核心战略专长",
+    aboutTitle: "STRATEGIC MOAT",
     aboutText: "", 
     stats: { exp: "从业年限", projects: "落地项目", awards: "国际大奖" },
     skillsTitle: "方法论与技能",
@@ -371,7 +371,7 @@ export const CONTENT_EN: SiteContent = {
     available: ""
   },
   resume: {
-    aboutTitle: "Strategic Expertise",
+    aboutTitle: "STRATEGIC MOAT",
     aboutText: "", 
     stats: { exp: "Professional Years", projects: "Global Projects", awards: "Design Awards" },
     skillsTitle: "Methodology",
