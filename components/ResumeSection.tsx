@@ -1,7 +1,8 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Sparkles, User, LogOut, Building2 } from 'lucide-react';
+import { ChevronDown, Sparkles, User, LogOut, Building2, Quote } from 'lucide-react';
+import { DESIGN_PHILOSOPHY_CN, DESIGN_PHILOSOPHY_EN } from '../constants';
 
 const BentoBox: React.FC<{ children?: React.ReactNode; className?: string }> = ({ children, className = "" }) => (
   <motion.div 
@@ -14,6 +15,43 @@ const BentoBox: React.FC<{ children?: React.ReactNode; className?: string }> = (
     {children}
   </motion.div>
 );
+
+const DesignPhilosophy: React.FC<{ isEn: boolean }> = ({ isEn }) => {
+  const content = isEn ? DESIGN_PHILOSOPHY_EN : DESIGN_PHILOSOPHY_CN;
+  
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="mb-20 p-12 md:p-16 rounded-[3rem] bg-zinc-950/50 border border-white/5 relative overflow-hidden group shadow-2xl"
+    >
+      <div className="absolute top-0 right-0 w-[50%] h-full bg-[#86570B]/5 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[30%] h-full bg-[#86570B]/10 blur-[100px] rounded-full pointer-events-none" />
+      
+      <div className="relative z-10 max-w-5xl mx-auto">
+        <div className="flex items-center gap-4 mb-10">
+          <div className="w-8 h-[1px] bg-primary" />
+          <span className="text-[10px] font-bold tracking-[0.5em] text-primary uppercase">{content.title}</span>
+        </div>
+        
+        <div className="flex flex-col md:flex-row gap-12 items-start">
+          <div className="flex-1">
+            <h3 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight leading-[1.1] mb-10">
+              <Quote className="w-12 h-12 text-primary opacity-20 mb-6" />
+              {content.quote}
+            </h3>
+          </div>
+          <div className="flex-1 md:border-l md:border-white/10 md:pl-12">
+            <p className="text-lg md:text-xl text-zinc-400 font-light leading-relaxed">
+              {content.description}
+            </p>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
 
 const ExperienceCard: React.FC<{ item: any; index: number }> = ({ item, index }) => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -49,21 +87,6 @@ const ExperienceCard: React.FC<{ item: any; index: number }> = ({ item, index })
              <p className="text-sm text-zinc-500 leading-relaxed font-light max-w-2xl">{item.companyIntro}</p>
           </div>
         )}
-
-        <div className="flex flex-wrap gap-6 mb-8">
-           {item.reportingTo && (
-             <div className="flex items-center gap-2 text-[10px] text-zinc-500 uppercase tracking-widest font-bold">
-               <User className="w-3 h-3 text-zinc-700" />
-               <span className="text-zinc-700">Reporting To:</span> {item.reportingTo}
-             </div>
-           )}
-           {item.reasonForLeaving && (
-             <div className="flex items-center gap-2 text-[10px] text-zinc-500 uppercase tracking-widest font-bold">
-               <LogOut className="w-3 h-3 text-zinc-700" />
-               <span className="text-zinc-700">Reason for Leaving:</span> {item.reasonForLeaving}
-             </div>
-           )}
-        </div>
       </div>
 
       {hasDetails && (
@@ -90,7 +113,7 @@ const ExperienceCard: React.FC<{ item: any; index: number }> = ({ item, index })
           >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
                <div className="space-y-6">
-                  <h4 className="text-[10px] font-bold text-zinc-700 tracking-[0.4em] uppercase">Responsibilities</h4>
+                  <h4 className="text-[10px] font-bold text-zinc-700 tracking-[0.4em] uppercase">Core Responsibilities</h4>
                   <ul className="space-y-4">
                     {item.responsibilities?.map((res: string, idx: number) => (
                       <motion.li 
@@ -130,61 +153,67 @@ const ExperienceCard: React.FC<{ item: any; index: number }> = ({ item, index })
 };
 
 const ResumeSection: React.FC<any> = ({ content, experience, skills }) => {
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-      <div className="lg:col-span-8">
-        <BentoBox className="space-y-16">
-          <motion.h3 
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            className="text-[10px] font-bold text-zinc-600 uppercase tracking-[0.5em] mb-12 flex items-center gap-4"
-          >
-            <motion.div
-              animate={{ rotate: [0, 90, 180, 270, 360] }}
-              transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-            >
-              <Sparkles className="w-4 h-4 text-primary" />
-            </motion.div>
-            {content.experienceTitle}
-          </motion.h3>
-          {experience.map((item: any, idx: number) => (
-            <ExperienceCard key={item.id} item={item} index={idx} />
-          ))}
-        </BentoBox>
-      </div>
+  const isEn = content.experienceTitle.toLowerCase().includes('journey');
 
-      <div className="lg:col-span-4">
-        <BentoBox className="h-full">
-          <h3 className="text-[10px] font-bold text-zinc-600 uppercase tracking-[0.5em] mb-16">{content.skillsTitle}</h3>
-          <div className="space-y-12">
-            {skills.map((skill: any, idx: number) => (
-              <div key={skill.name} className="group">
-                <div className="flex justify-between text-[10px] mb-5 font-bold tracking-widest uppercase">
-                  <span className="text-zinc-500 group-hover:text-white transition-colors">{skill.name}</span>
-                  <span className="text-zinc-700">{skill.level}%</span>
-                </div>
-                <div className="h-[2px] w-full bg-white/5 relative overflow-visible rounded-full">
-                  <motion.div 
-                    initial={{ width: 0 }} 
-                    whileInView={{ width: `${skill.level}%` }} 
-                    viewport={{ once: true }} 
-                    transition={{ duration: 1.5, ease: "circOut", delay: idx * 0.1 }}
-                    className="h-full bg-primary absolute top-0 left-0 rounded-full"
-                  >
-                     {skill.level >= 95 && (
-                       <motion.div 
-                         initial={{ scale: 0 }}
-                         animate={{ scale: [1, 1.5, 1] }}
-                         transition={{ duration: 2, repeat: Infinity }}
-                         className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_15px_#86570B]" 
-                       />
-                     )}
-                  </motion.div>
-                </div>
-              </div>
+  return (
+    <div className="flex flex-col gap-12">
+      <DesignPhilosophy isEn={isEn} />
+
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <div className="lg:col-span-8">
+          <BentoBox className="space-y-16">
+            <motion.h3 
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              className="text-[10px] font-bold text-zinc-600 uppercase tracking-[0.5em] mb-12 flex items-center gap-4"
+            >
+              <motion.div
+                animate={{ rotate: [0, 90, 180, 270, 360] }}
+                transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
+              >
+                <Sparkles className="w-4 h-4 text-primary" />
+              </motion.div>
+              {content.experienceTitle}
+            </motion.h3>
+            {experience.map((item: any, idx: number) => (
+              <ExperienceCard key={item.id} item={item} index={idx} />
             ))}
-          </div>
-        </BentoBox>
+          </BentoBox>
+        </div>
+
+        <div className="lg:col-span-4">
+          <BentoBox className="h-full">
+            <h3 className="text-[10px] font-bold text-zinc-600 uppercase tracking-[0.5em] mb-16">{content.skillsTitle}</h3>
+            <div className="space-y-12">
+              {skills.map((skill: any, idx: number) => (
+                <div key={skill.name} className="group">
+                  <div className="flex justify-between text-[10px] mb-5 font-bold tracking-widest uppercase">
+                    <span className="text-zinc-500 group-hover:text-white transition-colors">{skill.name}</span>
+                    <span className="text-zinc-700">{skill.level}%</span>
+                  </div>
+                  <div className="h-[2px] w-full bg-white/5 relative overflow-visible rounded-full">
+                    <motion.div 
+                      initial={{ width: 0 }} 
+                      whileInView={{ width: `${skill.level}%` }} 
+                      viewport={{ once: true }} 
+                      transition={{ duration: 1.5, ease: "circOut", delay: idx * 0.1 }}
+                      className="h-full bg-primary absolute top-0 left-0 rounded-full"
+                    >
+                       {skill.level >= 95 && (
+                         <motion.div 
+                           initial={{ scale: 0 }}
+                           animate={{ scale: [1, 1.5, 1] }}
+                           transition={{ duration: 2, repeat: Infinity }}
+                           className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_15px_#86570B]" 
+                         />
+                       )}
+                    </motion.div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </BentoBox>
+        </div>
       </div>
     </div>
   );

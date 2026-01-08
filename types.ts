@@ -31,7 +31,7 @@ export interface ProjectSection {
   isGrid?: boolean;
   isSlider?: boolean;
   isHeader?: boolean;   
-  isCircularGallery?: boolean; // New flag for interactive circular gallery
+  isCircularGallery?: boolean;
 }
 
 export interface Project {
@@ -51,12 +51,22 @@ export interface ExperienceItem {
   role: string;
   company: string;
   period: string;
-  description?: string;
   companyIntro?: string;
   reportingTo?: string;
   reasonForLeaving?: string;
   responsibilities?: string[];
   achievements?: string[];
+}
+
+export interface EducationItem {
+  school: string;
+  period: string;
+  degrees: string[];
+}
+
+export interface CertificateItem {
+  year: string;
+  name: string;
 }
 
 export interface SkillItem {
@@ -98,6 +108,8 @@ export interface SiteContent {
     };
     skillsTitle: string;
     experienceTitle: string;
+    eduTitle: string;
+    certTitle: string;
   };
   portfolio: {
     title: string;
@@ -116,6 +128,8 @@ export interface SiteContent {
     rights: string;
   };
   experience: ExperienceItem[];
+  education: EducationItem[];
+  certificates: CertificateItem[];
   skills: SkillItem[];
   projects: Project[];
   aiContext: string;

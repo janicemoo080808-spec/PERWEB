@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { CONTENT_EN, CONTENT_CN, STRATEGIC_EXPERTISE_EN, STRATEGIC_EXPERTISE_CN } from './constants';
-import { CategoryType, Language, Project, AwardItem } from './types';
+import { CategoryType, Language, Project, AwardItem, EducationItem, CertificateItem } from './types';
 import ProjectCard from './components/ProjectCard';
 import ProjectDetails from './components/ProjectDetails';
 import VideoModal from './components/VideoModal';
@@ -10,7 +10,7 @@ import AIChat from './components/AIChat';
 import ResumeSection from './components/ResumeSection';
 import LightRays from './components/LightRays';
 import MagicBento from './components/MagicBento';
-import { X, Award as AwardIcon, Mail, Phone, ExternalLink, Trophy, Star, ChevronRight, ArrowDown } from 'lucide-react';
+import { X, Award as AwardIcon, Mail, Phone, ExternalLink, Trophy, Star, ChevronRight, ArrowDown, GraduationCap, FileCheck } from 'lucide-react';
 
 const AwardRow: React.FC<{ award: AwardItem; index: number; language: Language }> = ({ award, index, language }) => {
   return (
@@ -94,13 +94,64 @@ const AwardsSection: React.FC<{ awards?: AwardItem[]; language: Language }> = ({
   );
 };
 
+const CredentialsSection: React.FC<{ edu: EducationItem[]; certs: CertificateItem[]; content: any; language: Language }> = ({ edu, certs, content, language }) => {
+  return (
+    <section id="credentials" className="px-6 md:px-20 py-40 bg-background border-t border-white/5">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20">
+          {/* Education */}
+          <div>
+            <div className="flex items-center gap-4 mb-12">
+              <GraduationCap className="w-6 h-6 text-primary" />
+              <h2 className="text-3xl font-display font-bold uppercase tracking-tight">{content.eduTitle}</h2>
+            </div>
+            <div className="space-y-12">
+              {edu.map((item, idx) => (
+                <div key={idx} className="relative pl-10 border-l border-white/10">
+                  <div className="absolute left-[-5px] top-0 w-[9px] h-[9px] rounded-full bg-primary" />
+                  <span className="text-[10px] font-bold text-zinc-600 uppercase tracking-[0.3em] mb-3 block">{item.period}</span>
+                  <h3 className="text-xl font-bold text-white mb-4">{item.school}</h3>
+                  <div className="space-y-2">
+                    {item.degrees.map((d, dIdx) => (
+                      <p key={dIdx} className="text-zinc-400 text-sm font-light">{d}</p>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Certificates */}
+          <div>
+            <div className="flex items-center gap-4 mb-12">
+              <FileCheck className="w-6 h-6 text-primary" />
+              <h2 className="text-3xl font-display font-bold uppercase tracking-tight">{content.certTitle}</h2>
+            </div>
+            <div className="grid grid-cols-1 gap-6">
+              {certs.map((cert, idx) => (
+                <div key={idx} className="p-8 rounded-3xl bg-white/[0.02] border border-white/5 flex items-center justify-between group hover:bg-white/[0.05] transition-all">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] font-bold text-primary uppercase tracking-widest">{cert.year}</span>
+                    <h3 className="text-lg font-bold text-white group-hover:text-primary transition-colors">{cert.name}</h3>
+                  </div>
+                  <ExternalLink className="w-5 h-5 text-zinc-700 group-hover:text-white transition-colors" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const App: React.FC = () => {
   const [language, setLanguage] = useState<Language>('CN');
   const [activeCategory, setActiveCategory] = useState<CategoryType>('ALL');
   const [modalVideoUrl, setModalVideoUrl] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
-  const CONTACT_INFO = { email: "janicemo08@163.com", phone: "186 2156 8644" };
+  const CONTACT_INFO = { email: "maoyujun08@163.com", phone: "186 2156 8644" };
   const CONTENT = language === 'EN' ? CONTENT_EN : CONTENT_CN;
   const EXPERTISE = language === 'EN' ? STRATEGIC_EXPERTISE_EN : STRATEGIC_EXPERTISE_CN;
   
@@ -143,7 +194,7 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-background text-white selection:bg-[#86570B]/20">
       <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-primary z-[1100] origin-left" style={{ scaleX: progressScaleX }} />
 
-      {/* FIXED NAV - 优化：二级详情页打开时隐藏，解决重叠问题 */}
+      {/* FIXED NAV */}
       <AnimatePresence>
         {!selectedProject && (
           <motion.div 
@@ -263,7 +314,7 @@ const App: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Strategic Expertise Section - UNIFIED STYLE */}
+      {/* Strategic Expertise Section */}
       <section id="expertise" className="px-6 md:px-20 py-40 bg-[#08080A]">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -296,7 +347,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Archive Section - UNIFIED STYLE */}
+      {/* Archive Section */}
       <section id="projects" className="px-6 md:px-20 py-40">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -367,7 +418,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Journey Section - UNIFIED STYLE ADDED */}
+      {/* Journey Section */}
       <section id="journey" className="px-6 md:px-20 py-40 bg-[#08080A]">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -398,10 +449,18 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* Awards Section - ALREADY UNIFIED STYLE */}
+      {/* Credentials Section */}
+      <CredentialsSection 
+        edu={CONTENT.education} 
+        certs={CONTENT.certificates} 
+        content={CONTENT.resume} 
+        language={language}
+      />
+
+      {/* Awards Section */}
       <AwardsSection awards={CONTENT.awards} language={language} />
 
-      {/* Connect Section - UNIFIED STYLE */}
+      {/* Connect Section */}
       <section id="connect" className="px-6 md:px-20 py-40 bg-background relative overflow-hidden">
         <motion.div 
           animate={{ rotate: 360 }}
