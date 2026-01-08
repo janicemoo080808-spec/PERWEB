@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, useScroll, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { CONTENT_EN, CONTENT_CN, STRATEGIC_EXPERTISE_EN, STRATEGIC_EXPERTISE_CN } from './constants';
@@ -10,7 +9,7 @@ import AIChat from './components/AIChat';
 import ResumeSection from './components/ResumeSection';
 import LightRays from './components/LightRays';
 import MagicBento from './components/MagicBento';
-import { X, Award as AwardIcon, Mail, Phone, ExternalLink, Trophy, Star, ChevronRight, ArrowDown, GraduationCap, FileCheck } from 'lucide-react';
+import { X, Award as AwardIcon, Mail, Phone, ExternalLink, Trophy, Star, ChevronRight, ArrowDown, GraduationCap, FileCheck, ChevronLeft } from 'lucide-react';
 
 const AwardRow: React.FC<{ award: AwardItem; index: number; language: Language }> = ({ award, index, language }) => {
   return (
@@ -190,6 +189,10 @@ const App: React.FC = () => {
     }
   };
 
+  const heroSubtitleParts = CONTENT.hero.subtitle.split('|');
+  const philosophyLine = heroSubtitleParts[0];
+  const sniperStatement = heroSubtitleParts[1] || "";
+
   return (
     <div className="min-h-screen bg-background text-white selection:bg-[#86570B]/20">
       <motion.div className="fixed top-0 left-0 right-0 h-[3px] bg-primary z-[1100] origin-left" style={{ scaleX: progressScaleX }} />
@@ -251,8 +254,8 @@ const App: React.FC = () => {
         )}
       </AnimatePresence>
 
-      {/* Hero */}
-      <section className="min-h-screen flex flex-col justify-center px-6 md:px-20 relative pt-24 overflow-hidden bg-background">
+      {/* Hero Section - Refined Alignment and Hierarchy */}
+      <section className="min-h-screen flex flex-col justify-center px-6 md:px-24 relative pt-24 overflow-hidden bg-background">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <LightRays 
             raysOrigin="top-center"
@@ -271,45 +274,79 @@ const App: React.FC = () => {
           style={{ y: fgElementsY }}
           className="max-w-7xl relative z-10 w-full mx-auto"
         >
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col items-start text-left">
+            {/* Professional Label with premium divider */}
             <motion.div
-              initial={{ opacity: 0, x: -50 }}
+              initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-center gap-6 mb-10"
             >
-              <motion.h1 
-                className="text-[12vw] md:text-[10vw] font-display font-bold leading-[0.8] tracking-tighter text-white uppercase drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
-              >
+              <div className="w-12 h-[1px] bg-primary" />
+              <p className="text-zinc-500 uppercase tracking-[0.6em] text-[10px] font-bold">
+                 Creative Director / Visual Strategist
+              </p>
+            </motion.div>
+
+            {/* Main Name: High-impact display */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.4, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <h1 className="text-[12vw] md:text-[10vw] font-display font-bold leading-[0.8] tracking-tighter text-white uppercase mb-20 drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
                 JANICE MO
-              </motion.h1>
+              </h1>
             </motion.div>
             
+            {/* Descriptive Vision: Philosophy Line & Weakened Sniper Statement */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1.2, delay: 0.4 }}
-              className="mt-8 flex flex-col md:flex-row items-center gap-6"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, delay: 0.6 }}
+              className="max-w-5xl space-y-10 pl-1"
             >
-               <div className="w-12 h-[1px] bg-primary hidden md:block" />
-               <p className="text-zinc-400 uppercase tracking-[0.6em] text-[10px] font-bold">
-                 Creative Director / Visual Strategist
-               </p>
+               {/* Philosophy Line: Strong and Bold */}
+               <motion.p 
+                 className="text-2xl md:text-5xl font-display font-bold text-white tracking-tight leading-[1.1]"
+               >
+                 {philosophyLine}
+               </motion.p>
+               
+               {/* Sniper Statement: Significantly Weakened as Requested */}
+               <motion.p 
+                 className="text-xs md:text-sm text-zinc-600 font-light max-w-xl leading-relaxed tracking-wide opacity-60"
+               >
+                 {sniperStatement}
+               </motion.p>
+
+               {/* Availability Indicator */}
+               <motion.div 
+                 initial={{ opacity: 0 }}
+                 animate={{ opacity: 1 }}
+                 transition={{ delay: 1, duration: 1.5 }}
+                 className="flex items-center gap-4 pt-6"
+               >
+                  <div className="w-1 h-1 rounded-full bg-primary/40 animate-pulse" />
+                  <span className="text-[9px] font-bold tracking-[0.4em] text-zinc-800 uppercase">{CONTENT.hero.available}</span>
+               </motion.div>
             </motion.div>
           </div>
         </motion.div>
 
+        {/* Scroll Indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.5, duration: 1 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-zinc-600"
+          className="absolute bottom-12 right-12 flex flex-col items-center gap-4 text-zinc-800"
         >
-          <span className="text-[8px] uppercase tracking-[0.4em] font-bold">Scroll to Explore</span>
+          <span className="text-[8px] uppercase tracking-[0.4em] font-bold" style={{ writingMode: 'vertical-rl' }}>Explore</span>
           <motion.div 
-            animate={{ y: [0, 10, 0] }}
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
           >
-            <ArrowDown className="w-4 h-4" />
+            <ArrowDown className="w-4 h-4 opacity-50" />
           </motion.div>
         </motion.div>
       </section>
