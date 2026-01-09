@@ -46,6 +46,22 @@ export interface Project {
   tags: string[];
 }
 
+export interface BlogPost {
+  id: string;
+  title: string;
+  author: string;
+  date: string;
+  readTime: string;
+  summary: string;
+  content: string;
+  imageUrl: string;
+  sections: {
+    subtitle: string;
+    text: string;
+    image?: string;
+  }[];
+}
+
 export interface ExperienceItem {
   id: string;
   role: string;
@@ -95,6 +111,7 @@ export interface SiteContent {
     career: string;
     credentials: string;
     awards: string;
+    blog: string;
     connect: string;
     downloadCv: string;
   };
@@ -130,6 +147,11 @@ export interface SiteContent {
       ai_drama: string;
     };
   };
+  blog: {
+    title: string;
+    subtitle: string;
+    readMore: string;
+  };
   footer: {
     rights: string;
   };
@@ -138,6 +160,7 @@ export interface SiteContent {
   certificates: CertificateItem[];
   skills: SkillItem[];
   projects: Project[];
+  blogPosts: BlogPost[];
   aiContext: string;
   awards?: AwardItem[];
 }
