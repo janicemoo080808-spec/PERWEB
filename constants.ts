@@ -1,64 +1,32 @@
+
 import { SiteContent, Project, ExperienceItem, SkillItem, EducationItem, CertificateItem } from './types';
 
-export const CV_URL = 'YOUR_CV_FILE_PATH.pdf'; // 您之后只需将此处替换为真实的 PDF 文件路径即可
+export const CV_URL = 'YOUR_CV_FILE_PATH.pdf';
 
 export const DESIGN_PHILOSOPHY_CN = {
-  title: "", // 标题留空以便在 UI 中移除
+  title: "",
   quote: "真正的战略视觉，不该被行业壁垒设限。",
   description: "拥有跨越加密、高奢、快消及科技等 9 年+ 多赛道实战经验，我拒绝做单纯的执行者，而是擅长捕捉不同商业形态下的核心共性。 打破策略与设计的边界，我利用 AI 效能重构工作流，将抽象的商业策略无损翻译为具象的视觉资产。\n\n无论赛道如何切换，我的目的只有一个：帮品牌建立绝对的“信任溢价”，拿回市场的叙事主权。"
 };
 
 export const DESIGN_PHILOSOPHY_EN = {
-  title: "", // 标题留空以便在 UI 中移除
+  title: "",
   quote: "True strategic design should recognize no boundaries.",
   description: "With 9+ years of expertise spanning Crypto, Luxury, FMCG, and Tech, I refuse to be a mere executor. Instead, I specialize in identifying the core commercial logic across diverse sectors.\n\nBridging the gap between Strategy and Design, I leverage AI to reconstruct workflows, flawlessly translating abstract business strategies into tangible visual assets. Regardless of the industry, my goal remains singular: to secure a definitive \"Trust Premium\" for the brand and reclaim its \"Narrative Sovereignty\" in the market."
 };
 
-// --- STRATEGIC MOAT (CORE LETHALITY) DATA ---
 export const STRATEGIC_EXPERTISE_CN = [
-  { 
-    title: "跨域视觉战略", 
-    desc: "9年+实战，视界无疆。 深耕涵盖 WEB3 市场、奢侈品、餐饮酒水、创新消费品、教育、医疗、跨境/国内电商、广告公司等多个行业赛道。擅长利用跨界思维打破行业同质化，将复杂的商业逻辑转化为极具穿透力的视觉语言，实现降维打击。", 
-    label: "Cross-Domain Visual Strategy" 
-  },
-  { 
-    title: "全链路品牌操盘", 
-    desc: "从顶层战略推演到像素级落地，全案掌控。 拒绝割裂执行，具备极强的资源整合力. 我是品牌资产的**“增值操盘手”**，确保品牌策略在每一个视觉触点都能精准兑现，实现商业价值最大化。", 
-    label: "Full-Link Brand Command" 
-  },
-  { 
-    title: "AIGC 智能工作流架构 (🔥 核心杀手锏)", 
-    desc: "AI 时代的视觉先锋与破局者。 拒绝盲目堆砌工具，专注于用 AI 重构创意生产关系。建立“人机协同”的超级工作流，将创意验证周期压缩至极限，以指数级效率输出高品质方案，在技术变革中为品牌抢占绝对先机。", 
-    label: "AIGC Architecture" 
-  },
-  { 
-    title: "敏捷效能领导力", 
-    desc: "推动组织从“人力驱动”向“智力增强”进化。 打造适应 AI 变革的敏捷特种部队。不仅是管理者，更是技术布道者，擅长领导与协调团队在不确定的市场环境中，以最快速度锁定目标，拿结果说话。", 
-    label: "Agile Leadership & Efficiency" 
-  }
+  { title: "跨域视觉战略", desc: "9年+实战，视界无疆。 深耕涵盖 WEB3 市场、奢侈品、餐饮酒水、创新消费品、教育、医疗、跨境/国内电商、广告公司等多个行业赛道。擅长利用跨界思维打破行业同质化，将复杂的商业逻辑转化为极具穿透力的视觉语言，实现降维打击。", label: "Cross-Domain Visual Strategy" },
+  { title: "全链路品牌操盘", desc: "从顶层战略推演到像素级落地，全案掌控。 拒绝割裂执行，具备极强的资源整合力. 我是品牌资产的**“增值操盘手”**，确保品牌策略在每一个视觉触点都能精准兑现，实现商业价值最大化。", label: "Full-Link Brand Command" },
+  { title: "AIGC 智能工作流架构 (🔥 核心杀手锏)", desc: "AI 时代的视觉先锋与破局者。 拒绝盲目堆砌工具，专注于用 AI 重构创意生产关系。建立“人机协同”的超级工作流，将创意验证周期压缩至极限，以指数级效率输出高品质方案，在技术变革中为品牌抢占绝对先机。", label: "AIGC Architecture" },
+  { title: "敏捷效能领导力", desc: "推动组织从“人力驱动”向“智力增强”进化。 打造适应 AI 变革的敏捷特种部队。不仅是管理者，更是技术布道者，擅长领导与协调团队在不确定的市场环境中，以最快速度锁定目标，拿结果说话。", label: "Agile Leadership & Efficiency" }
 ];
 
 export const STRATEGIC_EXPERTISE_EN = [
-  { 
-    title: "Cross-Domain Visual Strategy", 
-    desc: "Vision Without Borders: 9+ Years of Field Mastery. Deep expertise across diverse high-barrier sectors including Web3, Luxury, F&B, CPG, Education, Healthcare, Global E-commerce, and Advertising. I specialize in leveraging cross-industry insights to shatter market homogeneity, translating complex business logic into penetrating visual languages that deliver a strategic multidimensional impact.", 
-    label: "STRATEGY" 
-  },
-  { 
-    title: "Full-Link Brand Command", 
-    desc: "From Top-Tier Strategy to Pixel-Perfect Execution. I reject fragmented execution. With exceptional resource integration capabilities, I operate as a \"Brand Asset Growth Architect.\" I ensure brand strategy is precisely realized across every visual touchpoint, maximizing commercial value through holistic control and consistency.", 
-    label: "COMMAND" 
-  },
-  { 
-    title: "AIGC Workflow Architecture", 
-    desc: "Visual Pioneer & Disruptor in the AI Era. I go beyond tool stacking to reconstruct the creative production ecosystem with AI. By building a \"Human-AI Collaborative\" super workflow, I compress creative validation cycles to the absolute limit. This delivers high-quality solutions with exponential efficiency, securing a definitive competitive edge for brands amidst technological shifts.", 
-    label: "AIGC" 
-  },
-  { 
-    title: "Agile Leadership & Efficiency", 
-    desc: "Evolving Organizations from \"Manpower-Driven\" to \"Intelligence-Enhanced.\" I build agile \"special forces\" teams adapted for the AI revolution. More than just a manager, I am a technical evangelist. I excel at leading and coordinating teams through market uncertainty, rapidly locking onto targets, and letting results speak for themselves.", 
-    label: "LEADERSHIP" 
-  }
+  { title: "Cross-Domain Visual Strategy", desc: "Vision Without Borders: 9+ Years of Field Mastery. Deep expertise across diverse high-barrier sectors including Web3, Luxury, F&B, CPG, Education, Healthcare, Global E-commerce, and Advertising. I specialize in leveraging cross-industry insights to shatter market homogeneity, translating complex business logic into penetrating visual languages that deliver a strategic multidimensional impact.", label: "STRATEGY" },
+  { title: "Full-Link Brand Command", desc: "From Top-Tier Strategy to Pixel-Perfect Execution. I reject fragmented execution. With exceptional resource integration capabilities, I operate as a \"Brand Asset Growth Architect.\" I ensure brand strategy is precisely realized across every visual touchpoint, maximizing commercial value through holistic control and consistency.", label: "COMMAND" },
+  { title: "AIGC Workflow Architecture", desc: "Visual Pioneer & Disruptor in the AI Era. I go beyond tool stacking to reconstruct the creative production ecosystem with AI. By building a \"Human-AI Collaborative\" super workflow, I compress creative validation cycles to the absolute limit. This delivers high-quality solutions with exponential efficiency, securing a competitive edge for brands amidst technological shifts.", label: "AIGC" },
+  { title: "Agile Leadership & Efficiency", desc: "Evolving Organizations from \"Manpower-Driven\" to \"Intelligence-Enhanced.\" I build agile \"special forces\" teams adapted for the AI revolution. More than just a manager, I am a technical evangelist. I excel at leading and coordinating teams through market uncertainty, rapidly locking onto targets, and letting results speak for themselves.", label: "LEADERSHIP" }
 ];
 
 const SKILLS_COMMON: SkillItem[] = [
@@ -68,7 +36,6 @@ const SKILLS_COMMON: SkillItem[] = [
   { name: 'AI Creative Flow', level: 95 },
 ];
 
-// --- PROJECT DATA (STRICT PRESERVATION) ---
 const RIVIAN_SECTIONS_CN = [{ title: 'Rivian 官网交互体验设计', label: 'DIGITAL EXPERIENCE', icon: 'Globe', description: '致力于定义高性能电动皮卡的新范式。本次合作聚焦于 Rivian 官网的视觉叙事与体验重构。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.175v2c7o3h.webp'] }];
 const RIVIAN_SECTIONS_EN = [{ title: 'Rivian Digital Experience & Configurator', label: 'DIGITAL EXPERIENCE', icon: 'Globe', description: 'Defining a new paradigm for high-performance electric trucks.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/image.175v2c7o3h.webp'] }];
 
@@ -85,7 +52,7 @@ const INTU_SECTIONS_EN = [
 const CRYDIT_SECTIONS_CN = [
   { title: '核心视觉身份标准', label: 'BRAND DNA', icon: 'Hexagon', description: '建立 Crydit 的底层视觉基因。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326722.3govkhorey.webp'] },
   { title: '数字化门户与官方枢纽', label: 'WEB ARCHITECTURE', icon: 'Globe', description: '强调信息层级的高效流动与 Web3 交互美学。', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/4.232cghnb0s.webp'] },
-  { title: '社交叙事与 IP 人格化', label: 'SOCIAL VOICE', icon: 'Twitter', isSlider: true, description: '在社交平台构建具有温度的 IP 叙事。', images: ['https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326851.3govki18n9.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326865.6pnzh5oq9s.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326871.4qrsqtj7y3.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326882-16.24.57.1ziqiqx3w6.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/World-Football-Day-16.24.53.5q7w3zlz20.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/You’ll-regret-selling-your-coins-now-in-the-future..4qrsqtj7w9.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/卡戴珊-16.25.00.6f15o09i52.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/平安夜-16.24.57.26lye6j9b1.webp'] }
+  { title: '社交叙事与 IP 人格化', label: 'SOCIAL VOICE', icon: 'Twitter', isSlider: true, description: '在社交平台构建具有温度的 IP叙事。', images: ['https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326851.3govki18n9.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326865.6pnzh5oq9s.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326871.4qrsqtj7y3.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326882-16.24.57.1ziqiqx3w6.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/World-Football-Day-16.24.53.5q7w3zlz20.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/You’ll-regret-selling-your-coins-now-in-the-future..4qrsqtj7w9.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/image-2475.4ubeojcaob.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/卡戴珊-16.25.00.6f15o09i52.webp','https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/平安夜-16.24.57.26lye6j9b1.webp'] }
 ];
 const CRYDIT_SECTIONS_EN = [
   { title: 'Core Visual Identity Standards', label: 'BRAND DNA', icon: 'Hexagon', description: 'Establishing foundational visual DNA of Crydit.', images: ['https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/Frame-2087326722.3govkhorey.webp'] }
@@ -121,8 +88,6 @@ export const PROJECTS_EN: Project[] = [
   { id: 'luxury', title: 'LUXURY AESTHETICS', category: 'LUXURY_DESIGN', subCategory: 'IDENTITY', description: 'Visual storytelling and editorial layout within the LVMH aesthetic framework.', imageUrl: 'https://cdn.jsdelivr.net/gh/janicemoo080808-spec/picx-images-hosting@master/cody-gallo-toe53OJv7Kg-unsplash.eszjbryme.jpg', tags: ['Aesthetic', 'LVMH', 'Content Strategy'], sections: LUXURY_SECTIONS_EN as any },
   { id: 'activity-visual-en', title: 'EVENT & SPACE', category: 'ACTIVITY_VISUALS', subCategory: 'CAMPAIGN', description: 'Redefining brand narrative sovereignty in global competition through futuristic visual language.', imageUrl: 'https://cdn.jsdelivr.gh/gh/janicemoo080808-spec/picx-images-hosting@master/54848677226_0c430fb790_c.58hunv4b5g.webp', tags: ['Event Visuals', 'Exhibition', 'Global'], sections: ACTIVITY_SECTIONS_EN as any }
 ];
-
-// --- EXPERIENCE (STRICT PRESERVATION) ---
 
 const EXPERIENCE_CN: ExperienceItem[] = [
   {
@@ -177,7 +142,7 @@ const EXPERIENCE_CN: ExperienceItem[] = [
       '集团认可：2022年被提名为集团优秀员工，彰显了在职期间的出色表现和贡献。',
       '品牌建设：在团队组建完成前，仅用2个月时间成功完成花王集团从0到1的视觉体系搭建及品牌发布会。',
       '行业荣誉：参与独家冠名CCTV《大国品牌》故事片项目，该项目在第29届中国国际广告节荣获“2022广告主年度案例·年度内容营销案例”及“2022媒企合作年度案例”两项大奖。',
-      '创新案例：“千城万店”项目在国际高品质消费博览会上被评为十大高品质消费创新案例，提升集团品牌影响力及市场美誉度。'
+      '创新案例：“千城万企”项目在国际高品质消费博览会上被评为十大高品质消费创新案例，提升集团品牌影响力及市场美誉度。'
     ]
   },
   {
@@ -235,99 +200,42 @@ const EXPERIENCE_EN: ExperienceItem[] = [
       'Cross-Department Collaboration: Led multiple cross-departmental projects, developed brand promotion processes, and reduced project completion time by 15%.',
       'Event Planning: Headed the TOKEN 2049 event, attracting over 50,000 participants, significantly enhancing brand influence and user engagement. Planned and executed a series of online and offline activities, leading to a 50% increase in social media exposure.'
     ]
-  },
-  {
-    id: 'exp-zotye-en',
-    company: 'Shanghai Junqu Automobile (Zotye Auto)',
-    role: 'Senior Visual Manager',
-    period: '2022.5 - 2023.6',
-    companyIntro: 'Shanghai Junqu Automobile is the main business entity of the restructured Zotye Auto, fully committed to the new energy vehicle market.',
-    reportingTo: 'Director of Brand Department',
-    responsibilities: [
-      'Brand Design: Developed and implemented the brand\'s visual identity system and design guidelines independently, ensuring a consistent brand image.',
-      'Campaign Planning: Led brand creative initiatives, responsible for the visual design of brand communications to enhance market impact.',
-      'Creative Oversight: Reviewed and managed brand design projects, overseeing brand assets to ensure high-quality standards.',
-      'External Liaison Management: Served as the lead for brand design, interfacing with various departments and suppliers, coordinating cross-functional relationships, and leading project communications.',
-      'Automotive Design: Led the CMF (Color, Material, Finish) design for new car models, ensuring superior visual and tactile appeal.'
-    ]
-  },
-  {
-    id: 'exp-guijiu-en',
-    company: 'China Guijiu Group',
-    role: 'Senior Brand Manager & Executive Assistant to the President',
-    period: '2021.11 - 2022.4',
-    companyIntro: 'A comprehensive liquor group blending tradition with innovation (Stock code: 600696).',
-    reportingTo: 'Chief Marketing Officer (CMO)',
-    responsibilities: [
-      'Visual Management: Assisted the CMO by overseeing and ensuring the design quality for China Guijiu Group and its subsidiaries. Maintained the brand\'s visual identity system based on the brand design DNA.',
-      'Project Coordination: Managed key projects by forming teams, monitoring project progress, and allocating personnel to ensure projects were completed on time and to a high standard.',
-      'Public Relations: Represented the brand department in communications and coordination with various groups and functional departments, integrating resources to ensure efficient and smooth cross-departmental collaboration.'
-    ],
-    achievements: [
-      'Group Recognition: Nominated as an outstanding employee in 2022, highlighting exceptional performance and contributions.',
-      'Brand Building: Successfully established and executed the visual system for Huawang Group within two months prior to team formation, supporting the brand\'s launch event.',
-      'Industry Honors: Participated in the exclusive sponsorship of the CCTV \"National Brand\" story project, which won \"2022 Advertiser of the Year\" and \"2022 Media-Enterprise Cooperation\" awards at the 29th China International Advertising Festival.',
-      'Innovative Projects: The \"Thousand Cities and Ten Thousand Enterprises\" project was recognized as one of the top ten high-quality consumption innovation cases at the International High-Quality Consumption Expo.'
-    ]
-  },
-  {
-    id: 'exp-chunmai-en',
-    company: 'Shanghai Chunmai Brand Management Co., Ltd.',
-    role: 'Visual Design Manager',
-    period: '2018.7 - 2021.10',
-    companyIntro: 'Exclusive partner of France\'s Les Moulines d\'Antoine in mainland China, encompassing brands such as Le Jardin d’Antoine.',
-    reportingTo: 'Executive Director',
-    responsibilities: [
-      'Brand Image Design: Conducted research and designed the overall brand image for the company, developed the brand\'s visual identity system, and established standardized visual visuals.',
-      'Team Management: Built and led the brand design team, managed team performance and provided coaching.',
-      'Creative Design: Based on marketing strategies, accurately identified marketing points, visually packaged marketing activities, and optimized them to enhance brand influence.'
-    ],
-    achievements: [
-      'Brand Upgrade: Independently completed the upgrade of the brand VIS 2.0 visual system within two months of joining.',
-      'Space Design: Created the popular Western restaurant at North Bund, becoming the top check-in spot in Hongkou District on Dazhong Dianping.',
-      'Hit Product Design: Designed and launched over 20 new packaging, successfully creating best-selling products, driving a tenfold increase in sales year-over-year.',
-      'IP Image Design: Independently created the company\'s IP image and related extensions.',
-      'E-commerce Visuals: Designed the main visuals for new stores on JD.com and Tmall, achieving over 15,000 sales within three weeks of launch.'
-    ]
-  },
-  {
-    id: 'exp-jd-en',
-    company: 'JD.com (Beijing Jingdong Century Trade Co., Ltd.)',
-    role: '(Intern) Visual Designer',
-    period: '2017.2 - 2018.7',
-    responsibilities: [
-      'Completed page designs for store promotions, major events, and key projects.',
-      'Designed pages in various styles based on holiday and project requirements, ensuring alignment with the overall product style and brand tone.'
-    ]
   }
 ];
 
 const EDUCATION_CN: EducationItem[] = [
-  {
-    school: '哈尔滨理工大学',
-    period: '2014 - 2018',
-    degrees: ['视觉传达设计专业 【第一学位】', '人力资源管理专业 【第二学位】']
-  }
+  { school: '哈尔滨理工大学', period: '2014 - 2018', degrees: ['视觉传达设计专业 【第一学位】', '人力资源管理专业 【第二学位】'] }
 ];
 
 const EDUCATION_EN: EducationItem[] = [
-  {
-    school: 'Harbin University of Science and Technology',
-    period: '2014 - 2018',
-    degrees: ["Bachelor's Degree in Visual Communication Design 【First Bachelor's Degree】", "Bachelor's Degree in Human Resource Management 【Second Bachelor's Degree】"]
-  }
+  { school: 'Harbin University of Science and Technology', period: '2014 - 2018', degrees: ["Bachelor's Degree in Visual Communication Design 【First Bachelor's Degree】", "Bachelor's Degree in Human Resource Management 【Second Bachelor's Degree】"] }
 ];
 
-const CERTIFICATES_CN: CertificateItem[] = [
-  { year: '2023', name: 'LVMH 奢侈品品牌管理证书' }
+export const CERTIFICATES_CN: CertificateItem[] = [
+  { year: '2023', name: 'LVMH Luxury Brand Management Certificate', issuer: 'LVMH', focus: 'Luxury Codes, Heritage Storytelling, Premium Brand Equity.\n(掌握 LVMH 集团体系下的高奢叙事准则与溢价逻辑)' },
+  { year: '2024', name: 'Google AI Essentials', issuer: 'Google', focus: 'Gen-AI Workflow Architecture, Human-AI Collaboration.\n(谷歌认证：生成式 AI 工作流架构师)\n- 构建 AI 驱动的创意效能流，实现指数级效能提升', isPriority: true },
+  { year: '2024', name: 'Google Data Analytics Professional Certificate', issuer: 'Google', focus: 'Data-Driven Insight, Precision Decision Making.\n(谷歌认证：数据决策与洞察专家)\n- 运用数据分析支撑品牌决策，实现理性增长' },
+  { year: '2024', name: 'Google Digital Marketing & E-commerce Professional Certificate', issuer: 'Google', focus: 'Full-Funnel Growth, Omni-channel Strategy.\n(谷歌认证：全链路数字营销操盘手)\n- 深度掌控全渠道策略与增长模型' },
+  { year: '2024', name: 'Google UX Design Professional Certificate', issuer: 'Google', focus: 'User-Centric Experience Ecosystems.\n(谷歌认证：以用户为中心的体验生态构建者)\n- 打造从交互逻辑到情感共鸣的全链路体验' }
 ];
 
-const CERTIFICATES_EN: CertificateItem[] = [
-  { year: '2023', name: 'LVMH Luxury Brand Management Certificate' }
+export const CERTIFICATES_EN: CertificateItem[] = [
+  { year: '2023', name: 'LVMH Luxury Brand Management Certificate', issuer: 'LVMH', focus: 'Luxury Codes, Heritage Storytelling, Premium Brand Equity.' },
+  { year: '2024', name: 'Google AI Essentials', issuer: 'Google', focus: 'Gen-AI Workflow Architecture, Human-AI Collaboration.', isPriority: true },
+  { year: '2024', name: 'Google Data Analytics Professional Certificate', issuer: 'Google', focus: 'Data-Driven Insight, Precision Decision Making.' },
+  { year: '2024', name: 'Google Digital Marketing & E-commerce Professional Certificate', issuer: 'Google', focus: 'Full-Funnel Growth, Omni-channel Strategy.' },
+  { year: '2024', name: 'Google UX Design Professional Certificate', issuer: 'Google', focus: 'User-Centric Experience Ecosystems.' }
 ];
 
 export const CONTENT_CN: SiteContent = {
-  nav: { portfolios: "作品集", career: "职业路径", connect: "联系我" },
+  nav: {
+    portfolios: "作品档案",
+    career: "职业履历",
+    credentials: "个人职业资质",
+    awards: "商业实战荣誉",
+    connect: "联系我",
+    downloadCv: "下载 CV"
+  },
   hero: {
     title: "JANICE MO",
     subtitle: "BEYOND VISUALS, INTO NARRATIVE.|一个以 AI 为准星，精准重构全球品牌美学资产与叙事逻辑的视觉狙击手",
@@ -341,7 +249,7 @@ export const CONTENT_CN: SiteContent = {
     skillsTitle: "方法论与技能",
     experienceTitle: "职业履历",
     eduTitle: "教育背景",
-    certTitle: "最新证书"
+    certTitle: "个人职业资质"
   },
   portfolio: {
     title: "作品档案",
@@ -365,7 +273,14 @@ export const CONTENT_CN: SiteContent = {
 };
 
 export const CONTENT_EN: SiteContent = {
-  nav: { portfolios: "WORKS", career: "CAREER", connect: "CONNECT" },
+  nav: {
+    portfolios: "Archive",
+    career: "Career",
+    credentials: "Qualifications",
+    awards: "Accolades",
+    connect: "Connect",
+    downloadCv: "Download CV"
+  },
   hero: {
     title: "JANICE MO",
     subtitle: "BEYOND VISUALS, INTO NARRATIVE.|An Aesthetic Sniper leveraging AI precision to recalibrate brand narratives and reconstruct global visual assets with surgical accuracy.",
@@ -379,7 +294,7 @@ export const CONTENT_EN: SiteContent = {
     skillsTitle: "Methodology",
     experienceTitle: "Experience",
     eduTitle: "Education",
-    certTitle: "Latest Certificates"
+    certTitle: "Professional Qualifications"
   },
   portfolio: {
     title: "Archive",

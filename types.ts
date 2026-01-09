@@ -67,6 +67,9 @@ export interface EducationItem {
 export interface CertificateItem {
   year: string;
   name: string;
+  issuer?: string;
+  focus?: string;
+  isPriority?: boolean;
 }
 
 export interface SkillItem {
@@ -90,7 +93,10 @@ export interface SiteContent {
   nav: {
     portfolios: string;
     career: string;
+    credentials: string;
+    awards: string;
     connect: string;
+    downloadCv: string;
   };
   hero: {
     title: string;
